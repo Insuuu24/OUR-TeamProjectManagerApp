@@ -34,11 +34,8 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .black
-
-        let logoImage = UIImage(named: "ourproject_logo.png")
-        let logoImageView = UIImageView(image: logoImage)
-        logoImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = logoImageView
+        
+        setNavigationBarLogo(fileName: "ourproject_logo.png")
 
         let nameFilter = UIAction(title: "프로젝트 이름", image: UIImage(systemName: "list.bullet"), handler: { _ in
             // 프로젝트 이름별로 나열되게끔 로직 구성
@@ -57,7 +54,16 @@ class MainViewController: UIViewController {
     }
 
     // MARK: - Method & Action
+    
+    func setNavigationBarLogo(fileName: String) {
+        let logoImageView = UIImageView(image: UIImage(named: fileName))
+        logoImageView.contentMode = .scaleAspectFit
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
 
+        NSLayoutConstraint.activate([logoImageView.widthAnchor.constraint(equalToConstant: 120)])
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoImageView)
+    }
 
 
     
