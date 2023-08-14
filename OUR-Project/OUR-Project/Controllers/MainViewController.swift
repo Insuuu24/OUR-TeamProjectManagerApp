@@ -58,21 +58,7 @@ class MainViewController: UIViewController {
 
     // MARK: - Method & Action
 
-//    @objc private func showMenu() {
-//        let action1 = UIAction(title: "프로젝트 이름", image: UIImage(systemName: "list.bullet"), handler: { _ in
-//            // 프로젝트 이름별로 나열되게끔 로직 구성
-//        })
-//
-//        let action2 = UIAction(title: "프로젝트 생성 날짜", image: UIImage(systemName: "calendar"), handler: { _ in
-//            // 프로젝트 생성날짜별로 나열되게끔 로직 구성
-//        })
-//
-//        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: [action1, action2])
-//
-//        if let button = navigationItem.rightBarButtonItem {
-//            button.menu = menu
-//        }
-//    }
+
 
     
 }
