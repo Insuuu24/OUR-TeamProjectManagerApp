@@ -29,4 +29,11 @@ class DetailPageViewController: UIViewController {
 
     
 
+    // MARK: - Method & Action
+    
+    
+    
+    
+    
+    
 }
