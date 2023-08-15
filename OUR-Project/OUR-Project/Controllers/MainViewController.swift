@@ -11,7 +11,9 @@ class MainViewController: UIViewController {
 
     // MARK: - Properties
     
-    
+    var memberList = dummyMemberList
+    var projectList = dummyProjectList
+    var projectTeskList = dummyProjectTaskList
     
     
     // MARK: - View Life Cycle
