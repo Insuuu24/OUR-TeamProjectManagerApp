@@ -11,9 +11,12 @@ class MainViewController: UIViewController {
 
     // MARK: - Properties
     
+    private var tableView: UITableView!
+    private var segmentedControl: UISegmentedControl!
+    
     var memberList = dummyMemberList
     var projectList = dummyProjectList
-    var projectTeskList = dummyProjectTaskList
+    var projectTaskList = dummyProjectTaskList
     
     
     // MARK: - View Life Cycle
@@ -25,6 +28,7 @@ class MainViewController: UIViewController {
      
         setupNavigationBar()
         setupSegmentControl()
+        setupTableView()
     }
     
     
@@ -57,9 +61,9 @@ class MainViewController: UIViewController {
       }
    
     // MARK: - 세그먼트 컨트롤
-    func setupSegmentControl() {
+    private func setupSegmentControl() {
         let segments = ["종료된 프로젝트", "진행중인 프로젝트"]
-        let segmentedControl = UISegmentedControl(items: segments)
+        segmentedControl = UISegmentedControl(items: segments)
 
         segmentedControl.selectedSegmentIndex = 1
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
@@ -69,14 +73,28 @@ class MainViewController: UIViewController {
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true // TODO: equalTo 네비게이션 바를 기준으로 수정하기
-        segmentedControl.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40).isActive = true
-        segmentedControl.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -40).isActive = true
+        segmentedControl.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
+        segmentedControl.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         
     }
-  
+    
+    // MARK: - 테이블 뷰
+    private func setupTableView() {
+        tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "projectListCell") // 셀 등록
+        view.addSubview(tableView)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+    }
     
     // MARK: - Method & Action
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+    @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
         case 0:
@@ -89,9 +107,34 @@ class MainViewController: UIViewController {
             break
         }
     }
-   
-
-
     
 }
+
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return projectList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "projectListCell", for: indexPath)
+                    
+        let project = projectList[indexPath.row]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let context = """
+        \(project.name)
+        소속: \(project.teams.joined(separator: ", "))
+        시작: \(dateFormatter.string(from: project.startDate)) / 종료: \(dateFormatter.string(from: project.endDate))
+        """
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.text = context
+
+        return cell
+    }
+    
+    
+}
+
 
