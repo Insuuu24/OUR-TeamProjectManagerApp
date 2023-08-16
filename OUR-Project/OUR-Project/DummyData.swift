@@ -29,6 +29,71 @@ let dummyProjectList: [Project] = [
         tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
         createdBy: "최최최"
     ),
+    
+    Project(
+        name: "종료된 프로젝트",
+        teams: ["7조"],
+        startDate: Date(),
+        endDate: Date(),
+        description: "TODO앱을 만드는 프로젝트",
+        members: ["멤버1", "멤버2"],
+        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
+        createdBy: "멤버1"
+    ),
+    
+    Project(
+        name: "가나다라마바사아자차카타파하ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        teams: ["7조"],
+        startDate: Date(),
+        endDate: Date(),
+        description: "TODO앱을 만드는 프로젝트",
+        members: ["멤버1", "멤버2"],
+        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
+        createdBy: "멤버1"
+    ),
+    
+    Project(
+        name: "ㅋ",
+        teams: ["7조"],
+        startDate: Date(),
+        endDate: Date(),
+        description: "TODO앱을 만드는 프로젝트",
+        members: ["멤버1", "멤버2"],
+        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
+        createdBy: "멤버1"
+    ),
+    
+    Project(
+        name: "!@#$%^&*()",
+        teams: ["7조"],
+        startDate: Date(),
+        endDate: Date(),
+        description: "TODO앱을 만드는 프로젝트",
+        members: ["멤버1", "멤버2"],
+        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
+        createdBy: "멤버1"
+    ),
+    
+    Project(
+        name: "0123456789",
+        teams: ["7조"],
+        startDate: Date(),
+        endDate: Date(),
+        description: "TODO앱을 만드는 프로젝트",
+        members: ["멤버1", "멤버2"],
+        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
+        createdBy: "멤버1"
+    ),
+    Project(
+        name: "아야어여오요우유으이",
+        teams: ["7조"],
+        startDate: Date(),
+        endDate: Date(),
+        description: "TODO앱을 만드는 프로젝트",
+        members: ["멤버1", "멤버2"],
+        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
+        createdBy: "멤버1"
+    ),
 ]
 
 let dummyProjectTaskList: [ProjectTask] = [
@@ -73,7 +138,8 @@ let dummyMemberList: [Member] = [
         joinedProjects: ["KIOSK 만들기", "TODO앱 만들기"],
         createdProjects: ["KIOSK 만들기"],
         team: "8조",
-        profileImg: ""
+        profileImg: "",
+        email:"kim@gmail.com"
     ),
     
     Member(
@@ -83,7 +149,9 @@ let dummyMemberList: [Member] = [
         joinedProjects: ["KIOSK 만들기"],
         createdProjects: [""],
         team: "8조",
-        profileImg: ""
+        profileImg: "",
+        email:"lee@gmail.com"
+        
     ),
     
     Member(
@@ -93,7 +161,8 @@ let dummyMemberList: [Member] = [
         joinedProjects: ["KIOSK 만들기"],
         createdProjects: [""],
         team: "8조",
-        profileImg: ""
+        profileImg: "",
+        email:"park@gmail.com"
     ),
     Member(
         name: "최최최",
@@ -102,7 +171,8 @@ let dummyMemberList: [Member] = [
         joinedProjects: ["TODO앱 만들기"],
         createdProjects: ["TODO앱 만들기"],
         team: "8조",
-        profileImg: ""
+        profileImg: "",
+        email:"choi@gmail.com"
     ),
     Member(
         name: "신신신",
@@ -111,6 +181,7 @@ let dummyMemberList: [Member] = [
         joinedProjects: ["KIOSK 만들기"],
         createdProjects: [""],
         team: "8조",
-        profileImg: ""
+        profileImg: "",
+        email:"shin@gmail.com"
     ),
 ]
