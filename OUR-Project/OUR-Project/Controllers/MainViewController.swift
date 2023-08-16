@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
 
     // MARK: - Properties
     
-    
+    var selectedUser: UserModel?
     
     
     // MARK: - View Life Cycle

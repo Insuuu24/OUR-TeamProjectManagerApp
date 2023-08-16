@@ -5,11 +5,11 @@
 //  Created by Insu on 2023/08/15.
 //
 
-protocol MemberSelectionDelegate: AnyObject {
-    func didSelectMember()
-}
-
 import UIKit
+
+protocol MemberSelectionDelegate: AnyObject {
+    func didSelectMember(user: UserModel)
+}
 
 class MemberSelectionViewController: UIViewController {
     
@@ -80,7 +80,7 @@ class MemberSelectionViewController: UIViewController {
         navigationItem.rightBarButtonItem = addBarButton
     }
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UserCell.self, forCellWithReuseIdentifier: "UserCell")
@@ -106,7 +106,7 @@ class MemberSelectionViewController: UIViewController {
     
     //MARK: - Actions
     
-    @objc func addUserButtonTapped() {
+    @objc private func addUserButtonTapped() {
         if users.count >= 4 {
             let alert = UIAlertController(title: "멤버 추가", message: "멤버를 4명 이상 추가할 수 없습니다.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "확인", style: .default)
@@ -186,7 +186,6 @@ class MemberSelectionViewController: UIViewController {
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
 extension MemberSelectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return users.count
     }
@@ -199,8 +198,16 @@ extension MemberSelectionViewController: UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedUser = users[indexPath.item]
-        delegate?.didSelectMember()
+        
+        // UserDefaults에 선택된 유저 정보 저장
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(selectedUser) {
+            UserDefaults.standard.set(encoded, forKey: "selectedUser")
+        }
+
+        delegate?.didSelectMember(user: selectedUser)
         let mainViewController = MainViewController()
+        mainViewController.selectedUser = selectedUser
         self.navigationController?.pushViewController(mainViewController, animated: true)
     }
 }

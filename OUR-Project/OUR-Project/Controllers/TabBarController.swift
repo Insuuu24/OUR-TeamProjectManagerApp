@@ -32,7 +32,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let tabBarList = [projectAddViewController, mainViewController, myPageViewController]
         
         self.tabBar.backgroundColor = .systemBackground
-        self.tabBar.tintColor = .black
+        self.tabBar.tintColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         self.tabBar.unselectedItemTintColor = UIColor(red: 0.753, green: 0.753, blue: 0.753, alpha: 1)
         self.tabBar.isHidden = false
         
