@@ -15,4 +15,5 @@ struct Member: Codable {
     var createdProjects: [String] // 생성한 프로젝트
     var team: String // 소속
     var profileImg: String // 프로필 이미지 파일
+    var email: String // 이메일
 }
