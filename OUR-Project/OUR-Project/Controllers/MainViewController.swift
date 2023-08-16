@@ -83,14 +83,19 @@ class MainViewController: UIViewController {
         tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "projectListCell") // 셀 등록
+        tableView.register(ProjectListCell.self, forCellReuseIdentifier: "ProjectListCell") // 셀 등록
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 20).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        tableView.rowHeight = 100
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 20)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 5),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
     }
     
     // MARK: - Method & Action
@@ -116,20 +121,19 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "projectListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectListCell", for: indexPath) as! ProjectListCell
                     
         let project = projectList[indexPath.row]
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let context = """
-        \(project.name)
-        소속: \(project.teams.joined(separator: ", "))
-        시작: \(dateFormatter.string(from: project.startDate)) / 종료: \(dateFormatter.string(from: project.endDate))
+        cell.projectNameLabel.text = project.name
+        cell.projectInfoLabel.text =
         """
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.text = context
+        소속: \(project.teams.joined(separator: ", "))
+        시작: \(dateFormatter.string(from: project.startDate))　/　종료: \(dateFormatter.string(from: project.endDate))
+
+        """
 
         return cell
     }
