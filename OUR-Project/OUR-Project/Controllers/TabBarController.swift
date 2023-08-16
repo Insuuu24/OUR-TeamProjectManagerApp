@@ -41,11 +41,11 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         tabBar.layer.shadowOpacity = 0.1
         tabBar.layer.shadowRadius = 2.0
         tabBar.layer.masksToBounds = false
+        tabBar.layer.shadowPath = UIBezierPath(rect: tabBar.bounds).cgPath
 
         viewControllers = tabBarList.map {
             UINavigationController(rootViewController: $0)
         }
         self.selectedIndex = 1
     }
-
 }

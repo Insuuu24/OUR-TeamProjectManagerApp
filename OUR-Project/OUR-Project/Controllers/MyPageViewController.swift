@@ -27,7 +27,7 @@ class MyPageViewController: UIViewController {
 
     // MARK: - Navigation Bar
     
-    func setupNavigationBar() {
+    private func setupNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]

@@ -38,7 +38,11 @@ class MainViewController: UIViewController {
         let logoImage = UIImage(named: "ourproject_logo.png")
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = logoImageView
+
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
+        logoImageView.frame = container.bounds
+        container.addSubview(logoImageView)
+        navigationItem.titleView = container
 
         let nameFilter = UIAction(title: "프로젝트 이름", image: UIImage(systemName: "list.bullet"), handler: { _ in
             // 프로젝트 이름별로 나열되게끔 로직 구성
