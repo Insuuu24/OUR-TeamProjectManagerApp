@@ -34,39 +34,28 @@ class MainViewController: UIViewController {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .black
-        
-        setNavigationBarLogo(fileName: "ourproject_logo.png")
-
+        let logoImage = UIImage(named: "ourproject_logo.png")
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
+        logoImageView.frame = container.bounds
+        container.addSubview(logoImageView)
+        navigationItem.titleView = container
         let nameFilter = UIAction(title: "프로젝트 이름", image: UIImage(systemName: "list.bullet"), handler: { _ in
-            // 프로젝트 이름별로 나열되게끔 로직 구성
+          // 프로젝트 이름별로 나열되게끔 로직 구성
         })
-
         let creationDate = UIAction(title: "프로젝트 생성 날짜", image: UIImage(systemName: "calendar"), handler: { _ in
-            // 프로젝트 생성날짜별로 나열되게끔 로직 구성
+          // 프로젝트 생성날짜별로 나열되게끔 로직 구성
         })
-
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: [nameFilter, creationDate])
-
         let filterImage = UIImage(systemName: "line.3.horizontal.decrease")
         let filterButton = UIBarButtonItem(image: filterImage, menu: menu)
-
         navigationItem.rightBarButtonItem = filterButton
-    }
-    
-    func setNavigationBarLogo(fileName: String) {
-        let logoImageView = UIImageView(image: UIImage(named: fileName))
-        logoImageView.contentMode = .scaleAspectFit
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([logoImageView.widthAnchor.constraint(equalToConstant: 120)])
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoImageView)
-    }
-    
+      }
+   
     // MARK: - 세그먼트 컨트롤
     func setupSegmentControl() {
         let segments = ["종료된 프로젝트", "진행중인 프로젝트"]
