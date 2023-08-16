@@ -24,8 +24,10 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
      
         setupNavigationBar()
+        setupSegmentControl()
     }
-
+    
+    
     // MARK: - Navigation Bar
 
     private func setupNavigationBar() {
@@ -54,8 +56,6 @@ class MainViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = filterButton
     }
-
-    // MARK: - Method & Action
     
     func setNavigationBarLogo(fileName: String) {
         let logoImageView = UIImageView(image: UIImage(named: fileName))
@@ -66,6 +66,41 @@ class MainViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoImageView)
     }
+    
+    // MARK: - 세그먼트 컨트롤
+    func setupSegmentControl() {
+        let segments = ["종료된 프로젝트", "진행중인 프로젝트"]
+        let segmentedControl = UISegmentedControl(items: segments)
+
+        segmentedControl.selectedSegmentIndex = 1
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
+        
+        
+        self.view.addSubview(segmentedControl)
+        
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true // TODO: equalTo 네비게이션 바를 기준으로 수정하기
+        segmentedControl.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40).isActive = true
+        segmentedControl.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -40).isActive = true
+        
+    }
+  
+    
+    // MARK: - Method & Action
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            print("종료된 프로젝트 선택됨")
+            
+        case 1:
+            print("진행중인 프로젝트 선택됨")
+            
+        default:
+            break
+        }
+    }
+   
 
 
     
