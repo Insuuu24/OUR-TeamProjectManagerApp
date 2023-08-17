@@ -70,6 +70,13 @@ class DetailPageViewController: UIViewController {
     }
    
 
+    // MARK: - Method & Action
+    
+    
+    
+    
+    
+    
 }
 
 extension DetailPageViewController: UITableViewDataSource {

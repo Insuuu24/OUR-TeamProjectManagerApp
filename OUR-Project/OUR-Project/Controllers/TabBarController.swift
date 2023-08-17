@@ -32,7 +32,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let tabBarList = [projectAddViewController, mainViewController, myPageViewController]
         
         self.tabBar.backgroundColor = .systemBackground
-        self.tabBar.tintColor = .black
+        self.tabBar.tintColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         self.tabBar.unselectedItemTintColor = UIColor(red: 0.753, green: 0.753, blue: 0.753, alpha: 1)
         self.tabBar.isHidden = false
         
@@ -41,11 +41,11 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         tabBar.layer.shadowOpacity = 0.1
         tabBar.layer.shadowRadius = 2.0
         tabBar.layer.masksToBounds = false
+        tabBar.layer.shadowPath = UIBezierPath(rect: tabBar.bounds).cgPath
 
         viewControllers = tabBarList.map {
             UINavigationController(rootViewController: $0)
         }
         self.selectedIndex = 1
     }
-
 }

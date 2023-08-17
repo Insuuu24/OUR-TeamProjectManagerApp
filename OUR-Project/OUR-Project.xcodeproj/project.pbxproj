@@ -28,6 +28,16 @@
 		EBDAB24D2A8CABDC00D23321 /* MemberListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */; };
 		EBDAB24F2A8CABEF00D23321 /* ProgressListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */; };
 		EBDAB2512A8DF94500D23321 /* ProjectEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */; };
+		EBD169DB2A8BBC2A00B1120C /* MemberSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */; };
+		EBD169DD2A8BBC5B00B1120C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DC2A8BBC5B00B1120C /* UserModel.swift */; };
+		EBD169DF2A8BBD1000B1120C /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */; };
+		EBD169E12A8BBFC200B1120C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169E02A8BBFC200B1120C /* UserCell.swift */; };
+		EBF84E4F2A8DA22200B56A1F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E4C2A8DA22200B56A1F /* Project.swift */; };
+		EBF84E502A8DA22200B56A1F /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E4D2A8DA22200B56A1F /* Member.swift */; };
+		EBF84E512A8DA22200B56A1F /* ProjectTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E4E2A8DA22200B56A1F /* ProjectTask.swift */; };
+		EBF84E552A8DA2AA00B56A1F /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E542A8DA2AA00B56A1F /* DummyData.swift */; };
+		EBF84E572A8DA2F700B56A1F /* ProjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E562A8DA2F700B56A1F /* ProjectListCell.swift */; };
+		EBF84E592A8DEDFF00B56A1F /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E582A8DEDFF00B56A1F /* EmptyStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +64,16 @@
 		EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewController.swift; sourceTree = "<group>"; };
+		EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberSelectionViewController.swift; sourceTree = "<group>"; };
+		EBD169DC2A8BBC5B00B1120C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		EBD169E02A8BBFC200B1120C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		EBF84E4C2A8DA22200B56A1F /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		EBF84E4D2A8DA22200B56A1F /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		EBF84E4E2A8DA22200B56A1F /* ProjectTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTask.swift; sourceTree = "<group>"; };
+		EBF84E542A8DA2AA00B56A1F /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyData.swift; path = "OUR-Project/Models/DummyData.swift"; sourceTree = SOURCE_ROOT; };
+		EBF84E562A8DA2F700B56A1F /* ProjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListCell.swift; sourceTree = "<group>"; };
+		EBF84E582A8DEDFF00B56A1F /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +123,12 @@
 			isa = PBXGroup;
 			children = (
 				EBDAB2372A8A340500D23321 /* Model.swift */,
+				EBF84E542A8DA2AA00B56A1F /* DummyData.swift */,
+				EBF84E4D2A8DA22200B56A1F /* Member.swift */,
+				EBF84E4C2A8DA22200B56A1F /* Project.swift */,
+				EBF84E4E2A8DA22200B56A1F /* ProjectTask.swift */,
+				EBD169DC2A8BBC5B00B1120C /* UserModel.swift */,
+				EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -111,6 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				EB4DFCAF2A89EA1300F1B738 /* Main.storyboard */,
+				EBD169E02A8BBFC200B1120C /* UserCell.swift */,
+				EBF84E562A8DA2F700B56A1F /* ProjectListCell.swift */,
+				EBF84E582A8DEDFF00B56A1F /* EmptyStateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -118,6 +147,7 @@
 		EB4DFCBF2A89EA4C00F1B738 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */,
 				EB83A3522A8A01F700DFF86E /* TabBarController.swift */,
 				EB4DFCAD2A89EA1300F1B738 /* MainViewController.swift */,
 				EB83A3492A8A016500DFF86E /* DetailPageViewController.swift */,
@@ -223,6 +253,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF84E592A8DEDFF00B56A1F /* EmptyStateView.swift in Sources */,
+				EBF84E552A8DA2AA00B56A1F /* DummyData.swift in Sources */,
 				EB83A34C2A8A017600DFF86E /* ProjectAddViewController.swift in Sources */,
 				EB83A3532A8A01F700DFF86E /* TabBarController.swift in Sources */,
 				EBDAB2462A8C6E2600D23321 /* ProgressTableViewCell.swift in Sources */,
@@ -234,9 +266,17 @@
 				EBDAB2382A8A340500D23321 /* Model.swift in Sources */,
 				EB83A34A2A8A016500DFF86E /* DetailPageViewController.swift in Sources */,
 				EBDAB24F2A8CABEF00D23321 /* ProgressListTableViewCell.swift in Sources */,
+				EBF84E572A8DA2F700B56A1F /* ProjectListCell.swift in Sources */,
+				EBF84E502A8DA22200B56A1F /* Member.swift in Sources */,
+				EBF84E4F2A8DA22200B56A1F /* Project.swift in Sources */,
+				EBD169DF2A8BBD1000B1120C /* UserDataManager.swift in Sources */,
+				EBD169DB2A8BBC2A00B1120C /* MemberSelectionViewController.swift in Sources */,
+				EBF84E512A8DA22200B56A1F /* ProjectTask.swift in Sources */,
 				EB4DFCAE2A89EA1300F1B738 /* MainViewController.swift in Sources */,
+				EBD169E12A8BBFC200B1120C /* UserCell.swift in Sources */,
 				EB4DFCAA2A89EA1300F1B738 /* AppDelegate.swift in Sources */,
 				EBDAB2402A8C6C5400D23321 /* DateTableViewCell.swift in Sources */,
+				EBD169DD2A8BBC5B00B1120C /* UserModel.swift in Sources */,
 				EB4DFCAC2A89EA1300F1B738 /* SceneDelegate.swift in Sources */,
 				EBDAB2482A8C72A100D23321 /* CheckBox.swift in Sources */,
 				EBDAB2512A8DF94500D23321 /* ProjectEditViewController.swift in Sources */,
