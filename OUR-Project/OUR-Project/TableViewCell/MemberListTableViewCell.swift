@@ -10,7 +10,9 @@ import UIKit
 class MemberListTableViewCell: UITableViewCell {
 
     // MARK: - Properties
-
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var memberLabel: UILabel!
+    
     
     
     
@@ -28,5 +30,11 @@ class MemberListTableViewCell: UITableViewCell {
     }
     
     // MARK: - Method & Action
-
+    func setLabel(name:String){
+        memberLabel.text = name
+        memberLabel.textColor = .label
+        memberLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        memberLabel.numberOfLines = 1
+        memberLabel.textAlignment = .left
+    }
 }

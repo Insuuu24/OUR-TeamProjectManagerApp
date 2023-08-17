@@ -10,20 +10,14 @@ import UIKit
 
 /// 체크박스
 class CheckBox: UIButton {
-
     /// 체크박스 이미지
     var checkBoxResouces = OnOffResources(
-        onImage: UIImage(named: DefaultResource.checkedImage),
-        offImage: UIImage(named: DefaultResource.notCheckedImage)
+        onImage: UIImage(systemName: "checkmark.square.fill")?.withTintColor(.gray, renderingMode: .alwaysOriginal),
+        offImage: UIImage(systemName: "checkmark.square")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
     ) {
         didSet {
             self.setChecked(isChecked)
         }
-    }
-
-    enum DefaultResource {
-        static let notCheckedImage = "btn_check_off"
-        static let checkedImage = "btn_check_on"
     }
 
     /// 체크 상태 변경
@@ -54,7 +48,8 @@ class CheckBox: UIButton {
 
     private func commonInit() {
         self.setImage(checkBoxResouces.offImage, for: .normal)
-
+        self.configuration?.imagePadding = 10
+        
         self.addTarget(self, action: #selector(check), for: .touchUpInside)
         self.isChecked = false
     }
@@ -67,8 +62,10 @@ class CheckBox: UIButton {
     private func setChecked(_ isChecked: Bool) {
         if isChecked == true {
             self.setImage(checkBoxResouces.onImage, for: .normal)
+            self.configuration?.imagePadding = 10
         } else {
             self.setImage(checkBoxResouces.offImage, for: .normal)
+            self.configuration?.imagePadding = 10
         }
     }
 

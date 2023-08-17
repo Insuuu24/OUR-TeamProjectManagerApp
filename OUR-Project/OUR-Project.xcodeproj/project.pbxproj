@@ -27,6 +27,7 @@
 		EBDAB2482A8C72A100D23321 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2472A8C72A100D23321 /* CheckBox.swift */; };
 		EBDAB24D2A8CABDC00D23321 /* MemberListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */; };
 		EBDAB24F2A8CABEF00D23321 /* ProgressListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */; };
+		EBDAB2512A8DF94500D23321 /* ProjectEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		EBDAB2472A8C72A100D23321 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListTableViewCell.swift; sourceTree = "<group>"; };
+		EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				EB83A34B2A8A017600DFF86E /* ProjectAddViewController.swift */,
 				EB83A34D2A8A018000DFF86E /* MyPageViewController.swift */,
 				EB83A34F2A8A01A000DFF86E /* ProfileEditViewController.swift */,
+				EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				EBDAB2402A8C6C5400D23321 /* DateTableViewCell.swift in Sources */,
 				EB4DFCAC2A89EA1300F1B738 /* SceneDelegate.swift in Sources */,
 				EBDAB2482A8C72A100D23321 /* CheckBox.swift in Sources */,
+				EBDAB2512A8DF94500D23321 /* ProjectEditViewController.swift in Sources */,
 				EBDAB24D2A8CABDC00D23321 /* MemberListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

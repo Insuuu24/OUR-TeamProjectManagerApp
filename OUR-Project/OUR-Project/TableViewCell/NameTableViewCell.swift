@@ -20,6 +20,7 @@ class NameTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        nameTextField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,7 +34,7 @@ class NameTableViewCell: UITableViewCell {
         nameLabel.text = name
         nameLabel.textColor = .label
         nameLabel.font = .systemFont(ofSize: 15, weight: .regular)
-        nameLabel.numberOfLines = 0
+        nameLabel.numberOfLines = 1
         nameLabel.textAlignment = .left
     }
     
@@ -46,5 +47,11 @@ class NameTableViewCell: UITableViewCell {
         nameTextField.textColor = .label
         nameTextField.font = .systemFont(ofSize: 15, weight: .regular)
         nameTextField.textAlignment = .left
+    }
+}
+
+extension NameTableViewCell: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false // textField 변경 불가
     }
 }

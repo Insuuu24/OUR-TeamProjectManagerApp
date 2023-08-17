@@ -11,6 +11,8 @@ class ProgressListTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var checkButton: CheckBox!
     
     
     
@@ -28,5 +30,11 @@ class ProgressListTableViewCell: UITableViewCell {
     }
     
     // MARK: - Method & Action
-
+    func setButton(state:Bool, name:String){
+        checkButton.isChecked = state
+        checkButton.setTitle(name, for: .normal)
+        checkButton.setTitleColor(.label, for: .normal)
+        checkButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
+        checkButton.contentHorizontalAlignment = .left
+    }
 }

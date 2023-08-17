@@ -10,7 +10,9 @@ import UIKit
 class MemberTableViewCell: UITableViewCell {
 
     // MARK: - Properties
-    var testMember: [String] = ["김상훈", "박인수", "윤혁진", "조영현"]
+    var memberList: [String] = []
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var memberLabel: UILabel!
     @IBOutlet weak var memberTableView: UITableView!
     
     
@@ -19,6 +21,14 @@ class MemberTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        print("awakeFromNib")
+        memberTableView.dataSource = self
+        memberTableView.delegate = self
+        
+        memberTableView.separatorStyle = .none
+        
+//        memberTableView.rowHeight = UITableView.automaticDimension
+//        memberTableView.estimatedRowHeight = UITableView.automaticDimension
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,19 +36,42 @@ class MemberTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    // MARK: - Method & Action
+    func setLabel(name:String){
+        memberLabel.text = name
+        memberLabel.textColor = .label
+        memberLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        memberLabel.numberOfLines = 1
+        memberLabel.textAlignment = .left
+    }
+    
+    func setStackView(){
+        stackView.spacing = 10
+    }
+    
+    func setTableView(){
+        memberTableView.layer.borderWidth = 0.25
+        memberTableView.layer.borderColor = UIColor.lightGray.cgColor
+        memberTableView.layer.cornerRadius = 5.0
+    }
 }
 
 extension MemberTableViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testMember.count
+        return memberList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = memberTableView.dequeueReusableCell(withIdentifier: "MemberTableViewCell", for: indexPath) as! MemberTableViewCell
+        let cell = memberTableView.dequeueReusableCell(withIdentifier: "MemberListTableViewCell", for: indexPath) as! MemberListTableViewCell
+        cell.setLabel(name: memberList[indexPath.row])
         
         return cell
     }
-    
-    
+}
+
+extension MemberTableViewCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 30
+    }
 }
