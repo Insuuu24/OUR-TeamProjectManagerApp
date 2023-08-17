@@ -8,17 +8,21 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
+
     // MARK: - Properties
     
     private var tableView: UITableView!
     private var segmentedControl: UISegmentedControl!
+    private var nameFilter, startDateFilter, endDateFilter: UIAction!
+    private var filterButton: UIBarButtonItem!
+    
+    var selectedUser: UserModel?
     var sortCells: SortOptions?
     
     var memberList = dummyMemberList
     var projectList = dummyProjectList
     var projectTaskList = dummyProjectTaskList
-    var selectedUser: UserModel?
+    
     
     
     // MARK: - View Life Cycle
@@ -27,7 +31,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
+     
         setupNavigationBar()
         setupSegmentControl()
         setupTableView()
@@ -50,23 +54,51 @@ class MainViewController: UIViewController {
         logoImageView.frame = container.bounds
         container.addSubview(logoImageView)
         navigationItem.titleView = container
-        let nameFilter = UIAction(title: "프로젝트 이름순", image: UIImage(systemName: "textformat.abc"), handler: { _ in
+        nameFilter = UIAction(title: "프로젝트 이름순", image: UIImage(systemName: "textformat.abc"), handler: { _ in
             self.sortCells = .projectName
             self.tableView.reloadData()
+            self.setupRightBarButtonItem("byName")
         })
-        let startDateFilter = UIAction(title: "프로젝트 시작일순", image: UIImage(systemName: "arrow.right.to.line"), handler: { _ in
+        startDateFilter = UIAction(title: "프로젝트 시작일순", image: UIImage(systemName: "arrow.right.to.line"), handler: { _ in
             self.sortCells = .startDate
             self.tableView.reloadData()
+            self.setupRightBarButtonItem("byStartDate")
         })
-        let endDateFilter = UIAction(title: "프로젝트 종료일순", image: UIImage(systemName: "arrow.left.to.line"), handler: { _ in
+        endDateFilter = UIAction(title: "프로젝트 종료일순", image: UIImage(systemName: "arrow.left.to.line"), handler: { _ in
             self.sortCells = .endDate
             self.tableView.reloadData()
+            self.setupRightBarButtonItem("byEndDate")
         })
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: [nameFilter, startDateFilter, endDateFilter])
         let filterImage = UIImage(systemName: "line.3.horizontal.decrease")
-        let filterButton = UIBarButtonItem(image: filterImage, menu: menu)
+        filterButton = UIBarButtonItem(image: filterImage, menu: menu)
         navigationItem.rightBarButtonItem = filterButton
       }
+    
+    private func setupRightBarButtonItem(_ selectedFilter: String) {
+               
+           switch selectedFilter {
+           case "byName":
+               nameFilter.title = "⚫︎ 프로젝트 이름순 "
+               startDateFilter.title = "프로젝트 시작일순"
+               endDateFilter.title = "프로젝트 종료일순"
+           case "byStartDate":
+               nameFilter.title = "프로젝트 이름순"
+               startDateFilter.title = "⚫︎ 프로젝트 시작일순"
+               endDateFilter.title = "프로젝트 종료일순"
+           case "byEndDate":
+               nameFilter.title = "프로젝트 이름순"
+               startDateFilter.title = "프로젝트 시작일순"
+               endDateFilter.title = "⚫︎ 프로젝트 종료일순"
+           default:
+               break
+           }
+               
+            let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: [nameFilter, startDateFilter, endDateFilter])
+            let filterImage = UIImage(systemName: "line.3.horizontal.decrease")
+            filterButton = UIBarButtonItem(image: filterImage, menu: menu)
+            navigationItem.rightBarButtonItem = filterButton
+        }
    
     private func setupSegmentControl() {
         let segments = ["종료된 프로젝트", "진행중인 프로젝트"]
