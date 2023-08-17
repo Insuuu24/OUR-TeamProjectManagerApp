@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     
     private var tableView: UITableView!
     private var segmentedControl: UISegmentedControl!
+    var sortCells: SortOptions?
     
     var memberList = dummyMemberList
     var projectList = dummyProjectList
@@ -49,13 +50,19 @@ class MainViewController: UIViewController {
         logoImageView.frame = container.bounds
         container.addSubview(logoImageView)
         navigationItem.titleView = container
-        let nameFilter = UIAction(title: "프로젝트 이름", image: UIImage(systemName: "list.bullet"), handler: { _ in
-          // 프로젝트 이름별로 나열되게끔 로직 구성
+        let nameFilter = UIAction(title: "프로젝트 이름순", image: UIImage(systemName: "textformat.abc"), handler: { _ in
+            self.sortCells = .projectName
+            self.tableView.reloadData()
         })
-        let creationDate = UIAction(title: "프로젝트 생성 날짜", image: UIImage(systemName: "calendar"), handler: { _ in
-          // 프로젝트 생성날짜별로 나열되게끔 로직 구성
+        let startDateFilter = UIAction(title: "프로젝트 시작일순", image: UIImage(systemName: "arrow.right.to.line"), handler: { _ in
+            self.sortCells = .startDate
+            self.tableView.reloadData()
         })
-        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: [nameFilter, creationDate])
+        let endDateFilter = UIAction(title: "프로젝트 종료일순", image: UIImage(systemName: "arrow.left.to.line"), handler: { _ in
+            self.sortCells = .endDate
+            self.tableView.reloadData()
+        })
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: [nameFilter, startDateFilter, endDateFilter])
         let filterImage = UIImage(systemName: "line.3.horizontal.decrease")
         let filterButton = UIBarButtonItem(image: filterImage, menu: menu)
         navigationItem.rightBarButtonItem = filterButton
@@ -69,11 +76,10 @@ class MainViewController: UIViewController {
         segmentedControl.selectedSegmentIndex = 1
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         
-        
         self.view.addSubview(segmentedControl)
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true // TODO: equalTo 네비게이션 바를 기준으로 수정하기
+        segmentedControl.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
         segmentedControl.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
         segmentedControl.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         
@@ -124,6 +130,17 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectListCell", for: indexPath) as! ProjectListCell
                     
+        if let sortOption = sortCells {
+            switch sortOption {
+            case .projectName:
+                projectList.sort { $0.name < $1.name }
+            case .startDate:
+                projectList.sort { $0.startDate < $1.startDate }
+            case .endDate:
+                projectList.sort { $0.endDate > $1.endDate }
+            }
+        }
+        
         let project = projectList[indexPath.row]
         
         let dateFormatter = DateFormatter()
@@ -133,7 +150,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         """
         소속: \(project.teams.joined(separator: ", "))
         시작: \(dateFormatter.string(from: project.startDate))　/　종료: \(dateFormatter.string(from: project.endDate))
-
         """
 
         return cell
