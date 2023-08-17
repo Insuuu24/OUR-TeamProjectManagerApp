@@ -9,10 +9,10 @@ import Foundation
 
 let dummyProjectList: [Project] = [
     Project(
-        name: "KIOSK 만들기",
+        name: "(가)KIOSK 만들기",
         teams: ["8조"],
-        startDate: Date(),
-        endDate: Date(),
+        startDate: Calendar.current.date(byAdding: .month, value: -3, to: Date()) ?? Date(),
+        endDate: Calendar.current.date(byAdding: .month, value: +7, to: Date()) ?? Date(),
         description: "KIOSK앱을 만드는 프로젝트",
         members: ["김김김", "이이이", "박박박", "신신신"],
         tasks: ["아이디어 내기", "팀장 정하기", "팀 노션 만들기", "TIL 작성하기"],
@@ -20,9 +20,9 @@ let dummyProjectList: [Project] = [
     ),
     
     Project(
-        name: "TODO앱 만들기",
+        name: "(A)TODO앱 만들기",
         teams: ["8조","1조"],
-        startDate: Date(),
+        startDate: Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date(),
         endDate: Date(),
         description: "TODO앱을 만드는 프로젝트",
         members: ["김김김", "최최최"],
@@ -31,10 +31,10 @@ let dummyProjectList: [Project] = [
     ),
     
     Project(
-        name: "종료된 프로젝트",
+        name: "(나)종료된 프로젝트",
         teams: ["7조"],
-        startDate: Date(),
-        endDate: Date(),
+        startDate: Calendar.current.date(byAdding: .year, value: -2, to: Date()) ?? Date(),
+        endDate: Calendar.current.date(byAdding: .year, value: -7, to: Date()) ?? Date(),
         description: "TODO앱을 만드는 프로젝트",
         members: ["멤버1", "멤버2"],
         tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
@@ -42,10 +42,10 @@ let dummyProjectList: [Project] = [
     ),
     
     Project(
-        name: "가나다라마바사아자차카타파하ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        name: "(D)가나다라마바사아자차카타파하ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         teams: ["7조"],
-        startDate: Date(),
-        endDate: Date(),
+        startDate: Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date(),
+        endDate: Calendar.current.date(byAdding: .month, value: +3, to: Date()) ?? Date(),
         description: "TODO앱을 만드는 프로젝트",
         members: ["멤버1", "멤버2"],
         tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
@@ -53,10 +53,10 @@ let dummyProjectList: [Project] = [
     ),
     
     Project(
-        name: "ㅋ",
+        name: "(B)ㅋ",
         teams: ["7조"],
-        startDate: Date(),
-        endDate: Date(),
+        startDate: Calendar.current.date(byAdding: .day, value: -20, to: Date()) ?? Date(),
+        endDate: Calendar.current.date(byAdding: .day, value: +9, to: Date()) ?? Date(),
         description: "TODO앱을 만드는 프로젝트",
         members: ["멤버1", "멤버2"],
         tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
@@ -64,10 +64,10 @@ let dummyProjectList: [Project] = [
     ),
     
     Project(
-        name: "!@#$%^&*()",
+        name: "(C)!@#$%^&*()",
         teams: ["7조"],
-        startDate: Date(),
-        endDate: Date(),
+        startDate: Calendar.current.date(byAdding: .month, value: -3, to: Date()) ?? Date(),
+        endDate: Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date(),
         description: "TODO앱을 만드는 프로젝트",
         members: ["멤버1", "멤버2"],
         tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
@@ -77,18 +77,18 @@ let dummyProjectList: [Project] = [
     Project(
         name: "0123456789",
         teams: ["7조"],
-        startDate: Date(),
-        endDate: Date(),
+        startDate: Calendar.current.date(byAdding: .month, value: -4, to: Date()) ?? Date(),
+        endDate: Calendar.current.date(byAdding: .month, value: +2, to: Date()) ?? Date(),
         description: "TODO앱을 만드는 프로젝트",
         members: ["멤버1", "멤버2"],
         tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
         createdBy: "멤버1"
     ),
     Project(
-        name: "아야어여오요우유으이",
+        name: "(다)아야어여오요우유으이",
         teams: ["7조"],
-        startDate: Date(),
-        endDate: Date(),
+        startDate: Calendar.current.date(byAdding: .month, value: -9, to: Date()) ?? Date(),
+        endDate: Calendar.current.date(byAdding: .year, value: +1, to: Date()) ?? Date(),
         description: "TODO앱을 만드는 프로젝트",
         members: ["멤버1", "멤버2"],
         tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
