@@ -17,3 +17,13 @@ struct Project: Codable {
     var tasks: [String] // 할 일
     var createdBy: String // 이 프로젝트를 생성한 사람
 }
+
+// 8.17 영현님 모델
+//struct Project: Codable {
+//    var name: String
+//    var team: String
+//    var startDate: Date
+//    var endDate: Date
+//    var description: String
+//    var member: [String]
+//    var task: [String]

@@ -15,3 +15,12 @@ struct Member: Codable {
     var profileImg: String // 프로필 이미지 파일
     var email: String // 이메일
 }
+
+// 8.17 영현님 모델
+//struct Member: Codable {
+//    var name: String
+//    var age: Int
+//    var bio: String
+//    var project: [String]
+//    var team: [String]
+//}
