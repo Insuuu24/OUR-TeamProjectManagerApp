@@ -71,6 +71,12 @@ class MyPageViewController: UIViewController {
         return tv
     }()
     
+    private let emptyStateView: EmptyStateView = {
+        let view = EmptyStateView()
+        return view
+    }()
+
+    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -80,22 +86,22 @@ class MyPageViewController: UIViewController {
         
         setupNavigationBar()
         setupViews()
-        loadSelectedUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadSelectedUser()
+        updateEmptyStateView()
     }
 
 
-    // MARK: - Navigation Bar
+    // MARK: - Helpers
     
     private func setupNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-
+        
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.standardAppearance = appearance
@@ -107,8 +113,6 @@ class MyPageViewController: UIViewController {
         navigationItem.titleView = logoImageView
     }
     
-    // MARK: - Method & Action
-    
     private func setupViews() {
         view.addSubview(profileImageView)
         view.addSubview(nameLabel)
@@ -117,6 +121,7 @@ class MyPageViewController: UIViewController {
         view.addSubview(editButton)
         view.addSubview(segmentedControl)
         view.addSubview(tableView)
+        view.addSubview(emptyStateView)
         
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
@@ -148,7 +153,12 @@ class MyPageViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            emptyStateView.topAnchor.constraint(equalTo: tableView.topAnchor),
+            emptyStateView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor),
+            emptyStateView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
+            emptyStateView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor)
         ])
     }
     
@@ -163,9 +173,19 @@ class MyPageViewController: UIViewController {
     func configure(with user: UserModel) {
         profileImageView.image = user.icon
         nameLabel.text = user.name
-        emailLabel.text = "sample@email.com"
-        introductionLabel.text = "자기 소개 예시..."
+        emailLabel.text = "a@a.com"
+        introductionLabel.text = "하하하..."
     }
+    
+    func updateEmptyStateView() {
+        if tableView.numberOfRows(inSection: 0) == 0 {
+            emptyStateView.isHidden = false
+        } else {
+            emptyStateView.isHidden = true
+        }
+    }
+    
+    // MARK: - Actions
     
     @objc func editButtonTapped() {
         let profileEditVC = ProfileEditViewController()

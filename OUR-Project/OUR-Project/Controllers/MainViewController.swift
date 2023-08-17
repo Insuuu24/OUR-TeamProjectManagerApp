@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
     }
     
     
-    // MARK: - Navigation Bar
+    // MARK: - Helpers
 
     private func setupNavigationBar() {
         let appearance = UINavigationBarAppearance()
@@ -68,7 +68,6 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = filterButton
       }
    
-    // MARK: - 세그먼트 컨트롤
     private func setupSegmentControl() {
         let segments = ["종료된 프로젝트", "진행중인 프로젝트"]
         segmentedControl = UISegmentedControl(items: segments)
@@ -79,13 +78,12 @@ class MainViewController: UIViewController {
         self.view.addSubview(segmentedControl)
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
+        segmentedControl.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true // TODO: equalTo 네비게이션 바를 기준으로 수정하기
         segmentedControl.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
         segmentedControl.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         
     }
     
-    // MARK: - 테이블 뷰
     private func setupTableView() {
         tableView = UITableView()
         tableView.dataSource = self
@@ -99,13 +97,13 @@ class MainViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 5),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
-    // MARK: - Method & Action
+    // MARK: - Action
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         
         let currentDate = Calendar.current.startOfDay(for: Date())
@@ -136,6 +134,8 @@ class MainViewController: UIViewController {
         
     }
 }
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

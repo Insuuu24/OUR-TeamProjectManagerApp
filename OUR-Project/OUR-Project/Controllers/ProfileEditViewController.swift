@@ -83,6 +83,7 @@ class ProfileEditViewController: UIViewController {
     private let introductionTextView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
+        textView.layer.cornerRadius = 10
         return textView
     }()
     
@@ -102,6 +103,9 @@ class ProfileEditViewController: UIViewController {
         
         setupNavigationBar()
         setupViews()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         view.addGestureRecognizer(tapGesture)
@@ -157,24 +161,56 @@ class ProfileEditViewController: UIViewController {
         nameTextField.text = user.name
     }
     
-    // MARK: - Action
+    // MARK: - Actions
     
     @objc private func saveButtonTapped() {
         guard let name = nameTextField.text, !name.isEmpty else {
             return
         }
+        
         user?.name = name
-
+        
+        var users = UserManager.shared.loadUsers()
+        
+        // 해당 사용자의 정보를 찾아 수정합니다.
+        if let user = user, let index = users.firstIndex(where: { $0.email == user.email }) {
+            users[index] = user
+            
+            // 변경된 사용자 목록을 다시 저장합니다.
+            UserManager.shared.save(users: users)
+        }
+        
         let encoder = JSONEncoder()
         if let user = user, let encoded = try? encoder.encode(user) {
             UserDefaults.standard.set(encoded, forKey: "selectedUser")
         }
+        
         self.navigationController?.popViewController(animated: true)
     }
+
 
     
     @objc private func viewTapped() {
         view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height / 2
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     

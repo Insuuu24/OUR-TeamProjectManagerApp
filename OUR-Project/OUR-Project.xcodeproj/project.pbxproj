@@ -22,6 +22,12 @@
 		EBD169DD2A8BBC5B00B1120C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DC2A8BBC5B00B1120C /* UserModel.swift */; };
 		EBD169DF2A8BBD1000B1120C /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */; };
 		EBD169E12A8BBFC200B1120C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169E02A8BBFC200B1120C /* UserCell.swift */; };
+		EBF84E4F2A8DA22200B56A1F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E4C2A8DA22200B56A1F /* Project.swift */; };
+		EBF84E502A8DA22200B56A1F /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E4D2A8DA22200B56A1F /* Member.swift */; };
+		EBF84E512A8DA22200B56A1F /* ProjectTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E4E2A8DA22200B56A1F /* ProjectTask.swift */; };
+		EBF84E552A8DA2AA00B56A1F /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E542A8DA2AA00B56A1F /* DummyData.swift */; };
+		EBF84E572A8DA2F700B56A1F /* ProjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E562A8DA2F700B56A1F /* ProjectListCell.swift */; };
+		EBF84E592A8DEDFF00B56A1F /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E582A8DEDFF00B56A1F /* EmptyStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +48,12 @@
 		EBD169DC2A8BBC5B00B1120C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		EBD169E02A8BBFC200B1120C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		EBF84E4C2A8DA22200B56A1F /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		EBF84E4D2A8DA22200B56A1F /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		EBF84E4E2A8DA22200B56A1F /* ProjectTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTask.swift; sourceTree = "<group>"; };
+		EBF84E542A8DA2AA00B56A1F /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyData.swift; path = "OUR-Project/Models/DummyData.swift"; sourceTree = SOURCE_ROOT; };
+		EBF84E562A8DA2F700B56A1F /* ProjectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListCell.swift; sourceTree = "<group>"; };
+		EBF84E582A8DEDFF00B56A1F /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +100,10 @@
 		EB4DFCBD2A89EA4000F1B738 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EBF84E542A8DA2AA00B56A1F /* DummyData.swift */,
+				EBF84E4D2A8DA22200B56A1F /* Member.swift */,
+				EBF84E4C2A8DA22200B56A1F /* Project.swift */,
+				EBF84E4E2A8DA22200B56A1F /* ProjectTask.swift */,
 				EBD169DC2A8BBC5B00B1120C /* UserModel.swift */,
 				EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */,
 			);
@@ -99,6 +115,8 @@
 			children = (
 				EB4DFCAF2A89EA1300F1B738 /* Main.storyboard */,
 				EBD169E02A8BBFC200B1120C /* UserCell.swift */,
+				EBF84E562A8DA2F700B56A1F /* ProjectListCell.swift */,
+				EBF84E582A8DEDFF00B56A1F /* EmptyStateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,13 +215,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF84E592A8DEDFF00B56A1F /* EmptyStateView.swift in Sources */,
+				EBF84E552A8DA2AA00B56A1F /* DummyData.swift in Sources */,
 				EB83A34C2A8A017600DFF86E /* ProjectAddViewController.swift in Sources */,
 				EB83A3532A8A01F700DFF86E /* TabBarController.swift in Sources */,
 				EB83A3502A8A01A000DFF86E /* ProfileEditViewController.swift in Sources */,
 				EB83A34E2A8A018000DFF86E /* MyPageViewController.swift in Sources */,
+				EBF84E572A8DA2F700B56A1F /* ProjectListCell.swift in Sources */,
 				EB83A34A2A8A016500DFF86E /* DetailPageViewController.swift in Sources */,
+				EBF84E502A8DA22200B56A1F /* Member.swift in Sources */,
+				EBF84E4F2A8DA22200B56A1F /* Project.swift in Sources */,
 				EBD169DF2A8BBD1000B1120C /* UserDataManager.swift in Sources */,
 				EBD169DB2A8BBC2A00B1120C /* MemberSelectionViewController.swift in Sources */,
+				EBF84E512A8DA22200B56A1F /* ProjectTask.swift in Sources */,
 				EB4DFCAE2A89EA1300F1B738 /* MainViewController.swift in Sources */,
 				EBD169E12A8BBFC200B1120C /* UserCell.swift in Sources */,
 				EB4DFCAA2A89EA1300F1B738 /* AppDelegate.swift in Sources */,

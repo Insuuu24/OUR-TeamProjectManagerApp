@@ -9,7 +9,7 @@ import UIKit
 
 class UserManager {
     static let shared = UserManager()
-    private let userKey = "com.yourappname.users"
+    private let userKey = "com.ourproject.users"
     
     func save(users: [UserModel]) {
         let encoder = JSONEncoder()
