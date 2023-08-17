@@ -133,22 +133,18 @@ let dummyProjectTaskList: [ProjectTask] = [
 let dummyMemberList: [Member] = [
     Member(
         name: "김김김",
-        age: 28,
         bio: "노는게 제일 좋아",
         joinedProjects: ["KIOSK 만들기", "TODO앱 만들기"],
         createdProjects: ["KIOSK 만들기"],
-        team: "8조",
         profileImg: "",
         email:"kim@gmail.com"
     ),
     
     Member(
         name: "이이이",
-        age: 25,
         bio: "짜장면 좋아합니다",
         joinedProjects: ["KIOSK 만들기"],
         createdProjects: [""],
-        team: "8조",
         profileImg: "",
         email:"lee@gmail.com"
         
@@ -156,31 +152,25 @@ let dummyMemberList: [Member] = [
     
     Member(
         name: "박박박",
-        age: 32,
         bio: "낮잠이 취미에요",
         joinedProjects: ["KIOSK 만들기"],
         createdProjects: [""],
-        team: "8조",
         profileImg: "",
         email:"park@gmail.com"
     ),
     Member(
         name: "최최최",
-        age: 24,
         bio: "반가워요 잘 부탁해요",
         joinedProjects: ["TODO앱 만들기"],
         createdProjects: ["TODO앱 만들기"],
-        team: "8조",
         profileImg: "",
         email:"choi@gmail.com"
     ),
     Member(
         name: "신신신",
-        age: 28,
         bio: "산책 갈 사람",
         joinedProjects: ["KIOSK 만들기"],
         createdProjects: [""],
-        team: "8조",
         profileImg: "",
         email:"shin@gmail.com"
     ),
