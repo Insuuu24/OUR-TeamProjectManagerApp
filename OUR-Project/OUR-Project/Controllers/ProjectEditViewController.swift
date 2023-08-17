@@ -1,17 +1,17 @@
 //
-//  DetailPageViewController.swift
+//  ProjectEditViewController.swift
 //  OUR-Project
 //
-//  Created by Insu on 2023/08/14.
+//  Created by t2023-m0059 on 2023/08/17.
 //
 
 import UIKit
 
-class DetailPageViewController: UIViewController {
+class ProjectEditViewController: UIViewController {
     // MARK: - Properties
     let tableViewList: [String] = ["프로젝트명", "소속", "시작 날짜", "종료 날짜", "프로젝트 설명", "참여인원", "진행상황"]
     let storyboardName = "Main" // 생성된 storyboard의 이름이 "Main"
-    let storyboardID = "DetailPageViewController"
+    let storyboardID = "ProjectEditViewController"
     
     // test용 데이터
     let testProjectData: Project = Project(
@@ -52,34 +52,12 @@ class DetailPageViewController: UIViewController {
 
     // MARK: - Navigation Bar
     private func setupNavigationBar() {
-        self.title = "Detail Page"
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(editDetailPage))
+        self.title = "Project Edit Page"
     }
-    
-    @objc func editDetailPage(){
-        // page 이동 함수
-        let projectEditViewController = ProjectEditViewController()
-        let storyboardName = projectEditViewController.storyboardName
-        let storyboardID = projectEditViewController.storyboardID
-        
-        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main) // Main.stroyboard와 연동하는 작업 (변수에 담는 작업)
-        guard let viewController = storyboard.instantiateViewController(identifier: storyboardID) as? ProjectEditViewController else { return }
-        
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-   
 
-    // MARK: - Method & Action
-    
-    
-    
-    
-    
-    
 }
 
-extension DetailPageViewController: UITableViewDataSource {
+extension ProjectEditViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewList.count
     }
@@ -153,21 +131,8 @@ extension DetailPageViewController: UITableViewDataSource {
     }
 }
 
-extension DetailPageViewController: UITableViewDelegate {
+extension ProjectEditViewController: UITableViewDelegate {
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 50
 //    }
-}
-
-extension String {
-    func toDate() -> Date? { //"yyyy-MM-dd HH:mm:ss"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        if let date = dateFormatter.date(from: self) {
-            return date
-        } else {
-            return nil
-        }
-    }
 }

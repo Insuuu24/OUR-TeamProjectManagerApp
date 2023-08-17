@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     // MARK: - Properties
     
     private var tableView: UITableView!
@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-     
+        
         setupNavigationBar()
         setupSegmentControl()
         setupTableView()
