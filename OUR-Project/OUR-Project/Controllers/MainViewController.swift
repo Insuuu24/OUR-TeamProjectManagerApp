@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     var memberList = dummyMemberList
     var projectList = dummyProjectList
     var projectTaskList = dummyProjectTaskList
+    var selectedUser: UserModel?
     
     
     // MARK: - View Life Cycle
