@@ -90,7 +90,7 @@ class MainViewController: UIViewController {
         tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(ProjectListCell.self, forCellReuseIdentifier: "ProjectListCell") // 셀 등록
+        tableView.register(ProjectListCell.self, forCellReuseIdentifier: "ProjectListCell")
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,18 +108,33 @@ class MainViewController: UIViewController {
     // MARK: - Method & Action
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         
+        let currentDate = Calendar.current.startOfDay(for: Date())
+        
         switch sender.selectedSegmentIndex {
         case 0:
-            print("종료된 프로젝트 선택됨")
+            projectList = dummyProjectList.filter { $0.endDate < currentDate }
             
         case 1:
-            print("진행중인 프로젝트 선택됨")
-            
+            projectList = dummyProjectList.filter { $0.endDate >= currentDate }
+        
         default:
             break
         }
+        
+        if let sortOption = sortCells {
+            switch sortOption {
+            case .projectName:
+                projectList.sort { $0.name < $1.name }
+            case .startDate:
+                projectList.sort { $0.startDate < $1.startDate }
+            case .endDate:
+                projectList.sort { $0.endDate > $1.endDate }
+            }
+        }
+        
+        tableView.reloadData()
+        
     }
-    
 }
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
@@ -130,6 +145,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectListCell", for: indexPath) as! ProjectListCell
                     
+        
         if let sortOption = sortCells {
             switch sortOption {
             case .projectName:
@@ -151,7 +167,15 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         소속: \(project.teams.joined(separator: ", "))
         시작: \(dateFormatter.string(from: project.startDate))　/　종료: \(dateFormatter.string(from: project.endDate))
         """
-
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            cell.projectNameLabel.textColor = .gray
+            cell.projectInfoLabel.textColor = .gray
+        } else {
+            cell.projectNameLabel.textColor = .black
+            cell.projectInfoLabel.textColor = .black
+        }
+        
         return cell
     }
     
