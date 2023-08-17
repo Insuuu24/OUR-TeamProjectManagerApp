@@ -11,6 +11,12 @@ class ProfileEditViewController: UIViewController {
     
     // MARK: - Properties
     
+    var user: UserModel? {
+        didSet {
+            configure(with: user)
+        }
+    }
+    
     private let profileImageView: UIImageView = {
         let piv = UIImageView()
         piv.contentMode = .scaleAspectFill
@@ -145,11 +151,27 @@ class ProfileEditViewController: UIViewController {
         ])
     }
     
+    func configure(with user: UserModel?) {
+        guard let user = user else { return }
+        profileImageView.image = user.icon
+        nameTextField.text = user.name
+    }
+    
     // MARK: - Action
     
     @objc private func saveButtonTapped() {
-        
+        guard let name = nameTextField.text, !name.isEmpty else {
+            return
+        }
+        user?.name = name
+
+        let encoder = JSONEncoder()
+        if let user = user, let encoded = try? encoder.encode(user) {
+            UserDefaults.standard.set(encoded, forKey: "selectedUser")
+        }
+        self.navigationController?.popViewController(animated: true)
     }
+
     
     @objc private func viewTapped() {
         view.endEditing(true)

@@ -82,6 +82,12 @@ class MyPageViewController: UIViewController {
         setupViews()
         loadSelectedUser()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadSelectedUser()
+    }
+
 
     // MARK: - Navigation Bar
     
@@ -163,8 +169,16 @@ class MyPageViewController: UIViewController {
     
     @objc func editButtonTapped() {
         let profileEditVC = ProfileEditViewController()
+
+        let decoder = JSONDecoder()
+        if let savedUser = UserDefaults.standard.object(forKey: "selectedUser") as? Data,
+           let loadedUser = try? decoder.decode(UserModel.self, from: savedUser) {
+            profileEditVC.user = loadedUser
+        }
+
         self.navigationController?.pushViewController(profileEditVC, animated: true)
     }
+
 
     
 }
