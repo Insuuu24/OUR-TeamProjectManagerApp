@@ -38,10 +38,17 @@ class DetailPageViewController: UIViewController {
     private func setupNavigationBar() {
         self.title = "프로젝트 정보"
         
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButton))
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(editDetailPage))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
     }
-    
-    @objc func editDetailPage(){
+    @objc private func backButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    @objc private func editDetailPage(){
         // page 이동 함수
         let projectEditViewController = ProjectEditViewController()
         let storyboardName = projectEditViewController.storyboardName

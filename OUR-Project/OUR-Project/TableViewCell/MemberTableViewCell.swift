@@ -43,9 +43,10 @@ class MemberTableViewCell: UITableViewCell {
     func setLabel(name:String){
         memberLabel.text = name
         memberLabel.textColor = .label
-        memberLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        memberLabel.font = .systemFont(ofSize: 10, weight: .bold)
         memberLabel.numberOfLines = 1
         memberLabel.textAlignment = .left
+        memberLabel.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
     }
     
     func setStackView(){
@@ -53,12 +54,12 @@ class MemberTableViewCell: UITableViewCell {
     }
     
     func setButton(name:String){
-        memberAddButton.setImage(UIImage(systemName: "plus")?.withTintColor(.gray, renderingMode: .alwaysOriginal), for: .normal)
+        memberAddButton.setImage(UIImage(systemName: "plus")?.withTintColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), renderingMode: .alwaysOriginal), for: .normal)
         memberAddButton.configuration?.imagePadding = 10
         
         memberAddButton.setTitle(name, for: .normal)
-        memberAddButton.setTitleColor(.label, for: .normal)
-        memberAddButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
+        memberAddButton.setTitleColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), for: .normal)
+        memberAddButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .regular)
         memberAddButton.contentHorizontalAlignment = .left
     }
     

@@ -35,9 +35,10 @@ class NameTableViewCell: UITableViewCell {
     func setLabel(name:String){
         nameLabel.text = name
         nameLabel.textColor = .label
-        nameLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        nameLabel.font = .systemFont(ofSize: 10, weight: .bold)
         nameLabel.numberOfLines = 1
         nameLabel.textAlignment = .left
+        nameLabel.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
     }
     
     func setStackView(){

@@ -44,9 +44,10 @@ class ProgressTableViewCell: UITableViewCell {
     func setLabel(name:String){
         progressLabel.text = name
         progressLabel.textColor = .label
-        progressLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        progressLabel.font = .systemFont(ofSize: 10, weight: .bold)
         progressLabel.numberOfLines = 1
         progressLabel.textAlignment = .left
+        progressLabel.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
     }
     
     func setStackView(){
@@ -54,12 +55,12 @@ class ProgressTableViewCell: UITableViewCell {
     }
     
     func setButton(name:String){
-        progressAddButton.setImage(UIImage(systemName: "plus")?.withTintColor(.gray, renderingMode: .alwaysOriginal), for: .normal)
+        progressAddButton.setImage(UIImage(systemName: "plus")?.withTintColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), renderingMode: .alwaysOriginal), for: .normal)
         progressAddButton.configuration?.imagePadding = 10
 
         progressAddButton.setTitle(name, for: .normal)
-        progressAddButton.setTitleColor(.label, for: .normal)
-        progressAddButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
+        progressAddButton.setTitleColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), for: .normal)
+        progressAddButton.titleLabel?.font = .systemFont(ofSize: 313, weight: .regular)
         progressAddButton.contentHorizontalAlignment = .left
     }
     
@@ -114,7 +115,7 @@ extension ProgressTableViewCell: UITableViewDelegate {
                 tableView.reloadData()
                 success(true)
             }
-            delete.backgroundColor = UIColor(red: 0.5412, green: 0.4902, blue: 0.2157, alpha: 1.0)
+            delete.backgroundColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
             delete.title = "삭제"
             
             return UISwipeActionsConfiguration(actions: [delete])

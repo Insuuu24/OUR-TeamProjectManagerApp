@@ -31,9 +31,10 @@ class DateTableViewCell: UITableViewCell {
     func setLabel(name:String){
         dateLabel.text = name
         dateLabel.textColor = .label
-        dateLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        dateLabel.font = .systemFont(ofSize: 10, weight: .bold)
         dateLabel.numberOfLines = 1
         dateLabel.textAlignment = .left
+        dateLabel.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
     }
     
     func setStackView(){
@@ -49,7 +50,7 @@ class DateTableViewCell: UITableViewCell {
         dateTextField.font = .systemFont(ofSize: 15, weight: .regular)
         dateTextField.textAlignment = .left
         
-        dateTextField.addPaddingAndIcon((UIImage(systemName: "calendar")?.withTintColor(.gray, renderingMode: .alwaysOriginal))!, padding: 10, isLeftView: false)
+        dateTextField.addPaddingAndIcon((UIImage(systemName: "calendar")?.withTintColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), renderingMode: .alwaysOriginal))!, padding: 10, isLeftView: false)
     }
     
     func setupDatePicker(date:Date) {
