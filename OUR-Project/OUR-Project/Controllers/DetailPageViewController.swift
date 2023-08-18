@@ -36,7 +36,7 @@ class DetailPageViewController: UIViewController {
 
     // MARK: - Navigation Bar
     private func setupNavigationBar() {
-        self.title = "Detail Page"
+        self.title = "프로젝트 정보"
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(editDetailPage))
     }

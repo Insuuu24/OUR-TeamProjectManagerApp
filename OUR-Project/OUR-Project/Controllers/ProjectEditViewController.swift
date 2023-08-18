@@ -36,9 +36,22 @@ class ProjectEditViewController: UIViewController {
     
     // MARK: - Navigation Bar
     private func setupNavigationBar() {
-        self.title = "Project Edit Page"
-    }
-    
+          self.title = "프로젝트 편집"
+          let cancelButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelConfirm))
+          self.navigationItem.leftBarButtonItem = cancelButton
+
+          let saveButton = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveConfirm))
+          self.navigationItem.rightBarButtonItem = saveButton
+          
+      }
+      @objc func cancelConfirm(){
+          // TODO: 이전화면으로 돌아가기전에 변경사항 다 취소시키는 로직 작성 필요
+          navigationController?.popViewController(animated: true)
+      }
+      @objc func saveConfirm(){
+          // TODO: 변경사항들 다 저장하는 로직 작성 필요
+          navigationController?.popViewController(animated: true)
+      }
     
     // MARK: - Method & Action
     
