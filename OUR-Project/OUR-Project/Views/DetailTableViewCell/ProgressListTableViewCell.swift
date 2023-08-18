@@ -11,6 +11,8 @@ class ProgressListTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
+    var progressIndex: Int = 0
+    
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var checkButton: CheckBox!
     
@@ -21,6 +23,7 @@ class ProgressListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        print("ProgressListTableViewCell awakeFromNib")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,9 +35,57 @@ class ProgressListTableViewCell: UITableViewCell {
     // MARK: - Method & Action
     func setButton(state:Bool, name:String){
         checkButton.isChecked = state
+        
+        let nameString = NSMutableAttributedString(string: name)
+        
+        if state {
+            nameString.setAttributedString(name.strikeThrough())
+        } else {
+            nameString.setAttributedString(name.clear())
+        }
+        
+        nameString.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: name.count))
+        checkButton.setAttributedTitle(nameString, for: .normal)
         checkButton.setTitle(name, for: .normal)
-        checkButton.setTitleColor(.label, for: .normal)
         checkButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
         checkButton.contentHorizontalAlignment = .left
+        
+        checkButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside) // 클릭 이벤트 지정
+    }
+    
+    // MARK: - [버튼 클릭 이벤트]
+    @objc func buttonAction(sender: UIButton!) {
+        let name:String = sender.currentTitle ?? "name is nil"
+        print("name : \(name)")
+        
+        let nameString = NSMutableAttributedString(string: name)
+        
+        if checkButton.isChecked {
+            print("isChecked")
+            nameString.setAttributedString(name.strikeThrough())
+            User.userProjectTask[progressIndex].isCompleted = true
+        } else {
+            print("!isChecked")
+            nameString.setAttributedString(name.clear())
+            User.userProjectTask[progressIndex].isCompleted = false
+        }
+        print("task : \(User.userProjectTask)")
+        
+        nameString.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: name.count))
+        checkButton.setAttributedTitle(nameString, for: .normal)
+    }
+}
+
+extension String {
+    func strikeThrough() -> NSAttributedString {
+        let attributeString = NSMutableAttributedString(string: self)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, attributeString.length))
+        return attributeString
+    }
+    
+    func clear() -> NSAttributedString {
+        let attributeString = NSMutableAttributedString(string: self)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, 0))
+        return attributeString
     }
 }
