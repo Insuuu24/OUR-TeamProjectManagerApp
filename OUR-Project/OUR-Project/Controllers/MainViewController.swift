@@ -20,7 +20,6 @@ class MainViewController: UIViewController {
     var projectTaskList = dummyProjectTaskList
     var selectedUser: UserModel?
     
-    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -31,6 +30,46 @@ class MainViewController: UIViewController {
         setupNavigationBar()
         setupSegmentControl()
         setupTableView()
+        
+        // testButton()
+        
+        // // test
+        // if User.userProject.isEmpty {
+        //     let data1: Project = Project(
+        //         name: "Our App Project",
+        //         teams: ["내일배움캠프", "8조"],
+        //         startDate: "2023-08-14".toDate() ?? Date(),
+        //         endDate: "2023-08-21".toDate() ?? Date(),
+        //         description: "4명이서 만드는 프로젝트 App",
+        //         members: ["김상훈", "박인수", "윤혁진"],
+        //         tasks: ["메인 페이지 만들기", "Launch Screen 만들기", "상세 페이지 만들기", "편집 페이지 만들기", "마이 페이지 만들기"],
+        //         createdBy: "김상훈"
+        //     )
+            
+        //     User().appendProject(project: data1)
+            
+        //     let taskData1: ProjectTask = ProjectTask(
+        //         task: "메인 페이지 만들기", isCompleted: true, projectName: "Our App Project")
+        //     let taskData2: ProjectTask = ProjectTask(
+        //         task: "Launch Screen 만들기", isCompleted: false, projectName: "Our App Project")
+        //     let taskData3: ProjectTask = ProjectTask(
+        //         task: "상세 페이지 만들기", isCompleted: true, projectName: "Our App Project")
+        //     let taskData4: ProjectTask = ProjectTask(
+        //         task: "편집 페이지 만들기", isCompleted: false, projectName: "Our App Project")
+        //     let taskData5: ProjectTask = ProjectTask(
+        //         task: "마이 페이지 만들기", isCompleted: false, projectName: "Our App Project")
+            
+        //     User().appendProjectTask(task: taskData1)
+        //     User().appendProjectTask(task: taskData2)
+        //     User().appendProjectTask(task: taskData3)
+        //     User().appendProjectTask(task: taskData4)
+        //     User().appendProjectTask(task: taskData5)
+            
+        //     User().appendProjectMember(member: "김상훈")
+        //     User().appendProjectMember(member: "박인수")
+        //     User().appendProjectMember(member: "윤혁진")
+        //     User().appendProjectMember(member: "조영현")
+        // }
     }
     
     

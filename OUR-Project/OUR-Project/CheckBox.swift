@@ -5,15 +5,14 @@
 //  Created by t2023-m0059 on 2023/08/16.
 //
 
-import Foundation
 import UIKit
 
 /// 체크박스
 class CheckBox: UIButton {
     /// 체크박스 이미지
     var checkBoxResouces = OnOffResources(
-        onImage: UIImage(systemName: "checkmark.square.fill")?.withTintColor(.gray, renderingMode: .alwaysOriginal),
-        offImage: UIImage(systemName: "checkmark.square")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
+        onImage: UIImage(systemName: "checkmark.square")?.withTintColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), renderingMode: .alwaysOriginal),
+        offImage: UIImage(systemName: "square")?.withTintColor(.gray, renderingMode: .alwaysOriginal)
     ) {
         didSet {
             self.setChecked(isChecked)
