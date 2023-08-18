@@ -43,14 +43,17 @@ class ProjectEditViewController: UIViewController {
     // MARK: - Method & Action
     
     @IBAction func addMember(_ sender: Any) {
-        var addPicker: UIPickerView!
+        let alert = UIAlertController(title: "팀 멤버", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
+        alert.view.addSubview(pickerFrame)
+        pickerFrame.delegate = self
+        pickerFrame.dataSource = self
         
-        addPicker = UIPickerView()
-        addPicker.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
-        view.addSubview(addPicker)
-        
-        addPicker.delegate = self
-        addPicker.dataSource = self
+        alert.addAction(UIAlertAction(title: "취소", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (UIAlertAction) in
+            self.detailTableView.reloadData()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func addTask(_ sender: Any) {
@@ -147,7 +150,7 @@ extension ProjectEditViewController: UITableViewDataSource {
             
             cellMember.setLabel(name: tableViewList[indexPath.row])
             cellMember.setButton(name: "멤버 추가")
-            cellMember.memberList = testProjectData.members
+            cellMember.memberList = User.userProject[0].members
             
             cellMember.setStackView()
             cellMember.setTableView()
@@ -198,23 +201,27 @@ extension ProjectEditViewController : UIPickerViewDelegate, UIPickerViewDataSour
     
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return memberCount().count
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return memberCount()[row]
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        User.userProject[0].members.append(User.proejectMember[row])
+    }
+    
+    // 총 인원에서 등록된 인원을 뺀 것
+    func memberCount() -> [String]{
         var member: [String] = []
         for i in User.proejectMember {
             if User.userProject[0].members.contains(i) == false {
                 member.append(i)
             }
         }
-        print("member : \(member)")
-        return User.proejectMember.count
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return User.proejectMember[row]
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        User.userProject[0].members.append(User.proejectMember[row])
+        return member
     }
 }
