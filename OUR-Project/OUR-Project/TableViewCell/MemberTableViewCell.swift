@@ -11,6 +11,7 @@ class MemberTableViewCell: UITableViewCell {
 
     // MARK: - Properties
     var memberList: [String] = []
+    var isCellDeletable: Bool = false
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var memberLabel: UILabel!
     @IBOutlet weak var memberTableView: UITableView!
@@ -72,5 +73,20 @@ extension MemberTableViewCell: UITableViewDataSource {
 extension MemberTableViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 30
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if isCellDeletable {
+            let delete = UIContextualAction(style: .destructive, title: nil) { (_, _, success) in
+                self.memberList.remove(at: indexPath.row)
+                tableView.reloadData()
+                success(true)
+            }
+            delete.backgroundColor = UIColor(red: 0.5412, green: 0.4902, blue: 0.2157, alpha: 1.0)
+            delete.title = "삭제"
+            
+            return UISwipeActionsConfiguration(actions: [delete])
+        }
+        return nil
     }
 }

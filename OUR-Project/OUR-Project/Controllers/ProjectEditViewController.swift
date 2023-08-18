@@ -126,6 +126,7 @@ extension ProjectEditViewController: UITableViewDataSource {
             let cellMember = detailTableView.dequeueReusableCell(withIdentifier: "MemberTableViewCell", for: indexPath) as! MemberTableViewCell
             cellMember.selectionStyle = UITableViewCell.SelectionStyle.none
             cellMember.setLabel(name: String(tableViewList[indexPath.row]  + " - \(testProjectData.members.count)명"))
+            cellMember.isCellDeletable = true
             cellMember.memberList = testProjectData.members
             cellMember.setStackView()
             cellMember.setTableView()
@@ -135,7 +136,7 @@ extension ProjectEditViewController: UITableViewDataSource {
             cellProgress.selectionStyle = UITableViewCell.SelectionStyle.none
             
             cellProgress.editState = true
-            
+            cellProgress.isCellDeletable = true
             cellProgress.setLabel(name: tableViewList[indexPath.row])
             cellProgress.progressList = testProjectData.tasks
             
