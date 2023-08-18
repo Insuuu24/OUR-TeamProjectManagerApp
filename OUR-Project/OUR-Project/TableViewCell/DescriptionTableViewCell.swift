@@ -50,11 +50,11 @@ class DescriptionTableViewCell: UITableViewCell {
         
         descriptionTextView.textContainer.maximumNumberOfLines = 0
         descriptionTextView.textContainer.lineFragmentPadding = 0
-        
+        descriptionTextView.backgroundColor = .systemGray6
         descriptionTextView.layer.borderWidth = 0.25
         descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         descriptionTextView.layer.cornerRadius = 5.0
-        descriptionTextView.textContainerInset = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
+        descriptionTextView.textContainerInset = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
     }
 }
 

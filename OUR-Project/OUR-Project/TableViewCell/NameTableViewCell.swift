@@ -50,6 +50,7 @@ class NameTableViewCell: UITableViewCell {
         nameTextField.textColor = .label
         nameTextField.font = .systemFont(ofSize: 15, weight: .regular)
         nameTextField.textAlignment = .left
+        nameTextField.backgroundColor = .systemGray6
     }
     
     func setTeamTextField(name:[String]){
@@ -66,6 +67,7 @@ class NameTableViewCell: UITableViewCell {
         nameTextField.textColor = .label
         nameTextField.font = .systemFont(ofSize: 15, weight: .regular)
         nameTextField.textAlignment = .left
+        nameTextField.backgroundColor = .systemGray6
     }
 }
 

@@ -62,8 +62,8 @@ class ProgressTableViewCell: UITableViewCell {
         progressAddButton.setTitleColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), for: .normal)
         progressAddButton.titleLabel?.font = .systemFont(ofSize: 313, weight: .regular)
         progressAddButton.contentHorizontalAlignment = .left
+        progressAddButton.layer.backgroundColor = UIColor.init(displayP3Red: 0.87, green: 0.85, blue: 0.77, alpha: 0.5).cgColor
     }
-    
     func setTableView(){
         if editState {
             progressStackView.layer.borderWidth = 0.25

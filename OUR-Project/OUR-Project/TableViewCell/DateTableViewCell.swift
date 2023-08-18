@@ -21,7 +21,7 @@ class DateTableViewCell: UITableViewCell {
         // Initialization code
         dateTextField.delegate = self
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -49,7 +49,8 @@ class DateTableViewCell: UITableViewCell {
         dateTextField.textColor = .label
         dateTextField.font = .systemFont(ofSize: 15, weight: .regular)
         dateTextField.textAlignment = .left
-        
+        dateTextField.backgroundColor = .systemGray6
+        dateTextField.layer.cornerRadius = 10.0
         dateTextField.addPaddingAndIcon((UIImage(systemName: "calendar")?.withTintColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), renderingMode: .alwaysOriginal))!, padding: 10, isLeftView: false)
     }
     

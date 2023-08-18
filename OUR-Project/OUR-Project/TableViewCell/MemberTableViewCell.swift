@@ -61,12 +61,13 @@ class MemberTableViewCell: UITableViewCell {
         memberAddButton.setTitleColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), for: .normal)
         memberAddButton.titleLabel?.font = .systemFont(ofSize: 13, weight: .regular)
         memberAddButton.contentHorizontalAlignment = .left
+        memberAddButton.layer.backgroundColor = UIColor.init(displayP3Red: 0.87, green: 0.85, blue: 0.77, alpha: 0.5).cgColor
     }
     
     func setTableView(){
         if isCellDeletable {
-            memberStackView.layer.borderWidth = 0.25
-            memberStackView.layer.borderColor = UIColor.lightGray.cgColor
+//            memberStackView.layer.borderWidth = 0.25
+//            memberStackView.layer.borderColor = UIColor.lightGray.cgColor
             memberStackView.layer.cornerRadius = 5.0
             
             memberTableView.layer.borderWidth = 0.25

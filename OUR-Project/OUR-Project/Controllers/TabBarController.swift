@@ -20,6 +20,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     // MARK: - TabBar Setting
     
     private func setupTabBar() {
+        
         let projectAddViewController = ProjectAddViewController()
         projectAddViewController.tabBarItem = UITabBarItem(title: "추가하기", image: UIImage(systemName: "plus.square"), selectedImage: UIImage(systemName: "plus.square.fill"))
         
