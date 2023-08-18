@@ -11,6 +11,8 @@ class ProgressListTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
+    var progressIndex: Int = 0
+    
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var checkButton: CheckBox!
     
@@ -21,6 +23,7 @@ class ProgressListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        print("ProgressListTableViewCell awakeFromNib")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,6 +43,7 @@ class ProgressListTableViewCell: UITableViewCell {
         } else {
             nameString.setAttributedString(name.clear())
         }
+        
         nameString.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: name.count))
         checkButton.setAttributedTitle(nameString, for: .normal)
         checkButton.setTitle(name, for: .normal)
@@ -59,9 +63,11 @@ class ProgressListTableViewCell: UITableViewCell {
         if checkButton.isChecked {
             print("isChecked")
             nameString.setAttributedString(name.strikeThrough())
+            User.userProjectTask[progressIndex].isCompleted = true
         } else {
             print("!isChecked")
             nameString.setAttributedString(name.clear())
+            User.userProjectTask[progressIndex].isCompleted = false
         }
         
         nameString.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: name.count))

@@ -28,6 +28,7 @@ class ProgressTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        print("ProgressTableViewCell awakeFromNib")
         progressTableView.dataSource = self
         progressTableView.delegate = self
         
@@ -50,8 +51,6 @@ class ProgressTableViewCell: UITableViewCell {
     
     func setStackView(){
         stackView.spacing = 10
-        
-        print("editState : \(editState)")
     }
     
     func setTableView(){
@@ -65,58 +64,23 @@ class ProgressTableViewCell: UITableViewCell {
             progressTableView.layer.cornerRadius = 5.0
         }
     }
-    
-//    func setButton(name:String){
-//        progressAddButton.setTitle(name, for: .normal)
-//        progressAddButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
-//        progressAddButton.contentHorizontalAlignment = .left
-//
-//        progressAddButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside) // 클릭 이벤트 지정
-//    }
-//
-//    // MARK: - [버튼 클릭 이벤트]
-//    @objc func buttonAction(sender: UIButton!) {
-//        
-//    }
 }
 
 extension ProgressTableViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("progressList.count : \(progressList.count)")
         return progressList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = progressTableView.dequeueReusableCell(withIdentifier: "ProgressListTableViewCell", for: indexPath) as! ProgressListTableViewCell
+        print("indexPath.row : \(indexPath.row)")
+        
+        cell.progressIndex = indexPath.row
         
         cell.setButton(state: progressState[indexPath.row], name: progressList[indexPath.row])
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    
-    //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    //        return true
-    //    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        print("editingStyle : \(editingStyle)")
-        
-        if editingStyle == .delete {
-            tableView.beginUpdates()
-            
-            User.userProject[0].tasks.remove(at: indexPath.row)
-            User.userProjectTask.remove(at: indexPath.row)
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
-        }
-//        else if editingStyle == .insert {
-//            print("style insert")
-//        }
     }
 }
 

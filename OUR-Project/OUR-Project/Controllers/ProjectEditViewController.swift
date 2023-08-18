@@ -50,8 +50,13 @@ class ProjectEditViewController: UIViewController {
             guard let text = alert.textFields?[0].text else { return }
             if text != "" {
                 print("데이터 추가 : \(text)")
-                self.testProjectData.tasks.append(text)
+                User.userProject[0].tasks.append(text)
+                User.userProjectTask.append(
+                    ProjectTask(
+                        task: text, isCompleted: false, projectName: "Our App Project")
+                )
                 self.detailTableView.reloadData()
+//                ProgressTableViewCell().progressTableView.reloadData()
             }
         }))
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
@@ -135,18 +140,25 @@ extension ProjectEditViewController: UITableViewDataSource {
             let cellProgress = detailTableView.dequeueReusableCell(withIdentifier: "ProgressTableViewCell", for: indexPath) as! ProgressTableViewCell
             cellProgress.selectionStyle = UITableViewCell.SelectionStyle.none
             
+            print("case 6: 진행상황")
+            
             cellProgress.editState = true
             cellProgress.isCellDeletable = true
+            
             cellProgress.setLabel(name: tableViewList[indexPath.row])
-            cellProgress.progressList = testProjectData.tasks
+            cellProgress.progressList = User.userProject[0].tasks
+            
+            print("User.userProject[0].tasks : \(User.userProject[0].tasks)")
             
             var taskisCompleted: [Bool] = []
-            for i in 0..<testProjectTask.count{
-                taskisCompleted.append(testProjectTask[i].isCompleted)
+            for i in 0..<User.userProjectTask.count{
+                taskisCompleted.append(User.userProjectTask[i].isCompleted)
             }
             cellProgress.progressState = taskisCompleted
             cellProgress.setStackView()
             cellProgress.setTableView()
+            
+            cellProgress.progressTableView.reloadData()
 
             return cellProgress
         default:
