@@ -23,5 +23,11 @@ class User {
     func appendProjectTask(task: ProjectTask) {
         Self.userProjectTask.append(task)
     }
+    
+    static var proejectMember: [String] = []
+    
+    func appendProjectMember(member: String) {
+        Self.proejectMember.append(member)
+    }
 
 }

@@ -53,11 +53,25 @@ class ProgressTableViewCell: UITableViewCell {
         stackView.spacing = 10
     }
     
+    func setButton(name:String){
+        progressAddButton.setImage(UIImage(systemName: "plus")?.withTintColor(.gray, renderingMode: .alwaysOriginal), for: .normal)
+        progressAddButton.configuration?.imagePadding = 10
+
+        progressAddButton.setTitle(name, for: .normal)
+        progressAddButton.setTitleColor(.label, for: .normal)
+        progressAddButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
+        progressAddButton.contentHorizontalAlignment = .left
+    }
+    
     func setTableView(){
         if editState {
             progressStackView.layer.borderWidth = 0.25
             progressStackView.layer.borderColor = UIColor.lightGray.cgColor
             progressStackView.layer.cornerRadius = 5.0
+            
+            progressTableView.layer.borderWidth = 0.25
+            progressTableView.layer.borderColor = UIColor.lightGray.cgColor
+            
         } else {
             progressTableView.layer.borderWidth = 0.25
             progressTableView.layer.borderColor = UIColor.lightGray.cgColor
@@ -92,7 +106,11 @@ extension ProgressTableViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if isCellDeletable {
             let delete = UIContextualAction(style: .destructive, title: nil) { (_, _, success) in
-                self.progressList.remove(at: indexPath.row)
+//                self.progressList.remove(at: indexPath.row)
+                print("task 전 : \(User.userProjectTask)")
+                User.userProject[0].tasks.remove(at: indexPath.row)
+                User.userProjectTask.remove(at: indexPath.row)
+                print("task 후 : \(User.userProjectTask)")
                 tableView.reloadData()
                 success(true)
             }
@@ -104,3 +122,5 @@ extension ProgressTableViewCell: UITableViewDelegate {
         return nil
     }
 }
+
+

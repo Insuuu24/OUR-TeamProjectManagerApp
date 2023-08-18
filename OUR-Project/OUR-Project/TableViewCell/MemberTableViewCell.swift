@@ -8,14 +8,16 @@
 import UIKit
 
 class MemberTableViewCell: UITableViewCell {
-
+    
     // MARK: - Properties
     var memberList: [String] = []
     var isCellDeletable: Bool = false
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var memberLabel: UILabel!
-    @IBOutlet weak var memberTableView: UITableView!
     
+    @IBOutlet weak var memberStackView: UIStackView!
+    @IBOutlet weak var memberTableView: UITableView!
+    @IBOutlet weak var memberAddButton: UIButton!
     
     // MARK: - View Life Cycle
     
@@ -27,13 +29,13 @@ class MemberTableViewCell: UITableViewCell {
         
         memberTableView.separatorStyle = .none
         
-//        memberTableView.rowHeight = UITableView.automaticDimension
-//        memberTableView.estimatedRowHeight = UITableView.automaticDimension
+        //        memberTableView.rowHeight = UITableView.automaticDimension
+        //        memberTableView.estimatedRowHeight = UITableView.automaticDimension
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -50,10 +52,30 @@ class MemberTableViewCell: UITableViewCell {
         stackView.spacing = 10
     }
     
+    func setButton(name:String){
+        memberAddButton.setImage(UIImage(systemName: "plus")?.withTintColor(.gray, renderingMode: .alwaysOriginal), for: .normal)
+        memberAddButton.configuration?.imagePadding = 10
+
+        memberAddButton.setTitle(name, for: .normal)
+        memberAddButton.setTitleColor(.label, for: .normal)
+        memberAddButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
+        memberAddButton.contentHorizontalAlignment = .left
+    }
+    
     func setTableView(){
-        memberTableView.layer.borderWidth = 0.25
-        memberTableView.layer.borderColor = UIColor.lightGray.cgColor
-        memberTableView.layer.cornerRadius = 5.0
+        if isCellDeletable {
+            memberStackView.layer.borderWidth = 0.25
+            memberStackView.layer.borderColor = UIColor.lightGray.cgColor
+            memberStackView.layer.cornerRadius = 5.0
+            
+            memberTableView.layer.borderWidth = 0.25
+            memberTableView.layer.borderColor = UIColor.lightGray.cgColor
+            
+        } else {
+            memberTableView.layer.borderWidth = 0.25
+            memberTableView.layer.borderColor = UIColor.lightGray.cgColor
+            memberTableView.layer.cornerRadius = 5.0
+        }
     }
 }
 
@@ -78,7 +100,8 @@ extension MemberTableViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if isCellDeletable {
             let delete = UIContextualAction(style: .destructive, title: nil) { (_, _, success) in
-                self.memberList.remove(at: indexPath.row)
+                //                self.memberList.remove(at: indexPath.row)
+                User.userProject[0].members.remove(at: indexPath.row)
                 tableView.reloadData()
                 success(true)
             }

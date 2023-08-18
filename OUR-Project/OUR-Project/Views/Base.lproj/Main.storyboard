@@ -446,61 +446,75 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberTableViewCell" id="PIH-8n-laJ" customClass="MemberTableViewCell" customModule="OUR_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="269.99999237060547" width="393" height="150.66667175292969"/>
+                                        <rect key="frame" x="0.0" y="269.99999237060547" width="393" height="185.33332824707031"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PIH-8n-laJ" id="YI2-Ph-GHs">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="150.66667175292969"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="185.33332824707031"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="G8I-yK-4Uv">
-                                                    <rect key="frame" x="16" y="10" width="361" height="140.66666666666666"/>
+                                                    <rect key="frame" x="16" y="10" width="361" height="175.33333333333334"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHS-bk-ral">
-                                                            <rect key="frame" x="0.0" y="0.0" width="361" height="20.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vng-G3-59G">
-                                                            <rect key="frame" x="0.0" y="20.666666666666671" width="361" height="120.00000000000001"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="120" id="RKK-Kt-c5f"/>
-                                                            </constraints>
-                                                            <prototypes>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberListTableViewCell" id="7vk-JG-W0h" customClass="MemberListTableViewCell" customModule="OUR_Project" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="50" width="361" height="30.666666030883789"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7vk-JG-W0h" id="klp-fs-lQJ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="30.666666030883789"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
-                                                                        <subviews>
-                                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ju6-cc-ZcT">
-                                                                                <rect key="frame" x="5" y="5" width="351" height="20.666666666666668"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="bLx-iA-UbM">
+                                                            <rect key="frame" x="0.0" y="20.333333333333329" width="361" height="154.66666666666669"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vng-G3-59G">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="120"/>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="120" id="RKK-Kt-c5f"/>
+                                                                    </constraints>
+                                                                    <prototypes>
+                                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemberListTableViewCell" id="7vk-JG-W0h" customClass="MemberListTableViewCell" customModule="OUR_Project" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="50" width="361" height="30.666666030883789"/>
+                                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7vk-JG-W0h" id="klp-fs-lQJ">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="30.666666030883789"/>
+                                                                                <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-fR-SyM">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="20.666666666666668"/>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                        <nil key="textColor"/>
-                                                                                        <nil key="highlightedColor"/>
-                                                                                    </label>
+                                                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ju6-cc-ZcT">
+                                                                                        <rect key="frame" x="5" y="5" width="351" height="20.666666666666668"/>
+                                                                                        <subviews>
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-fR-SyM">
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="351" height="20.666666666666668"/>
+                                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                                <nil key="textColor"/>
+                                                                                                <nil key="highlightedColor"/>
+                                                                                            </label>
+                                                                                        </subviews>
+                                                                                    </stackView>
                                                                                 </subviews>
-                                                                            </stackView>
-                                                                        </subviews>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="trailing" secondItem="ju6-cc-ZcT" secondAttribute="trailing" constant="5" id="0Mq-dt-6hn"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="ju6-cc-ZcT" secondAttribute="bottom" constant="5" id="4nQ-1R-Ys6"/>
-                                                                            <constraint firstItem="ju6-cc-ZcT" firstAttribute="top" secondItem="klp-fs-lQJ" secondAttribute="top" constant="5" id="IZN-Fv-PHV"/>
-                                                                            <constraint firstItem="ju6-cc-ZcT" firstAttribute="leading" secondItem="klp-fs-lQJ" secondAttribute="leading" constant="5" id="SNA-uW-xOD"/>
-                                                                        </constraints>
-                                                                    </tableViewCellContentView>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="trailing" secondItem="ju6-cc-ZcT" secondAttribute="trailing" constant="5" id="0Mq-dt-6hn"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="ju6-cc-ZcT" secondAttribute="bottom" constant="5" id="4nQ-1R-Ys6"/>
+                                                                                    <constraint firstItem="ju6-cc-ZcT" firstAttribute="top" secondItem="klp-fs-lQJ" secondAttribute="top" constant="5" id="IZN-Fv-PHV"/>
+                                                                                    <constraint firstItem="ju6-cc-ZcT" firstAttribute="leading" secondItem="klp-fs-lQJ" secondAttribute="leading" constant="5" id="SNA-uW-xOD"/>
+                                                                                </constraints>
+                                                                            </tableViewCellContentView>
+                                                                            <connections>
+                                                                                <outlet property="memberLabel" destination="fMI-fR-SyM" id="fvn-qe-g13"/>
+                                                                                <outlet property="stackView" destination="ju6-cc-ZcT" id="JOz-G4-dFu"/>
+                                                                            </connections>
+                                                                        </tableViewCell>
+                                                                    </prototypes>
+                                                                </tableView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ob3-UW-5ik">
+                                                                    <rect key="frame" x="0.0" y="120.00000000000001" width="361" height="34.666666666666671"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                     <connections>
-                                                                        <outlet property="memberLabel" destination="fMI-fR-SyM" id="fvn-qe-g13"/>
-                                                                        <outlet property="stackView" destination="ju6-cc-ZcT" id="JOz-G4-dFu"/>
+                                                                        <action selector="addMember:" destination="9Od-7o-wKJ" eventType="touchUpInside" id="ehb-MK-jik"/>
                                                                     </connections>
-                                                                </tableViewCell>
-                                                            </prototypes>
-                                                        </tableView>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -512,13 +526,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="memberAddButton" destination="Ob3-UW-5ik" id="csE-Iq-4QD"/>
                                             <outlet property="memberLabel" destination="HHS-bk-ral" id="CFI-DN-rVM"/>
+                                            <outlet property="memberStackView" destination="bLx-iA-UbM" id="rAh-r9-VCa"/>
                                             <outlet property="memberTableView" destination="Vng-G3-59G" id="AJD-eq-KAO"/>
                                             <outlet property="stackView" destination="G8I-yK-4Uv" id="Mpi-vu-Wbg"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProgressTableViewCell" id="UTp-x3-Yx1" customClass="ProgressTableViewCell" customModule="OUR_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="420.66666412353516" width="393" height="215"/>
+                                        <rect key="frame" x="0.0" y="455.33332061767578" width="393" height="215"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UTp-x3-Yx1" id="atv-VE-6lF">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="215"/>
@@ -580,7 +596,7 @@
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                     <connections>
-                                                                        <action selector="test:" destination="9Od-7o-wKJ" eventType="touchUpInside" id="Id1-lU-FTm"/>
+                                                                        <action selector="addTask:" destination="9Od-7o-wKJ" eventType="touchUpInside" id="yMR-yA-wXD"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>

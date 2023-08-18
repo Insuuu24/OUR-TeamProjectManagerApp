@@ -69,6 +69,7 @@ class ProgressListTableViewCell: UITableViewCell {
             nameString.setAttributedString(name.clear())
             User.userProjectTask[progressIndex].isCompleted = false
         }
+        print("task : \(User.userProjectTask)")
         
         nameString.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: name.count))
         checkButton.setAttributedTitle(nameString, for: .normal)

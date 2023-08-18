@@ -14,27 +14,10 @@ class DetailPageViewController: UIViewController {
     let storyboardID = "DetailPageViewController"
     
     // test용 데이터
-    let testProjectData: Project = Project(
-        name: "Our App Project",
-        teams: ["내일배움캠프", "8조"],
-        startDate: "2023-08-14".toDate() ?? Date(),
-        endDate: "2023-08-21".toDate() ?? Date(),
-        description: "4명이서 만드는 프로젝트 App",
-        members: ["김상훈", "박인수", "윤혁진", "조영현"],
-        tasks: ["메인 페이지 만들기", "Launch Screen 만들기", "상세 페이지 만들기", "편집 페이지 만들기", "마이 페이지 만들기"],
-        createdBy: "김상훈"
-    )
-    let testProjectTask: [ProjectTask] = [
-        ProjectTask(task: "메인 페이지 만들기", isCompleted: true, projectName: "Our App Project"),
-        ProjectTask(task: "Launch Screen 만들기", isCompleted: false, projectName: "Our App Project"),
-        ProjectTask(task: "상세 페이지 만들기", isCompleted: true, projectName: "Our App Project"),
-        ProjectTask(task: "편집 페이지 만들기", isCompleted: false, projectName: "Our App Project"),
-        ProjectTask(task: "마이 페이지 만들기", isCompleted: true, projectName: "Our App Project")
-    ]
+    var testProjectData: Project = User.userProject[0]
+    var testProjectTask: [ProjectTask] = User.userProjectTask
     
     @IBOutlet weak var detailTableView: UITableView!
-    
-    
     
     // MARK: - View Life Cycle
 
@@ -129,7 +112,7 @@ extension DetailPageViewController: UITableViewDataSource {
         case 5: //"참여인원"
             let cellMember = detailTableView.dequeueReusableCell(withIdentifier: "MemberTableViewCell", for: indexPath) as! MemberTableViewCell
             cellMember.selectionStyle = UITableViewCell.SelectionStyle.none
-            cellMember.setLabel(name: String(tableViewList[indexPath.row]  + " - \(testProjectData.members.count)명"))
+            cellMember.setLabel(name: tableViewList[indexPath.row])
             cellMember.memberList = testProjectData.members
             cellMember.setStackView()
             cellMember.setTableView()

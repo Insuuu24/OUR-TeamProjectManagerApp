@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
                 startDate: "2023-08-14".toDate() ?? Date(),
                 endDate: "2023-08-21".toDate() ?? Date(),
                 description: "4명이서 만드는 프로젝트 App",
-                members: ["김상훈", "박인수", "윤혁진", "조영현"],
+                members: ["김상훈", "박인수", "윤혁진"],
                 tasks: ["메인 페이지 만들기", "Launch Screen 만들기", "상세 페이지 만들기", "편집 페이지 만들기", "마이 페이지 만들기"],
                 createdBy: "김상훈"
             )
@@ -55,6 +55,11 @@ class MainViewController: UIViewController {
             User().appendProjectTask(task: taskData3)
             User().appendProjectTask(task: taskData4)
             User().appendProjectTask(task: taskData5)
+            
+            User().appendProjectMember(member: "김상훈")
+            User().appendProjectMember(member: "박인수")
+            User().appendProjectMember(member: "윤혁진")
+            User().appendProjectMember(member: "조영현")
         }
     }
     

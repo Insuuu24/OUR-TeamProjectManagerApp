@@ -20,7 +20,7 @@ class ProjectEditViewController: UIViewController {
     var testProjectTask: [ProjectTask] = User.userProjectTask
     
     // MARK: - View Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,7 +33,7 @@ class ProjectEditViewController: UIViewController {
         detailTableView.separatorStyle = .none
     }
     
-
+    
     // MARK: - Navigation Bar
     private func setupNavigationBar() {
         self.title = "Project Edit Page"
@@ -41,7 +41,19 @@ class ProjectEditViewController: UIViewController {
     
     
     // MARK: - Method & Action
-    @IBAction func test(_ sender: Any) {
+    
+    @IBAction func addMember(_ sender: Any) {
+        var addPicker: UIPickerView!
+        
+        addPicker = UIPickerView()
+        addPicker.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
+        view.addSubview(addPicker)
+        
+        addPicker.delegate = self
+        addPicker.dataSource = self
+    }
+    
+    @IBAction func addTask(_ sender: Any) {
         let alert = UIAlertController(title: "진행 목록 추가", message: "프로젝트 진행 일정을 추가해주세요.", preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "진행"
@@ -56,7 +68,7 @@ class ProjectEditViewController: UIViewController {
                         task: text, isCompleted: false, projectName: "Our App Project")
                 )
                 self.detailTableView.reloadData()
-//                ProgressTableViewCell().progressTableView.reloadData()
+                //                ProgressTableViewCell().progressTableView.reloadData()
             }
         }))
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
@@ -130,26 +142,29 @@ extension ProjectEditViewController: UITableViewDataSource {
         case 5: //"참여인원"
             let cellMember = detailTableView.dequeueReusableCell(withIdentifier: "MemberTableViewCell", for: indexPath) as! MemberTableViewCell
             cellMember.selectionStyle = UITableViewCell.SelectionStyle.none
-            cellMember.setLabel(name: String(tableViewList[indexPath.row]  + " - \(testProjectData.members.count)명"))
+            
             cellMember.isCellDeletable = true
+            
+            cellMember.setLabel(name: tableViewList[indexPath.row])
+            cellMember.setButton(name: "멤버 추가")
             cellMember.memberList = testProjectData.members
+            
             cellMember.setStackView()
             cellMember.setTableView()
+            
+            cellMember.memberTableView.reloadData()
+            
             return cellMember
         case 6: //"진행상황"
             let cellProgress = detailTableView.dequeueReusableCell(withIdentifier: "ProgressTableViewCell", for: indexPath) as! ProgressTableViewCell
             cellProgress.selectionStyle = UITableViewCell.SelectionStyle.none
             
-            print("case 6: 진행상황")
-            
             cellProgress.editState = true
             cellProgress.isCellDeletable = true
             
             cellProgress.setLabel(name: tableViewList[indexPath.row])
+            cellProgress.setButton(name: "할일 추가")
             cellProgress.progressList = User.userProject[0].tasks
-            
-            print("User.userProject[0].tasks : \(User.userProject[0].tasks)")
-            
             var taskisCompleted: [Bool] = []
             for i in 0..<User.userProjectTask.count{
                 taskisCompleted.append(User.userProjectTask[i].isCompleted)
@@ -159,7 +174,7 @@ extension ProjectEditViewController: UITableViewDataSource {
             cellProgress.setTableView()
             
             cellProgress.progressTableView.reloadData()
-
+            
             return cellProgress
         default:
             print("defalut")
@@ -171,7 +186,35 @@ extension ProjectEditViewController: UITableViewDataSource {
 }
 
 extension ProjectEditViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 50
-//    }
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return 50
+    //    }
+}
+
+extension ProjectEditViewController : UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        var member: [String] = []
+        for i in User.proejectMember {
+            if User.userProject[0].members.contains(i) == false {
+                member.append(i)
+            }
+        }
+        print("member : \(member)")
+        return User.proejectMember.count
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return User.proejectMember[row]
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        User.userProject[0].members.append(User.proejectMember[row])
+    }
 }
