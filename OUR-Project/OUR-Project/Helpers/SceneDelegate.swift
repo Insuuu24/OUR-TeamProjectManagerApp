@@ -62,7 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 // MARK: - MemberSelectionDelegate
 
 extension SceneDelegate: MemberSelectionDelegate {
-    func didSelectMember(user: UserModel) {
+    func didSelectMember(user: UserSelect) {
         let tabBarController = TabBarController()
         window?.rootViewController = tabBarController
     }

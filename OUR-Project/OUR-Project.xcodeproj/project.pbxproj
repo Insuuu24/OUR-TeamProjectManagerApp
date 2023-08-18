@@ -19,6 +19,19 @@
 		EB83A34E2A8A018000DFF86E /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83A34D2A8A018000DFF86E /* MyPageViewController.swift */; };
 		EB83A3502A8A01A000DFF86E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83A34F2A8A01A000DFF86E /* ProfileEditViewController.swift */; };
 		EB83A3532A8A01F700DFF86E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83A3522A8A01F700DFF86E /* TabBarController.swift */; };
+		EBB2C8532A8F53C500E6199B /* DatePickerPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C8522A8F53C500E6199B /* DatePickerPopupView.swift */; };
+		EBB2C8572A8F60C000E6199B /* ProjectPageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C8562A8F60C000E6199B /* ProjectPageSection.swift */; };
+		EBB2C8592A8F67F800E6199B /* ProjectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C8582A8F67F800E6199B /* ProjectList.swift */; };
+		EBB2C85C2A8F82D200E6199B /* ProjectNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C85B2A8F82D200E6199B /* ProjectNameCell.swift */; };
+		EBB2C85E2A8F84BD00E6199B /* AffiliationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C85D2A8F84BD00E6199B /* AffiliationCell.swift */; };
+		EBB2C8602A8F88BE00E6199B /* StartDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C85F2A8F88BE00E6199B /* StartDateCell.swift */; };
+		EBB2C8622A8F8EBD00E6199B /* EndDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C8612A8F8EBD00E6199B /* EndDateCell.swift */; };
+		EBB2C8642A8F8FCB00E6199B /* UserAttendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C8632A8F8FCB00E6199B /* UserAttendCell.swift */; };
+		EBB2C8662A8F93C500E6199B /* ProgressListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C8652A8F93C500E6199B /* ProgressListCell.swift */; };
+		EBD169DB2A8BBC2A00B1120C /* MemberSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */; };
+		EBD169DD2A8BBC5B00B1120C /* UserSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DC2A8BBC5B00B1120C /* UserSelect.swift */; };
+		EBD169DF2A8BBD1000B1120C /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */; };
+		EBD169E12A8BBFC200B1120C /* UserSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169E02A8BBFC200B1120C /* UserSelectCell.swift */; };
 		EBDAB23E2A8C6C4700D23321 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB23D2A8C6C4700D23321 /* NameTableViewCell.swift */; };
 		EBDAB2402A8C6C5400D23321 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB23F2A8C6C5400D23321 /* DateTableViewCell.swift */; };
 		EBDAB2422A8C6C8900D23321 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2412A8C6C8900D23321 /* DescriptionTableViewCell.swift */; };
@@ -27,12 +40,6 @@
 		EBDAB2482A8C72A100D23321 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2472A8C72A100D23321 /* CheckBox.swift */; };
 		EBDAB24D2A8CABDC00D23321 /* MemberListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */; };
 		EBDAB24F2A8CABEF00D23321 /* ProgressListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */; };
-		EBDAB2512A8DF94500D23321 /* ProjectEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */; };
-		EBD169DB2A8BBC2A00B1120C /* MemberSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */; };
-		EBD169DD2A8BBC5B00B1120C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DC2A8BBC5B00B1120C /* UserModel.swift */; };
-		EBD169DF2A8BBD1000B1120C /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */; };
-		EBD169E12A8BBFC200B1120C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169E02A8BBFC200B1120C /* UserCell.swift */; };
-		EBF84E4F2A8DA22200B56A1F /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E4C2A8DA22200B56A1F /* Project.swift */; };
 		EBF84E502A8DA22200B56A1F /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E4D2A8DA22200B56A1F /* Member.swift */; };
 		EBF84E512A8DA22200B56A1F /* ProjectTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E4E2A8DA22200B56A1F /* ProjectTask.swift */; };
 		EBF84E552A8DA2AA00B56A1F /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF84E542A8DA2AA00B56A1F /* DummyData.swift */; };
@@ -55,6 +62,19 @@
 		EB83A34D2A8A018000DFF86E /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		EB83A34F2A8A01A000DFF86E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		EB83A3522A8A01F700DFF86E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		EBB2C8522A8F53C500E6199B /* DatePickerPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPopupView.swift; sourceTree = "<group>"; };
+		EBB2C8562A8F60C000E6199B /* ProjectPageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPageSection.swift; sourceTree = "<group>"; };
+		EBB2C8582A8F67F800E6199B /* ProjectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectList.swift; sourceTree = "<group>"; };
+		EBB2C85B2A8F82D200E6199B /* ProjectNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectNameCell.swift; sourceTree = "<group>"; };
+		EBB2C85D2A8F84BD00E6199B /* AffiliationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffiliationCell.swift; sourceTree = "<group>"; };
+		EBB2C85F2A8F88BE00E6199B /* StartDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDateCell.swift; sourceTree = "<group>"; };
+		EBB2C8612A8F8EBD00E6199B /* EndDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDateCell.swift; sourceTree = "<group>"; };
+		EBB2C8632A8F8FCB00E6199B /* UserAttendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAttendCell.swift; sourceTree = "<group>"; };
+		EBB2C8652A8F93C500E6199B /* ProgressListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListCell.swift; sourceTree = "<group>"; };
+		EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberSelectionViewController.swift; sourceTree = "<group>"; };
+		EBD169DC2A8BBC5B00B1120C /* UserSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelect.swift; sourceTree = "<group>"; };
+		EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		EBD169E02A8BBFC200B1120C /* UserSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectCell.swift; sourceTree = "<group>"; };
 		EBDAB23D2A8C6C4700D23321 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB23F2A8C6C5400D23321 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB2412A8C6C8900D23321 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
@@ -63,12 +83,6 @@
 		EBDAB2472A8C72A100D23321 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListTableViewCell.swift; sourceTree = "<group>"; };
-		EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewController.swift; sourceTree = "<group>"; };
-		EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberSelectionViewController.swift; sourceTree = "<group>"; };
-		EBD169DC2A8BBC5B00B1120C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
-		EBD169E02A8BBFC200B1120C /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		EBF84E4C2A8DA22200B56A1F /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		EBF84E4D2A8DA22200B56A1F /* Member.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		EBF84E4E2A8DA22200B56A1F /* ProjectTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTask.swift; sourceTree = "<group>"; };
 		EBF84E542A8DA2AA00B56A1F /* DummyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DummyData.swift; path = "OUR-Project/Models/DummyData.swift"; sourceTree = SOURCE_ROOT; };
@@ -111,10 +125,8 @@
 				EBDAB2522A8E349900D23321 /* Model */,
 				EB4DFCBE2A89EA4600F1B738 /* Views */,
 				EB4DFCBF2A89EA4C00F1B738 /* Controllers */,
-				EBDAB23C2A8C4DD800D23321 /* TableViewCell */,
 				EB4DFCB22A89EA1500F1B738 /* Assets.xcassets */,
 				EB4DFCB72A89EA1500F1B738 /* Info.plist */,
-				EBDAB2472A8C72A100D23321 /* CheckBox.swift */,
 			);
 			path = "OUR-Project";
 			sourceTree = "<group>";
@@ -122,13 +134,13 @@
 		EB4DFCBD2A89EA4000F1B738 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EBDAB2372A8A340500D23321 /* Model.swift */,
+				EBD169DC2A8BBC5B00B1120C /* UserSelect.swift */,
+				EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */,
+				EBB2C8582A8F67F800E6199B /* ProjectList.swift */,
+				EBB2C8562A8F60C000E6199B /* ProjectPageSection.swift */,
 				EBF84E542A8DA2AA00B56A1F /* DummyData.swift */,
 				EBF84E4D2A8DA22200B56A1F /* Member.swift */,
-				EBF84E4C2A8DA22200B56A1F /* Project.swift */,
 				EBF84E4E2A8DA22200B56A1F /* ProjectTask.swift */,
-				EBD169DC2A8BBC5B00B1120C /* UserModel.swift */,
-				EBD169DE2A8BBD1000B1120C /* UserDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -137,9 +149,13 @@
 			isa = PBXGroup;
 			children = (
 				EB4DFCAF2A89EA1300F1B738 /* Main.storyboard */,
-				EBD169E02A8BBFC200B1120C /* UserCell.swift */,
+				EBB2C85A2A8F810D00E6199B /* ProjectPageSectionCells */,
+				EBDAB23C2A8C4DD800D23321 /* DetailTableViewCell */,
+				EBD169E02A8BBFC200B1120C /* UserSelectCell.swift */,
 				EBF84E562A8DA2F700B56A1F /* ProjectListCell.swift */,
 				EBF84E582A8DEDFF00B56A1F /* EmptyStateView.swift */,
+				EBB2C8522A8F53C500E6199B /* DatePickerPopupView.swift */,
+				EBDAB2472A8C72A100D23321 /* CheckBox.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -147,14 +163,13 @@
 		EB4DFCBF2A89EA4C00F1B738 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */,
 				EB83A3522A8A01F700DFF86E /* TabBarController.swift */,
+				EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */,
 				EB4DFCAD2A89EA1300F1B738 /* MainViewController.swift */,
-				EB83A3492A8A016500DFF86E /* DetailPageViewController.swift */,
 				EB83A34B2A8A017600DFF86E /* ProjectAddViewController.swift */,
+				EB83A3492A8A016500DFF86E /* DetailPageViewController.swift */,
 				EB83A34D2A8A018000DFF86E /* MyPageViewController.swift */,
 				EB83A34F2A8A01A000DFF86E /* ProfileEditViewController.swift */,
-				EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -168,7 +183,20 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		EBDAB23C2A8C4DD800D23321 /* TableViewCell */ = {
+		EBB2C85A2A8F810D00E6199B /* ProjectPageSectionCells */ = {
+			isa = PBXGroup;
+			children = (
+				EBB2C85B2A8F82D200E6199B /* ProjectNameCell.swift */,
+				EBB2C85D2A8F84BD00E6199B /* AffiliationCell.swift */,
+				EBB2C85F2A8F88BE00E6199B /* StartDateCell.swift */,
+				EBB2C8612A8F8EBD00E6199B /* EndDateCell.swift */,
+				EBB2C8632A8F8FCB00E6199B /* UserAttendCell.swift */,
+				EBB2C8652A8F93C500E6199B /* ProgressListCell.swift */,
+			);
+			path = ProjectPageSectionCells;
+			sourceTree = "<group>";
+		};
+		EBDAB23C2A8C4DD800D23321 /* DetailTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				EBDAB23D2A8C6C4700D23321 /* NameTableViewCell.swift */,
@@ -179,7 +207,7 @@
 				EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */,
 				EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */,
 			);
-			path = TableViewCell;
+			path = DetailTableViewCell;
 			sourceTree = "<group>";
 		};
 		EBDAB2522A8E349900D23321 /* Model */ = {
@@ -264,33 +292,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF84E592A8DEDFF00B56A1F /* EmptyStateView.swift in Sources */,
+				EBB2C8622A8F8EBD00E6199B /* EndDateCell.swift in Sources */,
 				EBF84E552A8DA2AA00B56A1F /* DummyData.swift in Sources */,
 				EB83A34C2A8A017600DFF86E /* ProjectAddViewController.swift in Sources */,
 				EB83A3532A8A01F700DFF86E /* TabBarController.swift in Sources */,
 				EBDAB2462A8C6E2600D23321 /* ProgressTableViewCell.swift in Sources */,
 				EB83A3502A8A01A000DFF86E /* ProfileEditViewController.swift in Sources */,
+				EBB2C85E2A8F84BD00E6199B /* AffiliationCell.swift in Sources */,
 				EB83A34E2A8A018000DFF86E /* MyPageViewController.swift in Sources */,
+				EBB2C8592A8F67F800E6199B /* ProjectList.swift in Sources */,
+				EBB2C8602A8F88BE00E6199B /* StartDateCell.swift in Sources */,
 				EBDAB2422A8C6C8900D23321 /* DescriptionTableViewCell.swift in Sources */,
 				EBDAB2542A8E3AC100D23321 /* Project.swift in Sources */,
 				EBDAB23E2A8C6C4700D23321 /* NameTableViewCell.swift in Sources */,
 				EBDAB2442A8C6DD100D23321 /* MemberTableViewCell.swift in Sources */,
+				EBB2C8572A8F60C000E6199B /* ProjectPageSection.swift in Sources */,
 				EB83A34A2A8A016500DFF86E /* DetailPageViewController.swift in Sources */,
-				EBDAB2562A8E3AF600D23321 /* ProjectTask.swift in Sources */,
+				EBB2C8662A8F93C500E6199B /* ProgressListCell.swift in Sources */,
 				EBDAB24F2A8CABEF00D23321 /* ProgressListTableViewCell.swift in Sources */,
 				EBF84E572A8DA2F700B56A1F /* ProjectListCell.swift in Sources */,
 				EBF84E502A8DA22200B56A1F /* Member.swift in Sources */,
-				EBF84E4F2A8DA22200B56A1F /* Project.swift in Sources */,
 				EBD169DF2A8BBD1000B1120C /* UserDataManager.swift in Sources */,
 				EBD169DB2A8BBC2A00B1120C /* MemberSelectionViewController.swift in Sources */,
 				EBF84E512A8DA22200B56A1F /* ProjectTask.swift in Sources */,
 				EB4DFCAE2A89EA1300F1B738 /* MainViewController.swift in Sources */,
-				EBD169E12A8BBFC200B1120C /* UserCell.swift in Sources */,
+				EBD169E12A8BBFC200B1120C /* UserSelectCell.swift in Sources */,
 				EB4DFCAA2A89EA1300F1B738 /* AppDelegate.swift in Sources */,
 				EBDAB2402A8C6C5400D23321 /* DateTableViewCell.swift in Sources */,
-				EBD169DD2A8BBC5B00B1120C /* UserModel.swift in Sources */,
+				EBD169DD2A8BBC5B00B1120C /* UserSelect.swift in Sources */,
+				EBB2C8642A8F8FCB00E6199B /* UserAttendCell.swift in Sources */,
+				EBB2C8532A8F53C500E6199B /* DatePickerPopupView.swift in Sources */,
 				EB4DFCAC2A89EA1300F1B738 /* SceneDelegate.swift in Sources */,
 				EBDAB2482A8C72A100D23321 /* CheckBox.swift in Sources */,
-				EBDAB2512A8DF94500D23321 /* ProjectEditViewController.swift in Sources */,
+				EBB2C85C2A8F82D200E6199B /* ProjectNameCell.swift in Sources */,
 				EBDAB24D2A8CABDC00D23321 /* MemberListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

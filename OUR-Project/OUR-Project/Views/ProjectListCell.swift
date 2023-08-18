@@ -11,91 +11,65 @@ class ProjectListCell: UITableViewCell {
     
     // MARK: - Properties
     
-     let projectNameLabel: UILabel = {
+    let projectNameLabel: UILabel = {
         let nl = UILabel()
         nl.font = UIFont.systemFont(ofSize: 14)
         return nl
     }()
     
-    let projectInfoLabel: UILabel = {
-        let il = UILabel()
-        il.font = UIFont.systemFont(ofSize: 10)
-       il.numberOfLines = 0
-        il.lineBreakMode = .byWordWrapping
-        return il
-    }()
-    
-    private let projectProgressBar: UIProgressView = {
-       let pb = UIProgressView()
-        pb.progressViewStyle = .bar
-        pb.progressTintColor = UIColor(red: 0.3569, green: 0.3255, blue: 0.1373, alpha: 1.0) // #5B5323
-        pb.trackTintColor = UIColor(red: 0.7647, green: 0.7569, blue: 0.7255, alpha: 1.0) // #C3C1B9
-        pb.transform = pb.transform.scaledBy(x: 1, y: 2)
-        return pb
-    }()
-    
-    private let projectTaskCompletionLabel: UILabel = {
-       let tcl = UILabel()
-        tcl.font = UIFont.systemFont(ofSize: 8)
-        tcl.text = "0%"
-        return tcl
-    }()
-    
-    private let joinedProjectBadge: UIButton = {
+    let projectIsJoinedBadge: UIButton = {
         let jpb = UIButton()
-        jpb.setTitle("　내가 참여중인　", for: .normal)
+        jpb.setTitle("내가 참여중인", for: .normal)
         jpb.setTitleColor(UIColor(red: 0.3569, green: 0.3255, blue: 0.1373, alpha: 1.0), for: .normal) // #5B5323
         jpb.backgroundColor = UIColor(red: 0.8667, green: 0.8509, blue: 0.7725, alpha: 1.0) // #DDD9C5
         jpb.titleLabel?.font = UIFont.boldSystemFont(ofSize: 10)
-        jpb.layer.cornerRadius = 10
+        jpb.layer.cornerRadius = 15
         jpb.layer.masksToBounds = true
         return jpb
     }()
     
+    let projectAffiliationLabel: UILabel = {
+        let il = UILabel()
+        il.font = UIFont.systemFont(ofSize: 10)
+        il.numberOfLines = 0
+        il.lineBreakMode = .byWordWrapping
+        return il
+    }()
+    
+    let dateLabel: UILabel = {
+        let dl = UILabel()
+        dl.font = UIFont.systemFont(ofSize: 10)
+        dl.numberOfLines = 1
+        dl.lineBreakMode = .byWordWrapping
+        dl.textColor = UIColor(red: 0.36, green: 0.33, blue: 0.14, alpha: 1.00) // #5B5323
+        return dl
+    }()
+    
     private let rightButton: UIButton = {
-       let rb = UIButton()
+        let rb = UIButton()
         rb.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         rb.tintColor = UIColor(red: 0.36, green: 0.33, blue: 0.14, alpha: 1.00) // #5B5323
         return rb
     }()
-    
-    private let spacer: UIView = {
-        let view = UIView()
-        view.heightAnchor.constraint(equalToConstant: 3).isActive = true
-        return view
-    }()
-    
-    private let projectNameStack: UIStackView = {
+
+    private lazy var projectNameAndBadgeStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.spacing = 0
-        stack.alignment = .center
-        stack.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        stack.spacing = 8
         return stack
     }()
     
-    private let progressStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 10
-        stack.alignment = .center
-        stack.heightAnchor.constraint(equalToConstant: 10).isActive = true
-        return stack
-    }()
-    
-    private let leftSideStack: UIStackView = {
+    private lazy var affiliationAndDateStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 1
+        stack.spacing = 5
         return stack
     }()
     
-    private let mainStackView: UIStackView = {
+    private lazy var mainStack: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 30
-        stack.layoutMargins = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-        stack.isLayoutMarginsRelativeArrangement = true
+        stack.axis = .vertical
+        stack.spacing = 10
         return stack
     }()
     
@@ -113,34 +87,48 @@ class ProjectListCell: UITableViewCell {
     // MARK: - Helpers
     
     private func setupViews() {
-        contentView.addSubview(mainStackView)
+        projectNameAndBadgeStack.addArrangedSubview(projectNameLabel)
+        projectNameAndBadgeStack.addArrangedSubview(projectIsJoinedBadge)
 
-        projectNameStack.addArrangedSubview(projectNameLabel)
-        projectNameStack.addArrangedSubview(joinedProjectBadge)
-    
-        progressStack.addArrangedSubview(projectProgressBar)
-        progressStack.addArrangedSubview(projectTaskCompletionLabel)
+        affiliationAndDateStack.addArrangedSubview(projectAffiliationLabel)
+        affiliationAndDateStack.addArrangedSubview(dateLabel)
+
+        mainStack.addArrangedSubview(projectNameAndBadgeStack)
+        mainStack.addArrangedSubview(affiliationAndDateStack)
         
-        leftSideStack.addArrangedSubview(projectNameStack)
-        leftSideStack.addArrangedSubview(spacer)
-        leftSideStack.addArrangedSubview(projectInfoLabel)
-        leftSideStack.addArrangedSubview(progressStack)
-        
-        mainStackView.addArrangedSubview(leftSideStack)
-        mainStackView.addArrangedSubview(rightButton)
-        
+        contentView.addSubview(mainStack)
+        contentView.addSubview(rightButton)
+
+        mainStack.translatesAutoresizingMaskIntoConstraints = false
         rightButton.translatesAutoresizingMaskIntoConstraints = false
-        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        projectIsJoinedBadge.widthAnchor.constraint(equalToConstant: 70).isActive = true
+
+        projectAffiliationLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        projectAffiliationLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+
+        dateLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        dateLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         NSLayoutConstraint.activate([
-            projectNameLabel.widthAnchor.constraint(equalToConstant: 200),
-            rightButton.centerYAnchor.constraint(equalTo: mainStackView.centerYAnchor),
-            rightButton.widthAnchor.constraint(equalToConstant: 15),
-            mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            contentView.heightAnchor.constraint(equalToConstant: 100)
+            mainStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            mainStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            mainStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            mainStack.trailingAnchor.constraint(equalTo: rightButton.leadingAnchor, constant: -10),
+            
+            rightButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            rightButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            rightButton.widthAnchor.constraint(equalToConstant: 30),
+            rightButton.heightAnchor.constraint(equalToConstant: 30)
         ])
+    }
+
+
+    
+    // 프로젝트 시작 및 종료 날짜를 설정하는 함수
+    func setProjectDate(startDate: Date, endDate: Date) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        dateLabel.text = "시작: \(formatter.string(from: startDate)) / 종료: \(formatter.string(from: endDate))"
     }
 }

@@ -165,12 +165,12 @@ class MyPageViewController: UIViewController {
     func loadSelectedUser() {
         let decoder = JSONDecoder()
         if let savedUser = UserDefaults.standard.object(forKey: "selectedUser") as? Data,
-           let loadedUser = try? decoder.decode(UserModel.self, from: savedUser) {
+           let loadedUser = try? decoder.decode(UserSelect.self, from: savedUser) {
             configure(with: loadedUser)
         }
     }
     
-    func configure(with user: UserModel) {
+    func configure(with user: UserSelect) {
         profileImageView.image = user.icon
         nameLabel.text = user.name
         emailLabel.text = "a@a.com"
@@ -192,7 +192,7 @@ class MyPageViewController: UIViewController {
 
         let decoder = JSONDecoder()
         if let savedUser = UserDefaults.standard.object(forKey: "selectedUser") as? Data,
-           let loadedUser = try? decoder.decode(UserModel.self, from: savedUser) {
+           let loadedUser = try? decoder.decode(UserSelect.self, from: savedUser) {
             profileEditVC.user = loadedUser
         }
 

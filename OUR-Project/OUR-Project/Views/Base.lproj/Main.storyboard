@@ -68,9 +68,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="nameLabel" destination="5kx-ev-E6O" id="y7g-VR-ACu"/>
-                                            <outlet property="nameTextField" destination="Kyv-Nr-b9Q" id="uu7-Cb-M8T"/>
-                                            <outlet property="stackView" destination="4yw-Uc-OZx" id="Yhn-QT-rbf"/>
+                                            <outlet property="projectNameTextField" destination="Kyv-Nr-b9Q" id="2Nk-I0-4ug"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateTableViewCell" id="zhQ-un-SZ3" customClass="DateTableViewCell" customModule="OUR_Project" customModuleProvider="target">

@@ -7,92 +7,68 @@
 
 import Foundation
 
-let dummyProjectList: [Project] = [
-    Project(
-        name: "(가)KIOSK 만들기",
-        teams: ["8조"],
+let dummyProjectList: [ProjectList] = [
+    ProjectList(
+        projectName: "(가)KIOSK 만들기",
+        affiliation: "8조",
         startDate: Calendar.current.date(byAdding: .month, value: -3, to: Date()) ?? Date(),
         endDate: Calendar.current.date(byAdding: .month, value: +7, to: Date()) ?? Date(),
-        description: "KIOSK앱을 만드는 프로젝트",
-        members: ["김김김", "이이이", "박박박", "신신신"],
-        tasks: ["아이디어 내기", "팀장 정하기", "팀 노션 만들기", "TIL 작성하기"],
-        createdBy: "김김김"
+        isJoined: false
     ),
     
-    Project(
-        name: "(A)TODO앱 만들기",
-        teams: ["8조","1조"],
+    ProjectList(
+        projectName: "(A)TODO앱 만들기",
+        affiliation: "8조",
         startDate: Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date(),
-        endDate: Date(),
-        description: "TODO앱을 만드는 프로젝트",
-        members: ["김김김", "최최최"],
-        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
-        createdBy: "최최최"
+        endDate: Calendar.current.date(byAdding: .month, value: +7, to: Date()) ?? Date(),
+        isJoined: true
     ),
     
-    Project(
-        name: "(나)종료된 프로젝트",
-        teams: ["7조"],
+    ProjectList(
+        projectName: "(나)종료된 프로젝트",
+        affiliation: "7조",
         startDate: Calendar.current.date(byAdding: .year, value: -2, to: Date()) ?? Date(),
         endDate: Calendar.current.date(byAdding: .year, value: -7, to: Date()) ?? Date(),
-        description: "TODO앱을 만드는 프로젝트",
-        members: ["멤버1", "멤버2"],
-        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
-        createdBy: "멤버1"
+        isJoined: true
     ),
     
-    Project(
-        name: "(D)가나다라마바사아자차카타파하ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        teams: ["7조"],
+    ProjectList(
+        projectName: "(D)가나다라마바사아자차카타파하ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        affiliation: "7조",
         startDate: Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date(),
         endDate: Calendar.current.date(byAdding: .month, value: +3, to: Date()) ?? Date(),
-        description: "TODO앱을 만드는 프로젝트",
-        members: ["멤버1", "멤버2"],
-        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
-        createdBy: "멤버1"
+        isJoined: true
     ),
     
-    Project(
-        name: "(B)ㅋ",
-        teams: ["7조"],
+    ProjectList(
+        projectName: "(B)ㅋ",
+        affiliation: "7조",
         startDate: Calendar.current.date(byAdding: .day, value: -20, to: Date()) ?? Date(),
         endDate: Calendar.current.date(byAdding: .day, value: +9, to: Date()) ?? Date(),
-        description: "TODO앱을 만드는 프로젝트",
-        members: ["멤버1", "멤버2"],
-        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
-        createdBy: "멤버1"
+        isJoined: true
     ),
     
-    Project(
-        name: "(C)!@#$%^&*()",
-        teams: ["7조"],
+    ProjectList(
+        projectName: "(C)!@#$%^&*()",
+        affiliation: "7조",
         startDate: Calendar.current.date(byAdding: .month, value: -3, to: Date()) ?? Date(),
         endDate: Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date(),
-        description: "TODO앱을 만드는 프로젝트",
-        members: ["멤버1", "멤버2"],
-        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
-        createdBy: "멤버1"
+        isJoined: true
     ),
     
-    Project(
-        name: "0123456789",
-        teams: ["7조"],
+    ProjectList(
+        projectName: "0123456789",
+        affiliation: "7조",
         startDate: Calendar.current.date(byAdding: .month, value: -4, to: Date()) ?? Date(),
         endDate: Calendar.current.date(byAdding: .month, value: +2, to: Date()) ?? Date(),
-        description: "TODO앱을 만드는 프로젝트",
-        members: ["멤버1", "멤버2"],
-        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
-        createdBy: "멤버1"
+        isJoined: true
     ),
-    Project(
-        name: "(다)아야어여오요우유으이",
-        teams: ["7조"],
+    ProjectList(
+        projectName: "(다)아야어여오요우유으이",
+        affiliation: "7조",
         startDate: Calendar.current.date(byAdding: .month, value: -9, to: Date()) ?? Date(),
         endDate: Calendar.current.date(byAdding: .year, value: +1, to: Date()) ?? Date(),
-        description: "TODO앱을 만드는 프로젝트",
-        members: ["멤버1", "멤버2"],
-        tasks: ["9시에 게더에서 모이기", "발표 준비하기"],
-        createdBy: "멤버1"
+        isJoined: true
     ),
 ]
 
