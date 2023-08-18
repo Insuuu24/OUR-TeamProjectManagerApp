@@ -11,7 +11,7 @@ class ProfileEditViewController: UIViewController {
     
     // MARK: - Properties
     
-    var user: UserModel? {
+    var user: UserSelect? {
         didSet {
             configure(with: user)
         }
@@ -155,7 +155,7 @@ class ProfileEditViewController: UIViewController {
         ])
     }
     
-    func configure(with user: UserModel?) {
+    func configure(with user: UserSelect?) {
         guard let user = user else { return }
         profileImageView.image = user.icon
         nameTextField.text = user.name

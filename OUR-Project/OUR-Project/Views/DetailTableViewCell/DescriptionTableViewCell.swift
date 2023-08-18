@@ -55,7 +55,7 @@ class DescriptionTableViewCell: UITableViewCell {
     }
 }
 
-extension DescriptionTableViewCell:UITextViewDelegate {
+extension DescriptionTableViewCell: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         return false
     }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MemberSelectionDelegate: AnyObject {
-    func didSelectMember(user: UserModel)
+    func didSelectMember(user: UserSelect)
 }
 
 class MemberSelectionViewController: UIViewController {
@@ -17,7 +17,7 @@ class MemberSelectionViewController: UIViewController {
     
     weak var delegate: MemberSelectionDelegate?
     private let collectionView: UICollectionView
-    private var users: [UserModel] = []
+    private var users: [UserSelect] = []
     
     private let headerLabel: UILabel = {
         let label = UILabel()
@@ -83,7 +83,7 @@ class MemberSelectionViewController: UIViewController {
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UserCell.self, forCellWithReuseIdentifier: "UserCell")
+        collectionView.register(UserSelectCell.self, forCellWithReuseIdentifier: "UserCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(collectionView)
@@ -125,7 +125,7 @@ class MemberSelectionViewController: UIViewController {
             
             if let name = alert.textFields?.first?.text, !name.isEmpty {
                 let randomImage = self.randomAssetImage()
-                let newUser = UserModel(name: name, icon: randomImage)
+                let newUser = UserSelect(name: name, icon: randomImage)
                 
                 var users = UserManager.shared.loadUsers()
                 users.append(newUser)
@@ -191,7 +191,7 @@ extension MemberSelectionViewController: UICollectionViewDataSource, UICollectio
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserSelectCell
         cell.configure(with: users[indexPath.item])
         return cell
     }

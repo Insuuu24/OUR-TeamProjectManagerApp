@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserCell: UICollectionViewCell {
+class UserSelectCell: UICollectionViewCell {
     
     // MARK: - Properties
     
@@ -59,7 +59,7 @@ class UserCell: UICollectionViewCell {
         ])
     }
     
-    func configure(with user: UserModel) {
+    func configure(with user: UserSelect) {
         nameLabel.text = user.name
         imageView.image = user.icon
     }

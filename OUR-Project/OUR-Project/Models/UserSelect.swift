@@ -1,5 +1,5 @@
 //
-//  UserModel.swift
+//  UserSelect.swift
 //  OUR-Project
 //
 //  Created by Insu on 2023/08/15.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct UserModel: Codable {
+struct UserSelect: Codable {
     var name: String
     var email: String
     var introduction: String
@@ -42,7 +42,7 @@ struct UserModel: Codable {
     }
 }
 
-extension UserModel {
+extension UserSelect {
     init(name: String, icon: UIImage?) {
         self.name = name
         self.email = ""

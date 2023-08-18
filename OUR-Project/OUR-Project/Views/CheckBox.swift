@@ -5,7 +5,6 @@
 //  Created by t2023-m0059 on 2023/08/16.
 //
 
-import Foundation
 import UIKit
 
 /// 체크박스
