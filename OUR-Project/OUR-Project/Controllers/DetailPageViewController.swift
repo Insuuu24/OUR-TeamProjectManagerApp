@@ -16,19 +16,20 @@ class DetailPageViewController: UIViewController {
     // test용 데이터
     let testProjectData: Project = Project(
         name: "Our App Project",
-        team: "내일배움캠프 8조",
+        teams: ["내일배움캠프", "8조"],
         startDate: "2023-08-14".toDate() ?? Date(),
         endDate: "2023-08-21".toDate() ?? Date(),
         description: "4명이서 만드는 프로젝트 App",
-        member: ["김상훈", "박인수", "윤혁진", "조영현"],
-        task: ["메인 페이지 만들기", "Launch Screen 만들기", "상세 페이지 만들기", "편집 페이지 만들기", "마이 페이지 만들기"]
+        members: ["김상훈", "박인수", "윤혁진", "조영현"],
+        tasks: ["메인 페이지 만들기", "Launch Screen 만들기", "상세 페이지 만들기", "편집 페이지 만들기", "마이 페이지 만들기"],
+        createdBy: "김상훈"
     )
-    let testProjectTask: [Task] = [
-        Task(name: "메인 페이지 만들기", isCompleted: true, projectName: "Our App Project"),
-        Task(name: "Launch Screen 만들기", isCompleted: false, projectName: "Our App Project"),
-        Task(name: "상세 페이지 만들기", isCompleted: true, projectName: "Our App Project"),
-        Task(name: "편집 페이지 만들기", isCompleted: false, projectName: "Our App Project"),
-        Task(name: "마이 페이지 만들기", isCompleted: true, projectName: "Our App Project")
+    let testProjectTask: [ProjectTask] = [
+        ProjectTask(task: "메인 페이지 만들기", isCompleted: true, projectName: "Our App Project"),
+        ProjectTask(task: "Launch Screen 만들기", isCompleted: false, projectName: "Our App Project"),
+        ProjectTask(task: "상세 페이지 만들기", isCompleted: true, projectName: "Our App Project"),
+        ProjectTask(task: "편집 페이지 만들기", isCompleted: false, projectName: "Our App Project"),
+        ProjectTask(task: "마이 페이지 만들기", isCompleted: true, projectName: "Our App Project")
     ]
     
     @IBOutlet weak var detailTableView: UITableView!
@@ -82,15 +83,22 @@ extension DetailPageViewController: UITableViewDataSource {
         case 0: // "프로젝트명"
             let cellName = detailTableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as! NameTableViewCell
             cellName.selectionStyle = UITableViewCell.SelectionStyle.none // 셀 선택 효과 없애기
+
+            cellName.editState = false
+
             cellName.setLabel(name: tableViewList[indexPath.row])
-            cellName.setTextField(name: testProjectData.name)
+            cellName.setNameTextField(name: testProjectData.name)
             cellName.setStackView()
+            
             return cellName
         case 1: //"소속"
             let cellName = detailTableView.dequeueReusableCell(withIdentifier: "NameTableViewCell", for: indexPath) as! NameTableViewCell
             cellName.selectionStyle = UITableViewCell.SelectionStyle.none
+            
+            cellName.editState = false
+            
             cellName.setLabel(name: tableViewList[indexPath.row])
-            cellName.setTextField(name: testProjectData.team)
+            cellName.setTeamTextField(name: testProjectData.teams)
             cellName.setStackView()
             return cellName
         case 2: //"시작 날짜"
@@ -99,6 +107,7 @@ extension DetailPageViewController: UITableViewDataSource {
             cellDate.setLabel(name: tableViewList[indexPath.row])
             cellDate.setTextField(date: testProjectData.startDate)
             cellDate.setStackView()
+            
             return cellDate
         case 3: //"종료 날짜"
             let cellDate = detailTableView.dequeueReusableCell(withIdentifier: "DateTableViewCell", for: indexPath) as! DateTableViewCell
@@ -106,19 +115,24 @@ extension DetailPageViewController: UITableViewDataSource {
             cellDate.setLabel(name: tableViewList[indexPath.row])
             cellDate.setTextField(date: testProjectData.endDate)
             cellDate.setStackView()
+            
             return cellDate
         case 4: //"프로젝트 설명"
             let cellDescription = detailTableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
             cellDescription.selectionStyle = UITableViewCell.SelectionStyle.none
+            
+            cellDescription.editState = false
+            
             cellDescription.setLabel(name: tableViewList[indexPath.row])
             cellDescription.setTextView(description: testProjectData.description)
             cellDescription.setStackView()
+
             return cellDescription
         case 5: //"참여인원"
             let cellMember = detailTableView.dequeueReusableCell(withIdentifier: "MemberTableViewCell", for: indexPath) as! MemberTableViewCell
             cellMember.selectionStyle = UITableViewCell.SelectionStyle.none
-            cellMember.setLabel(name: String(tableViewList[indexPath.row]  + " - \(testProjectData.member.count)명"))
-            cellMember.memberList = testProjectData.member
+            cellMember.setLabel(name: String(tableViewList[indexPath.row]  + " - \(testProjectData.members.count)명"))
+            cellMember.memberList = testProjectData.members
             cellMember.setStackView()
             cellMember.setTableView()
             return cellMember
@@ -126,7 +140,7 @@ extension DetailPageViewController: UITableViewDataSource {
             let cellProgress = detailTableView.dequeueReusableCell(withIdentifier: "ProgressTableViewCell", for: indexPath) as! ProgressTableViewCell
             cellProgress.selectionStyle = UITableViewCell.SelectionStyle.none
             cellProgress.setLabel(name: tableViewList[indexPath.row])
-            cellProgress.progressList = testProjectData.task
+            cellProgress.progressList = testProjectData.tasks
             
             var taskisCompleted: [Bool] = []
             for i in 0..<testProjectTask.count{

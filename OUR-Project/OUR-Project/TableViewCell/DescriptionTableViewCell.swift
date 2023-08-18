@@ -10,6 +10,8 @@ import UIKit
 class DescriptionTableViewCell: UITableViewCell {
     // MARK: - Properties
     
+    var editState: Bool = false // 수정 여부 확인용 변수
+    
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -57,6 +59,6 @@ class DescriptionTableViewCell: UITableViewCell {
 
 extension DescriptionTableViewCell:UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        return false
+        return editState
     }
 }

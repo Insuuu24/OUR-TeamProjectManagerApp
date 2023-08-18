@@ -18,7 +18,6 @@
 		EB83A34E2A8A018000DFF86E /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83A34D2A8A018000DFF86E /* MyPageViewController.swift */; };
 		EB83A3502A8A01A000DFF86E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83A34F2A8A01A000DFF86E /* ProfileEditViewController.swift */; };
 		EB83A3532A8A01F700DFF86E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83A3522A8A01F700DFF86E /* TabBarController.swift */; };
-		EBDAB2382A8A340500D23321 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2372A8A340500D23321 /* Model.swift */; };
 		EBDAB23E2A8C6C4700D23321 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB23D2A8C6C4700D23321 /* NameTableViewCell.swift */; };
 		EBDAB2402A8C6C5400D23321 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB23F2A8C6C5400D23321 /* DateTableViewCell.swift */; };
 		EBDAB2422A8C6C8900D23321 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2412A8C6C8900D23321 /* DescriptionTableViewCell.swift */; };
@@ -28,6 +27,8 @@
 		EBDAB24D2A8CABDC00D23321 /* MemberListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */; };
 		EBDAB24F2A8CABEF00D23321 /* ProgressListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */; };
 		EBDAB2512A8DF94500D23321 /* ProjectEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */; };
+		EBDAB2542A8E3AC100D23321 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2532A8E3AC100D23321 /* Project.swift */; };
+		EBDAB2562A8E3AF600D23321 /* ProjectTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2552A8E3AF600D23321 /* ProjectTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +45,6 @@
 		EB83A34D2A8A018000DFF86E /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		EB83A34F2A8A01A000DFF86E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		EB83A3522A8A01F700DFF86E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		EBDAB2372A8A340500D23321 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Model.swift; path = "OUR-Project/Model.swift"; sourceTree = SOURCE_ROOT; };
 		EBDAB23D2A8C6C4700D23321 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB23F2A8C6C5400D23321 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB2412A8C6C8900D23321 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
@@ -54,6 +54,8 @@
 		EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB2502A8DF94500D23321 /* ProjectEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditViewController.swift; sourceTree = "<group>"; };
+		EBDAB2532A8E3AC100D23321 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		EBDAB2552A8E3AF600D23321 /* ProjectTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +90,7 @@
 			children = (
 				EB4DFCB42A89EA1500F1B738 /* LaunchScreen.storyboard */,
 				EB4DFCC02A89EA7E00F1B738 /* Helpers */,
-				EB4DFCBD2A89EA4000F1B738 /* Models */,
+				EBDAB2522A8E349900D23321 /* Model */,
 				EB4DFCBE2A89EA4600F1B738 /* Views */,
 				EB4DFCBF2A89EA4C00F1B738 /* Controllers */,
 				EBDAB23C2A8C4DD800D23321 /* TableViewCell */,
@@ -97,14 +99,6 @@
 				EBDAB2472A8C72A100D23321 /* CheckBox.swift */,
 			);
 			path = "OUR-Project";
-			sourceTree = "<group>";
-		};
-		EB4DFCBD2A89EA4000F1B738 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				EBDAB2372A8A340500D23321 /* Model.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		EB4DFCBE2A89EA4600F1B738 /* Views */ = {
@@ -150,6 +144,15 @@
 				EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		EBDAB2522A8E349900D23321 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBDAB2532A8E3AC100D23321 /* Project.swift */,
+				EBDAB2552A8E3AF600D23321 /* ProjectTask.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,10 +232,11 @@
 				EB83A3502A8A01A000DFF86E /* ProfileEditViewController.swift in Sources */,
 				EB83A34E2A8A018000DFF86E /* MyPageViewController.swift in Sources */,
 				EBDAB2422A8C6C8900D23321 /* DescriptionTableViewCell.swift in Sources */,
+				EBDAB2542A8E3AC100D23321 /* Project.swift in Sources */,
 				EBDAB23E2A8C6C4700D23321 /* NameTableViewCell.swift in Sources */,
 				EBDAB2442A8C6DD100D23321 /* MemberTableViewCell.swift in Sources */,
-				EBDAB2382A8A340500D23321 /* Model.swift in Sources */,
 				EB83A34A2A8A016500DFF86E /* DetailPageViewController.swift in Sources */,
+				EBDAB2562A8E3AF600D23321 /* ProjectTask.swift in Sources */,
 				EBDAB24F2A8CABEF00D23321 /* ProgressListTableViewCell.swift in Sources */,
 				EB4DFCAE2A89EA1300F1B738 /* MainViewController.swift in Sources */,
 				EB4DFCAA2A89EA1300F1B738 /* AppDelegate.swift in Sources */,

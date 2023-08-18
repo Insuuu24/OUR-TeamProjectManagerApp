@@ -11,6 +11,8 @@ class NameTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
+    var editState: Bool = false // 수정 여부 확인용 변수
+    
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -20,6 +22,7 @@ class NameTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        print("awakFromNib")
         nameTextField.delegate = self
     }
 
@@ -42,8 +45,24 @@ class NameTableViewCell: UITableViewCell {
         stackView.spacing = 10
     }
     
-    func setTextField(name:String){
+    func setNameTextField(name:String){
         nameTextField.text = name
+        nameTextField.textColor = .label
+        nameTextField.font = .systemFont(ofSize: 15, weight: .regular)
+        nameTextField.textAlignment = .left
+    }
+    
+    func setTeamTextField(name:[String]){
+        var nameString: String = ""
+        
+        for i in 0..<name.count {
+            if i == name.count-1 {
+                nameString += name[i]
+            } else {
+                nameString += name[i] + ", "
+            }
+        }
+        nameTextField.text = nameString
         nameTextField.textColor = .label
         nameTextField.font = .systemFont(ofSize: 15, weight: .regular)
         nameTextField.textAlignment = .left
@@ -52,6 +71,6 @@ class NameTableViewCell: UITableViewCell {
 
 extension NameTableViewCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return false // textField 변경 불가
+        return editState // textField 변경 불가
     }
 }
