@@ -55,7 +55,7 @@ class MemberTableViewCell: UITableViewCell {
     func setButton(name:String){
         memberAddButton.setImage(UIImage(systemName: "plus")?.withTintColor(.gray, renderingMode: .alwaysOriginal), for: .normal)
         memberAddButton.configuration?.imagePadding = 10
-
+        
         memberAddButton.setTitle(name, for: .normal)
         memberAddButton.setTitleColor(.label, for: .normal)
         memberAddButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
@@ -81,6 +81,7 @@ class MemberTableViewCell: UITableViewCell {
 
 extension MemberTableViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("memberList.count : \(memberList.count)")
         return memberList.count
     }
     
@@ -100,7 +101,7 @@ extension MemberTableViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if isCellDeletable {
             let delete = UIContextualAction(style: .destructive, title: nil) { (_, _, success) in
-                //                self.memberList.remove(at: indexPath.row)
+                self.memberList.remove(at: indexPath.row)
                 User.userProject[0].members.remove(at: indexPath.row)
                 tableView.reloadData()
                 success(true)
