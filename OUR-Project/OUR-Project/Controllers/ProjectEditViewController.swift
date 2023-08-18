@@ -13,28 +13,11 @@ class ProjectEditViewController: UIViewController {
     let storyboardName = "Main" // 생성된 storyboard의 이름이 "Main"
     let storyboardID = "ProjectEditViewController"
     
-    // test용 데이터
-    let testProjectData: Project = Project(
-        name: "Our App Project",
-        teams: ["내일배움캠프", "8조"],
-        startDate: "2023-08-14".toDate() ?? Date(),
-        endDate: "2023-08-21".toDate() ?? Date(),
-        description: "4명이서 만드는 프로젝트 App",
-        members: ["김상훈", "박인수", "윤혁진", "조영현"],
-        tasks: ["메인 페이지 만들기", "Launch Screen 만들기", "상세 페이지 만들기", "편집 페이지 만들기", "마이 페이지 만들기"],
-        createdBy: "김상훈"
-    )
-    let testProjectTask: [ProjectTask] = [
-        ProjectTask(task: "메인 페이지 만들기", isCompleted: true, projectName: "Our App Project"),
-        ProjectTask(task: "Launch Screen 만들기", isCompleted: false, projectName: "Our App Project"),
-        ProjectTask(task: "상세 페이지 만들기", isCompleted: true, projectName: "Our App Project"),
-        ProjectTask(task: "편집 페이지 만들기", isCompleted: false, projectName: "Our App Project"),
-        ProjectTask(task: "마이 페이지 만들기", isCompleted: true, projectName: "Our App Project")
-    ]
-    
     @IBOutlet weak var detailTableView: UITableView!
     
-    
+    // test용 데이터
+    var testProjectData: Project = User.userProject[0]
+    var testProjectTask: [ProjectTask] = User.userProjectTask
     
     // MARK: - View Life Cycle
 
@@ -55,7 +38,26 @@ class ProjectEditViewController: UIViewController {
     private func setupNavigationBar() {
         self.title = "Project Edit Page"
     }
-
+    
+    
+    // MARK: - Method & Action
+    @IBAction func test(_ sender: Any) {
+        let alert = UIAlertController(title: "진행 목록 추가", message: "프로젝트 진행 일정을 추가해주세요.", preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "진행"
+        }
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
+            guard let text = alert.textFields?[0].text else { return }
+            if text != "" {
+                print("데이터 추가 : \(text)")
+                self.testProjectData.tasks.append(text)
+                self.detailTableView.reloadData()
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension ProjectEditViewController: UITableViewDataSource {
@@ -103,9 +105,11 @@ extension ProjectEditViewController: UITableViewDataSource {
             cellDate.selectionStyle = UITableViewCell.SelectionStyle.none
             cellDate.setLabel(name: tableViewList[indexPath.row])
             cellDate.setTextField(date: testProjectData.endDate)
+            cellDate.setStackView()
+            
             cellDate.setupDatePicker(date: testProjectData.endDate)
             cellDate.setupToolBar()
-            cellDate.setStackView()
+            
             return cellDate
         case 4: //"프로젝트 설명"
             let cellDescription = detailTableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
@@ -129,6 +133,9 @@ extension ProjectEditViewController: UITableViewDataSource {
         case 6: //"진행상황"
             let cellProgress = detailTableView.dequeueReusableCell(withIdentifier: "ProgressTableViewCell", for: indexPath) as! ProgressTableViewCell
             cellProgress.selectionStyle = UITableViewCell.SelectionStyle.none
+            
+            cellProgress.editState = true
+            
             cellProgress.setLabel(name: tableViewList[indexPath.row])
             cellProgress.progressList = testProjectData.tasks
             
@@ -139,7 +146,7 @@ extension ProjectEditViewController: UITableViewDataSource {
             cellProgress.progressState = taskisCompleted
             cellProgress.setStackView()
             cellProgress.setTableView()
-//            cellProgress.setStackView()
+
             return cellProgress
         default:
             print("defalut")

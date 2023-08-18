@@ -69,8 +69,6 @@ class DetailPageViewController: UIViewController {
         
         navigationController?.pushViewController(viewController, animated: true)
     }
-   
-
 }
 
 extension DetailPageViewController: UITableViewDataSource {
@@ -139,6 +137,9 @@ extension DetailPageViewController: UITableViewDataSource {
         case 6: //"진행상황"
             let cellProgress = detailTableView.dequeueReusableCell(withIdentifier: "ProgressTableViewCell", for: indexPath) as! ProgressTableViewCell
             cellProgress.selectionStyle = UITableViewCell.SelectionStyle.none
+            
+            cellProgress.editState = false
+            
             cellProgress.setLabel(name: tableViewList[indexPath.row])
             cellProgress.progressList = testProjectData.tasks
             

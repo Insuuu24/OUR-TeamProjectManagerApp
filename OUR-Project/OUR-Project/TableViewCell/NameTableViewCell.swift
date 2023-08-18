@@ -22,7 +22,6 @@ class NameTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        print("awakFromNib")
         nameTextField.delegate = self
     }
 

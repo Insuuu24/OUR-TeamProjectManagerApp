@@ -518,60 +518,73 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProgressTableViewCell" id="UTp-x3-Yx1" customClass="ProgressTableViewCell" customModule="OUR_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="420.66666412353516" width="361" height="180.66667175292969"/>
+                                        <rect key="frame" x="0.0" y="420.66666412353516" width="361" height="215"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UTp-x3-Yx1" id="atv-VE-6lF">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="180.66667175292969"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="215"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bB0-5b-f3O">
-                                                    <rect key="frame" x="0.0" y="10" width="361" height="170.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="10" width="361" height="205"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekp-ce-zS9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="361" height="20.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="V3x-fo-66X">
-                                                            <rect key="frame" x="0.0" y="20.666666666666671" width="361" height="150"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="150" id="bST-xs-6qn"/>
-                                                            </constraints>
-                                                            <prototypes>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProgressListTableViewCell" id="aXD-cO-N4l" customClass="ProgressListTableViewCell" customModule="OUR_Project" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="50" width="361" height="34.666667938232422"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aXD-cO-N4l" id="RWl-Yb-Pd8">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="34.666667938232422"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
-                                                                        <subviews>
-                                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2T0-nh-eyq">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="34.666666666666664"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mot-kt-sQf">
+                                                            <rect key="frame" x="0.0" y="20.333333333333329" width="361" height="184.66666666666669"/>
+                                                            <subviews>
+                                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="V3x-fo-66X">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="150"/>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="150" id="bST-xs-6qn"/>
+                                                                    </constraints>
+                                                                    <prototypes>
+                                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProgressListTableViewCell" id="aXD-cO-N4l" customClass="ProgressListTableViewCell" customModule="OUR_Project" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="50" width="361" height="34.666667938232422"/>
+                                                                            <autoresizingMask key="autoresizingMask"/>
+                                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aXD-cO-N4l" id="RWl-Yb-Pd8">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="34.666667938232422"/>
+                                                                                <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbH-GP-jqh" customClass="CheckBox" customModule="OUR_Project" customModuleProvider="target">
+                                                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2T0-nh-eyq">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="361" height="34.666666666666664"/>
-                                                                                        <state key="normal" title="Button"/>
-                                                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                                                    </button>
+                                                                                        <subviews>
+                                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbH-GP-jqh" customClass="CheckBox" customModule="OUR_Project" customModuleProvider="target">
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="34.666666666666664"/>
+                                                                                                <state key="normal" title="Button"/>
+                                                                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                                                            </button>
+                                                                                        </subviews>
+                                                                                    </stackView>
                                                                                 </subviews>
-                                                                            </stackView>
-                                                                        </subviews>
-                                                                        <constraints>
-                                                                            <constraint firstItem="2T0-nh-eyq" firstAttribute="top" secondItem="RWl-Yb-Pd8" secondAttribute="top" id="Oa6-qg-OFy"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="2T0-nh-eyq" secondAttribute="bottom" id="ZAB-0W-obP"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="2T0-nh-eyq" secondAttribute="trailing" id="ZAr-pg-cqu"/>
-                                                                            <constraint firstItem="2T0-nh-eyq" firstAttribute="leading" secondItem="RWl-Yb-Pd8" secondAttribute="leading" id="jnH-pS-ILX"/>
-                                                                        </constraints>
-                                                                    </tableViewCellContentView>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="2T0-nh-eyq" firstAttribute="top" secondItem="RWl-Yb-Pd8" secondAttribute="top" id="Oa6-qg-OFy"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="2T0-nh-eyq" secondAttribute="bottom" id="ZAB-0W-obP"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="2T0-nh-eyq" secondAttribute="trailing" id="ZAr-pg-cqu"/>
+                                                                                    <constraint firstItem="2T0-nh-eyq" firstAttribute="leading" secondItem="RWl-Yb-Pd8" secondAttribute="leading" id="jnH-pS-ILX"/>
+                                                                                </constraints>
+                                                                            </tableViewCellContentView>
+                                                                            <connections>
+                                                                                <outlet property="checkButton" destination="CbH-GP-jqh" id="TOv-w1-Prw"/>
+                                                                                <outlet property="stackView" destination="2T0-nh-eyq" id="OU0-ND-A54"/>
+                                                                            </connections>
+                                                                        </tableViewCell>
+                                                                    </prototypes>
+                                                                </tableView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pm5-zg-NNR">
+                                                                    <rect key="frame" x="0.0" y="150" width="361" height="34.666666666666657"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                                     <connections>
-                                                                        <outlet property="checkButton" destination="CbH-GP-jqh" id="TOv-w1-Prw"/>
-                                                                        <outlet property="stackView" destination="2T0-nh-eyq" id="OU0-ND-A54"/>
+                                                                        <action selector="test:" destination="9Od-7o-wKJ" eventType="touchUpInside" id="Id1-lU-FTm"/>
                                                                     </connections>
-                                                                </tableViewCell>
-                                                            </prototypes>
-                                                        </tableView>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -583,7 +596,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="progressAddButton" destination="Pm5-zg-NNR" id="T3V-Mh-Fjy"/>
                                             <outlet property="progressLabel" destination="Ekp-ce-zS9" id="waf-Wj-n0e"/>
+                                            <outlet property="progressStackView" destination="Mot-kt-sQf" id="OUV-7F-ILW"/>
                                             <outlet property="progressTableView" destination="V3x-fo-66X" id="g5T-TV-S1p"/>
                                             <outlet property="stackView" destination="bB0-5b-f3O" id="XdE-j7-4fm"/>
                                         </connections>
