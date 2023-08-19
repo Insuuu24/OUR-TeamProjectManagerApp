@@ -199,7 +199,6 @@ extension MemberSelectionViewController: UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedUser = users[indexPath.item]
         
-        // UserDefaults에 선택된 유저 정보 저장
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(selectedUser) {
             UserDefaults.standard.set(encoded, forKey: "selectedUser")

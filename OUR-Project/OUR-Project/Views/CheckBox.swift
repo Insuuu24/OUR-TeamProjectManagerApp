@@ -7,9 +7,9 @@
 
 import UIKit
 
-/// 체크박스
+
 class CheckBox: UIButton {
-    /// 체크박스 이미지
+    // 체크박스 이미지
     var checkBoxResouces = OnOffResources(
         onImage: UIImage(systemName: "checkmark.square")?.withTintColor(UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00), renderingMode: .alwaysOriginal),
         offImage: UIImage(systemName: "square")?.withTintColor(.gray, renderingMode: .alwaysOriginal)

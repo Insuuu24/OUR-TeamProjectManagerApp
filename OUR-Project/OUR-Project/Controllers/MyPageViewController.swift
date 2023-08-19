@@ -30,7 +30,7 @@ class MyPageViewController: UIViewController {
         return nlb
     }()
 
-    private let emailLabel: UILabel = {
+    private let affiliationLabel: UILabel = {
         let elb = UILabel()
         elb.font = UIFont.systemFont(ofSize: 14)
         elb.textColor = .gray
@@ -116,7 +116,7 @@ class MyPageViewController: UIViewController {
     private func setupViews() {
         view.addSubview(profileImageView)
         view.addSubview(nameLabel)
-        view.addSubview(emailLabel)
+        view.addSubview(affiliationLabel)
         view.addSubview(introductionLabel)
         view.addSubview(editButton)
         view.addSubview(segmentedControl)
@@ -133,11 +133,11 @@ class MyPageViewController: UIViewController {
             nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 60),
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-            emailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            emailLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+            affiliationLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
+            affiliationLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            affiliationLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
             
-            introductionLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10),
+            introductionLabel.topAnchor.constraint(equalTo: affiliationLabel.bottomAnchor, constant: 10),
             introductionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             introductionLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
 
@@ -173,7 +173,7 @@ class MyPageViewController: UIViewController {
     func configure(with user: UserSelect) {
         profileImageView.image = user.icon
         nameLabel.text = user.name
-        emailLabel.text = "a@a.com"
+        affiliationLabel.text = "8조"
         introductionLabel.text = "하하하..."
     }
     

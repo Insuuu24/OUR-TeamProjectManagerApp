@@ -9,8 +9,6 @@ import UIKit
 
 struct UserSelect: Codable {
     var name: String
-    var email: String
-    var introduction: String
     var iconData: Data?
     
     var icon: UIImage? {
@@ -29,24 +27,11 @@ struct UserSelect: Codable {
     
     enum CodingKeys: String, CodingKey {
         case name
-        case email
-        case introduction
         case iconData
     }
     
-    init(name: String, email: String, introduction: String, icon: UIImage?) {
-        self.name = name
-        self.email = email
-        self.introduction = introduction
-        self.icon = icon
-    }
-}
-
-extension UserSelect {
     init(name: String, icon: UIImage?) {
         self.name = name
-        self.email = ""
-        self.introduction = ""
         self.icon = icon
     }
 }

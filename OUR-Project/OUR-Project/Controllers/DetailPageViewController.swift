@@ -20,10 +20,10 @@ class DetailPageViewController: UIViewController {
         view.backgroundColor = .white
         
         setupNavigationBar()
-        ////        detailTableView.dataSource = self
-        ////        detailTableView.delegate = self
-        ////
-        //        detailTableView.separatorStyle = .none
+        configureUI()
+        //        detailTableView.dataSource = self
+        //        detailTableView.delegate = self
+        //
     }
     
     // MARK: - Helpers
@@ -41,6 +41,14 @@ class DetailPageViewController: UIViewController {
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
+    
+    private func configureUI() {
+        
+        
+        
+    }
+    
+    
     
     
 }

@@ -11,11 +11,8 @@ class ProfileEditViewController: UIViewController {
     
     // MARK: - Properties
     
-    var user: UserSelect? {
-        didSet {
-            configure(with: user)
-        }
-    }
+    var user: UserSelect?
+    var selectedImage: UIImage?
     
     private let profileImageView: UIImageView = {
         let piv = UIImageView()
@@ -27,10 +24,19 @@ class ProfileEditViewController: UIViewController {
         return piv
     }()
     
+    private lazy var imagePickerButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(profileImageViewTapped), for: .touchUpInside)
+        return button
+    }()
+
+    
     private let nameHeaderLabel: UILabel = {
         let label = UILabel()
         label.text = "이름"
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         return label
     }()
     
@@ -53,7 +59,8 @@ class ProfileEditViewController: UIViewController {
     private let affiliationHeaderLabel: UILabel = {
         let label = UILabel()
         label.text = "소속"
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         return label
     }()
     
@@ -63,7 +70,7 @@ class ProfileEditViewController: UIViewController {
         return textField
     }()
     
-    private lazy var emailStack: UIStackView = {
+    private lazy var affiliationStack: UIStackView = {
         let separator = UIView()
         separator.backgroundColor = .lightGray
         separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
@@ -76,13 +83,14 @@ class ProfileEditViewController: UIViewController {
     private let introductionHeaderLabel: UILabel = {
         let label = UILabel()
         label.text = "소개"
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         return label
     }()
     
     private let introductionTextView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
+        textView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.96, alpha: 1.00)
         textView.layer.cornerRadius = 10
         return textView
     }()
@@ -101,8 +109,9 @@ class ProfileEditViewController: UIViewController {
 
         view.backgroundColor = .white
         
-        setupNavigationBar()
-        setupViews()
+        configureNavigationBar()
+        configureUI()
+        configure(with: user)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -113,7 +122,7 @@ class ProfileEditViewController: UIViewController {
     
     // MARK: - Helpers
     
-    private func setupNavigationBar() {
+    private func configureNavigationBar() {
         navigationItem.title = "프로필 설정"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveButtonTapped))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
@@ -128,8 +137,8 @@ class ProfileEditViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
-    private func setupViews() {
-        [profileImageView, nameStack, emailStack, introductionStack].forEach {
+    private func configureUI() {
+        [profileImageView, imagePickerButton, nameStack, affiliationStack, introductionStack].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -139,16 +148,21 @@ class ProfileEditViewController: UIViewController {
             profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             profileImageView.widthAnchor.constraint(equalToConstant: 150),
             profileImageView.heightAnchor.constraint(equalToConstant: 150),
+            
+            imagePickerButton.topAnchor.constraint(equalTo: profileImageView.topAnchor),
+            imagePickerButton.bottomAnchor.constraint(equalTo: profileImageView.bottomAnchor),
+            imagePickerButton.leadingAnchor.constraint(equalTo: profileImageView.leadingAnchor),
+            imagePickerButton.trailingAnchor.constraint(equalTo: profileImageView.trailingAnchor),
 
             nameStack.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 30),
             nameStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             nameStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
-            emailStack.topAnchor.constraint(equalTo: nameStack.bottomAnchor, constant: 50),
-            emailStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            emailStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            affiliationStack.topAnchor.constraint(equalTo: nameStack.bottomAnchor, constant: 50),
+            affiliationStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            affiliationStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
-            introductionStack.topAnchor.constraint(equalTo: emailStack.bottomAnchor, constant: 40),
+            introductionStack.topAnchor.constraint(equalTo: affiliationStack.bottomAnchor, constant: 40),
             introductionStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             introductionStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             introductionTextView.heightAnchor.constraint(equalToConstant: 150)
@@ -169,25 +183,33 @@ class ProfileEditViewController: UIViewController {
         }
         
         user?.name = name
-        
-        var users = UserManager.shared.loadUsers()
-        
-        // 해당 사용자의 정보를 찾아 수정합니다.
-        if let user = user, let index = users.firstIndex(where: { $0.email == user.email }) {
-            users[index] = user
+        user?.icon = profileImageView.image
             
-            // 변경된 사용자 목록을 다시 저장합니다.
+        var users = UserManager.shared.loadUsers()
+            
+        if let user = user {
+            if let index = users.firstIndex(where: { $0.name == user.name }) {
+                users[index] = user
+            } else {
+                users.append(user)
+            }
             UserManager.shared.save(users: users)
         }
-        
+            
         let encoder = JSONEncoder()
         if let user = user, let encoded = try? encoder.encode(user) {
             UserDefaults.standard.set(encoded, forKey: "selectedUser")
         }
-        
+            
         self.navigationController?.popViewController(animated: true)
     }
 
+    @objc private func profileImageViewTapped() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
 
     
     @objc private func viewTapped() {
@@ -214,4 +236,21 @@ class ProfileEditViewController: UIViewController {
     }
     
     
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension ProfileEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let editedImage = info[.editedImage] as? UIImage {
+            profileImageView.image = editedImage
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            profileImageView.image = originalImage
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }

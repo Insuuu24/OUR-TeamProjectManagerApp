@@ -11,6 +11,9 @@ class MainViewController: UIViewController {
 
     // MARK: - Properties
     
+    var selectedUser: UserSelect?
+    var projectList = dummyProjectList
+    
     private var ProjectListTableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = 100
@@ -27,13 +30,6 @@ class MainViewController: UIViewController {
 
         return segmentedControl
     }()
-    
-    var selectedUser: UserSelect?
-//
-//    var memberList = dummyMemberList
-    var projectList = dummyProjectList
-//    var projectTaskList = dummyProjectTaskList
-    
     
     // MARK: - View Life Cycle
     

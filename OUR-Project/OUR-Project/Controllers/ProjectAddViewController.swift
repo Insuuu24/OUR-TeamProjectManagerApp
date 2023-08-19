@@ -27,7 +27,7 @@ class ProjectAddViewController: UIViewController {
     private let projectNamePickerHeaderLabel: UILabel = {
         let label = UILabel()
         label.text = "프로젝트 이름"
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         return label
     }()
@@ -174,7 +174,7 @@ class ProjectAddViewController: UIViewController {
 
         view.backgroundColor = .white
         
-        setupNavigationBar()
+        configureNavigationBar()
         configureUI()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -185,7 +185,7 @@ class ProjectAddViewController: UIViewController {
 
     // MARK: - Helpers
     
-    private func setupNavigationBar() {
+    private func configureNavigationBar() {
         navigationItem.title = "신규 프로젝트"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem?.tintColor = .black
@@ -201,7 +201,8 @@ class ProjectAddViewController: UIViewController {
     }
     
     private func configureUI() {
-        let viewsToAdd: [UIView] = [
+        
+        [
             scrollView,
             projectNamePickerHeaderLabel,
             projectNameTextField,
@@ -215,11 +216,9 @@ class ProjectAddViewController: UIViewController {
             descriptionTextView,
             progressListHeaderLabel,
             progressStepper
-        ]
-        
-        for viewToAdd in viewsToAdd {
-            view.addSubview(viewToAdd)
-            viewToAdd.translatesAutoresizingMaskIntoConstraints = false
+        ].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         scrollView.addSubview(containerView)
@@ -314,20 +313,17 @@ class ProjectAddViewController: UIViewController {
     }
 
     func updateScrollViewContentSize() {
-        // contentSize의 높이를 최종 element의 아래로 설정합니다.
         if let lastElement = scrollView.subviews.last {
-            scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: lastElement.frame.maxY + 20) // +20은 추가적인 패딩입니다.
+            scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: lastElement.frame.maxY + 20)
         }
     }
     
     func adjustStepperPosition() {
-        // 마지막 텍스트 필드의 아래에 Stepper를 위치시킵니다.
         if let lastTextField = progressList.last {
             NSLayoutConstraint.activate([
                 progressStepper.topAnchor.constraint(equalTo: lastTextField.bottomAnchor, constant: 16)
             ])
         } else {
-            // 텍스트 필드가 없으면 초기 위치로 되돌립니다.
             NSLayoutConstraint.activate([
                 progressStepper.topAnchor.constraint(equalTo: progressListHeaderLabel.bottomAnchor, constant: 16)
             ])
