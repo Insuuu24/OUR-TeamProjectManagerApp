@@ -50,16 +50,16 @@ class ProfileEditViewController: UIViewController {
         return stack
     }()
 
-    private let emailHeaderLabel: UILabel = {
+    private let affiliationHeaderLabel: UILabel = {
         let label = UILabel()
-        label.text = "이메일"
+        label.text = "소속"
         label.font = UIFont.boldSystemFont(ofSize: 12)
         return label
     }()
     
-    private let emailTextField: UITextField = {
+    private let affiliationTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "이메일을 입력하세요."
+        textField.placeholder = "소속을 입력하세요."
         return textField
     }()
     
@@ -67,7 +67,7 @@ class ProfileEditViewController: UIViewController {
         let separator = UIView()
         separator.backgroundColor = .lightGray
         separator.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        let stack = UIStackView(arrangedSubviews: [emailHeaderLabel, emailTextField, separator])
+        let stack = UIStackView(arrangedSubviews: [affiliationHeaderLabel, affiliationTextField, separator])
         stack.axis = .vertical
         stack.spacing = 10
         return stack

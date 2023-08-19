@@ -28,11 +28,5 @@ class NameTableViewCell: UITableViewCell {
     }
     
     // MARK: - Method & Action
-    
-    func configure(with model: ProjectNameModel) {
-        projectNameTextField.text = model.projectName
-        projectNameTextField.textColor = .label
-        projectNameTextField.font = .systemFont(ofSize: 15, weight: .regular)
-        projectNameTextField.textAlignment = .left
-    }
+
 }

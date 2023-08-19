@@ -12,6 +12,4 @@ struct ProjectList {
     var affiliation: String      // 소속 (예: 개발팀, 마케팅팀 등)
     var startDate: Date          // 시작 날짜
     var endDate: Date            // 종료 날짜
-    var isJoined: Bool           // 사용자가 프로젝트에 참여했는지 여부
 }
-

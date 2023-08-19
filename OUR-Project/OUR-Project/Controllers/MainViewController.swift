@@ -29,10 +29,10 @@ class MainViewController: UIViewController {
     }()
     
     var selectedUser: UserSelect?
-    
-    var memberList = dummyMemberList
+//
+//    var memberList = dummyMemberList
     var projectList = dummyProjectList
-    var projectTaskList = dummyProjectTaskList
+//    var projectTaskList = dummyProjectTaskList
     
     
     // MARK: - View Life Cycle
@@ -94,27 +94,27 @@ class MainViewController: UIViewController {
         appearance.configureWithOpaqueBackground()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
         appearance.shadowColor = nil
-        
+
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.tintColor = .black
-        
+
         let logoImage = UIImage(named: "ourproject_logo.png")
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
-        
+
         let container = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
         logoImageView.frame = container.bounds
         container.addSubview(logoImageView)
         navigationItem.titleView = container
-        
+
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: createFilterActions(selectedFilter: nil))
         let filterImage = UIImage(systemName: "line.3.horizontal.decrease")
         let filterButton = UIBarButtonItem(image: filterImage, menu: menu)
         navigationItem.rightBarButtonItem = filterButton
         setupRightBarButtonItem(nil)
     }
-    
+
     private func createFilterActions(selectedFilter: String?) -> [UIAction] {
         let nameFilter = UIAction(title: selectedFilter == "byName" ? "✓ 프로젝트 이름순" : "프로젝트 이름순", image: UIImage(systemName: "textformat.abc")) { _ in
             if selectedFilter == "byName" {
@@ -135,7 +135,7 @@ class MainViewController: UIViewController {
             }
             self.ProjectListTableView.reloadData()
         }
-        
+
         let endDateFilter = UIAction(title: selectedFilter == "byEndDate" ? "✓ 프로젝트 종료일순" : "프로젝트 종료일순", image: UIImage(systemName: "arrow.left.to.line")) { _ in
             if selectedFilter == "byEndDate" {
                 self.setupRightBarButtonItem(nil)
@@ -145,7 +145,7 @@ class MainViewController: UIViewController {
             }
             self.ProjectListTableView.reloadData()
         }
-        
+
         return [nameFilter, startDateFilter, endDateFilter]
     }
 
@@ -155,26 +155,26 @@ class MainViewController: UIViewController {
         let filterImage = UIImage(systemName: "line.3.horizontal.decrease")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: filterImage, menu: menu)
     }
-    
-    
+
+
     private func setupTableView() {
         view.addSubview(ProjectListTableView)
         view.addSubview(segmentedControl)
-        
+
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        
+
         ProjectListTableView.dataSource = self
         ProjectListTableView.delegate = self
         ProjectListTableView.register(ProjectListCell.self, forCellReuseIdentifier: "ProjectListCell")
-        
+
         ProjectListTableView.estimatedRowHeight = 100
         ProjectListTableView.rowHeight = UITableView.automaticDimension
-        
+
         ProjectListTableView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             ProjectListTableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 5),
             ProjectListTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -183,11 +183,11 @@ class MainViewController: UIViewController {
         ])
     }
 
-    
+
     // MARK: - Action
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         let currentDate = Calendar.current.startOfDay(for: Date())
-        
+
         switch sender.selectedSegmentIndex {
         case 0:
             projectList = dummyProjectList.filter { $0.endDate < currentDate }
@@ -196,7 +196,7 @@ class MainViewController: UIViewController {
         default:
             break
         }
-        
+
         ProjectListTableView.reloadData()
     }
 }
@@ -207,15 +207,14 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return projectList.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectListCell", for: indexPath) as! ProjectListCell
         let project = projectList[indexPath.row]
-        
+
         cell.projectNameLabel.text = project.projectName
         cell.projectAffiliationLabel.text = "소속: \(project.affiliation)"
         cell.setProjectDate(startDate: project.startDate, endDate: project.endDate)
-        cell.projectIsJoinedBadge.isHidden = !project.isJoined
 
         let textColor: UIColor = segmentedControl.selectedSegmentIndex == 0 ? .lightGray : .black
         cell.projectNameLabel.textColor = textColor
@@ -224,8 +223,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
         return cell
     }
-    
-    
-}
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let detailVC = DetailPageViewController()
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+
+}
 
