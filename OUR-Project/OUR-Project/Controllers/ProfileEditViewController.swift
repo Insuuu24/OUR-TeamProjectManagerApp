@@ -126,7 +126,7 @@ class ProfileEditViewController: UIViewController {
         navigationItem.title = "프로필 설정"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveButtonTapped))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()

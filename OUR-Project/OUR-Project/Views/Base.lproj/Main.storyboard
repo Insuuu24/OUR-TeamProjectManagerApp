@@ -27,13 +27,13 @@
         <!--Detail Page View Controller-->
         <scene sceneID="Jeg-5Z-rss">
             <objects>
-                <viewController storyboardIdentifier="DetailPageViewController" id="RfB-fH-L4d" customClass="DetailPageViewController" customModule="OUR_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RfB-fH-L4d" customClass="DetailPageViewController" customModule="OUR_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h1i-CA-8X4">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Sr3-0s-K9Z">
-                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameTableViewCell" id="jvL-i3-irn" customClass="NameTableViewCell" customModule="OUR_Project" customModuleProvider="target">
@@ -71,45 +71,32 @@
                                             <outlet property="projectNameTextField" destination="Kyv-Nr-b9Q" id="2Nk-I0-4ug"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DateTableViewCell" id="zhQ-un-SZ3" customClass="DateTableViewCell" customModule="OUR_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="114.66666412353516" width="393" height="64.666664123535156"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="88o-dw-Q1A" customClass="AffiliationCell" customModule="OUR_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="114.66666412353516" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zhQ-un-SZ3" id="Wnu-tB-4gf">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="64.666664123535156"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="88o-dw-Q1A" id="6PQ-cX-iuz">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ofM-sI-vnO">
-                                                    <rect key="frame" x="16" y="9.9999999999999964" width="361" height="54.666666666666657"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adj-eJ-mMq">
-                                                            <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TqA-0i-aIQ">
-                                                            <rect key="frame" x="0.0" y="20.333333333333332" width="361" height="34.333333333333343"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="ofM-sI-vnO" secondAttribute="bottom" id="apf-vm-NsA"/>
-                                                <constraint firstAttribute="trailing" secondItem="ofM-sI-vnO" secondAttribute="trailing" constant="16" id="nQy-5J-PQR"/>
-                                                <constraint firstItem="ofM-sI-vnO" firstAttribute="leading" secondItem="Wnu-tB-4gf" secondAttribute="leading" constant="16" id="vIZ-Ly-D4B"/>
-                                                <constraint firstItem="ofM-sI-vnO" firstAttribute="top" secondItem="Wnu-tB-4gf" secondAttribute="top" constant="10" id="z2f-WF-AUZ"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="dateLabel" destination="adj-eJ-mMq" id="cHs-Wg-PZf"/>
-                                            <outlet property="dateTextField" destination="TqA-0i-aIQ" id="xHp-OV-K0A"/>
-                                            <outlet property="stackView" destination="ofM-sI-vnO" id="Zkq-SQ-WnC"/>
-                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Y9S-Sz-its" customClass="StartDateCell" customModule="OUR_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="158.33333206176758" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y9S-Sz-its" id="fJs-xD-2bU">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Lps-uq-Dcw" customClass="EndDateCell" customModule="OUR_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="202" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lps-uq-Dcw" id="HwU-NO-xcM">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DescriptionTableViewCell" id="Wse-jE-YZH" customClass="DescriptionTableViewCell" customModule="OUR_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="179.33332824707031" width="393" height="90.666664123535156"/>
+                                        <rect key="frame" x="0.0" y="245.66666793823242" width="393" height="90.666664123535156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wse-jE-YZH" id="zIh-wp-70T">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="90.666664123535156"/>
@@ -152,7 +139,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProgressTableViewCell" id="7e4-HY-1St" customClass="ProgressTableViewCell" customModule="OUR_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="269.99999237060547" width="393" height="180.66667175292969"/>
+                                        <rect key="frame" x="0.0" y="336.33333206176758" width="393" height="180.66667175292969"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7e4-HY-1St" id="0Vz-Z9-kP3">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="180.66667175292969"/>
@@ -228,9 +215,9 @@
                         <viewLayoutGuide key="safeArea" id="VH1-7U-G73"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="VH1-7U-G73" firstAttribute="trailing" secondItem="Sr3-0s-K9Z" secondAttribute="trailing" id="NBa-7Q-GGd"/>
-                            <constraint firstItem="Sr3-0s-K9Z" firstAttribute="top" secondItem="VH1-7U-G73" secondAttribute="top" id="V2z-FH-5XU"/>
-                            <constraint firstItem="Sr3-0s-K9Z" firstAttribute="leading" secondItem="VH1-7U-G73" secondAttribute="leading" id="X3O-W8-Rup"/>
+                            <constraint firstAttribute="trailing" secondItem="Sr3-0s-K9Z" secondAttribute="trailing" id="NBa-7Q-GGd"/>
+                            <constraint firstItem="Sr3-0s-K9Z" firstAttribute="top" secondItem="h1i-CA-8X4" secondAttribute="top" id="V2z-FH-5XU"/>
+                            <constraint firstItem="Sr3-0s-K9Z" firstAttribute="leading" secondItem="h1i-CA-8X4" secondAttribute="leading" id="X3O-W8-Rup"/>
                             <constraint firstAttribute="bottom" secondItem="Sr3-0s-K9Z" secondAttribute="bottom" id="fgU-hD-L1r"/>
                         </constraints>
                     </view>

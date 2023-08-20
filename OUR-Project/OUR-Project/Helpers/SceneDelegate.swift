@@ -64,6 +64,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate: MemberSelectionDelegate {
     func didSelectMember(user: UserSelect) {
         let tabBarController = TabBarController()
-        window?.rootViewController = tabBarController
+        if let window = self.window {
+            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = tabBarController
+            }, completion: nil)
+        }
     }
 }
+
+
+
+

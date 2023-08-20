@@ -49,10 +49,15 @@ class MemberSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        users = UserManager.shared.loadUsers()
-        
         setupNavigationBar()
         setupCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        users = UserManager.shared.loadUsers()
+        collectionView.reloadData()
     }
     
     // MARK: - Helpers

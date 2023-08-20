@@ -60,6 +60,26 @@ class ProjectAddViewController: UIViewController {
         return textField
     }()
     
+    private lazy var datePickerPopupView: DatePickerPopupView = {
+        let datePicker = DatePickerPopupView()
+        datePicker.onSelectDate = { [weak self] date in
+            switch datePicker.currentSelection {
+            case .start:
+                self?.startDateSelectedDateLabel.text = "\(date)"
+            case .end:
+                self?.endDateSelectedDateLabel.text = "\(date)"
+            case .none:
+                break
+            }
+            datePicker.currentSelection = .none
+        }
+        datePicker.onCancel = {
+            datePicker.currentSelection = .none
+        }
+        return datePicker
+    }()
+
+    
     private let startDateHeaderLabel: UILabel = {
         let label = UILabel()
         label.text = "시작"
@@ -87,14 +107,8 @@ class ProjectAddViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "calendar"), for: .normal)
         button.tintColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
-        //button.addTarget(self, action: #selector(handleCalendarButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startDateCalendarButtonTapped), for: .touchUpInside)
         return button
-    }()
-    
-    private let startDateDatePicker: UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.datePickerMode = .date
-        return picker
     }()
     
     private let endDateHeaderLabel: UILabel = {
@@ -124,14 +138,8 @@ class ProjectAddViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "calendar"), for: .normal)
         button.tintColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
-        //button.addTarget(self, action: #selector(handleCalendarButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(endDateCalendarButtonTapped), for: .touchUpInside)
         return button
-    }()
-    
-    private let endDateDatePicker: UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.datePickerMode = .date
-        return picker
     }()
     
     private let descriptionHeaderLabel: UILabel = {
@@ -177,6 +185,10 @@ class ProjectAddViewController: UIViewController {
         configureNavigationBar()
         configureUI()
         
+        // container view의 하단을 스크롤뷰의 하단에 연결
+        let bottomConstraint = containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        bottomConstraint.isActive = true
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
 
@@ -188,7 +200,7 @@ class ProjectAddViewController: UIViewController {
     private func configureNavigationBar() {
         navigationItem.title = "신규 프로젝트"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .done, target: self, action: #selector(saveButtonTapped))
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
 
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -303,6 +315,7 @@ class ProjectAddViewController: UIViewController {
             progressListHeaderLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             
             progressStepper.topAnchor.constraint(equalTo: progressListHeaderLabel.bottomAnchor, constant: 16),
+            progressStepper.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16),
             progressStepper.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
         ])
         projectNameTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: projectNameTextField.frame.height))
@@ -337,6 +350,18 @@ class ProjectAddViewController: UIViewController {
         
     }
     
+    @objc func startDateCalendarButtonTapped(_ sender: UIButton) {
+        datePickerPopupView.currentSelection = .start
+        view.addSubview(datePickerPopupView)
+        datePickerPopupView.frame = view.bounds
+    }
+
+    @objc func endDateCalendarButtonTapped(_ sender: UIButton) {
+        datePickerPopupView.currentSelection = .end
+        view.addSubview(datePickerPopupView)
+        datePickerPopupView.frame = view.bounds
+    }
+
     @objc func handleStepperChange() {
         let diff = Int(progressStepper.value) - progressList.count
         if diff > 0 {

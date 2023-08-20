@@ -10,6 +10,8 @@ import UIKit
 class DetailPageViewController: UIViewController {
     // MARK: - Properties
     
+    var project: ProjectList?
+    
     @IBOutlet weak var detailTableView: UITableView!
     
     // MARK: - View Life Cycle
@@ -22,8 +24,7 @@ class DetailPageViewController: UIViewController {
         setupNavigationBar()
         configureUI()
         //        detailTableView.dataSource = self
-        //        detailTableView.delegate = self
-        //
+        //detailTableView.delegate = self
     }
     
     // MARK: - Helpers
@@ -52,6 +53,22 @@ class DetailPageViewController: UIViewController {
     
     
 }
+
+
+//extension DetailPageViewController: UITableViewDelegate {
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let storyboard = UIStoryboard(name: "DetailPageViewController", bundle: nil)
+//        if let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailPageViewController") as? DetailPageViewController {
+//            detailVC.project = dummyProjectList[indexPath.row]
+//            navigationController?.pushViewController(detailVC, animated: true)
+//        }
+//    }
+//
+//}
+
+
+
     //extension DetailPageViewController: UITableViewDataSource {
     //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     //        return tableViewList.count

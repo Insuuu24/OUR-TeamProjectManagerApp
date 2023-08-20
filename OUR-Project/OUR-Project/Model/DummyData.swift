@@ -56,6 +56,7 @@ let dummyProjectList: [ProjectList] = [
         startDate: Calendar.current.date(byAdding: .month, value: -4, to: Date()) ?? Date(),
         endDate: Calendar.current.date(byAdding: .month, value: +2, to: Date()) ?? Date()
     ),
+    
     ProjectList(
         projectName: "(다)아야어여오요우유으이",
         affiliation: "7조",

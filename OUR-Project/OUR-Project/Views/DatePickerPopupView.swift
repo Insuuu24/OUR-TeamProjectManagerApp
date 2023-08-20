@@ -9,8 +9,16 @@ import UIKit
 
 class DatePickerPopupView: UIView {
     
-    // MARK: - Properties
+    enum DateSelectionType {
+        case start
+        case end
+        case none
+    }
     
+    // MARK: - Properties
+
+    var currentSelection: DateSelectionType = .none
+
     private var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
@@ -73,7 +81,7 @@ class DatePickerPopupView: UIView {
         NSLayoutConstraint.activate([
             contentView.centerXAnchor.constraint(equalTo: centerXAnchor),
             contentView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 20),
-            contentView.widthAnchor.constraint(equalToConstant: 320),
+            contentView.widthAnchor.constraint(equalToConstant: 350),
             
             datePicker.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             datePicker.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

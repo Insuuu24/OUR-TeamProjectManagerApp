@@ -19,14 +19,15 @@
 		EB83A3502A8A01A000DFF86E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83A34F2A8A01A000DFF86E /* ProfileEditViewController.swift */; };
 		EB83A3532A8A01F700DFF86E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB83A3522A8A01F700DFF86E /* TabBarController.swift */; };
 		EBB2C8532A8F53C500E6199B /* DatePickerPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2C8522A8F53C500E6199B /* DatePickerPopupView.swift */; };
+		EBBE38512A91DECA007A1C2D /* AffiliationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBE38502A91DECA007A1C2D /* AffiliationCell.swift */; };
+		EBBE38532A91DED9007A1C2D /* StartDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBE38522A91DED9007A1C2D /* StartDateCell.swift */; };
+		EBBE38552A91E01B007A1C2D /* EndDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBE38542A91E01B007A1C2D /* EndDateCell.swift */; };
 		EBD169DB2A8BBC2A00B1120C /* MemberSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */; };
 		EBD169E12A8BBFC200B1120C /* UserSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD169E02A8BBFC200B1120C /* UserSelectCell.swift */; };
 		EBDAB23E2A8C6C4700D23321 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB23D2A8C6C4700D23321 /* NameTableViewCell.swift */; };
-		EBDAB2402A8C6C5400D23321 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB23F2A8C6C5400D23321 /* DateTableViewCell.swift */; };
 		EBDAB2422A8C6C8900D23321 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2412A8C6C8900D23321 /* DescriptionTableViewCell.swift */; };
 		EBDAB2462A8C6E2600D23321 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2452A8C6E2600D23321 /* ProgressTableViewCell.swift */; };
 		EBDAB2482A8C72A100D23321 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB2472A8C72A100D23321 /* CheckBox.swift */; };
-		EBDAB24D2A8CABDC00D23321 /* MemberListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */; };
 		EBDAB24F2A8CABEF00D23321 /* ProgressListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */; };
 		EBEC6C902A90AE2600A45645 /* UserSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC6C8F2A90AE2600A45645 /* UserSelect.swift */; };
 		EBEC6C922A90AE6B00A45645 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEC6C912A90AE6B00A45645 /* UserDataManager.swift */; };
@@ -51,14 +52,15 @@
 		EB83A34F2A8A01A000DFF86E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		EB83A3522A8A01F700DFF86E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EBB2C8522A8F53C500E6199B /* DatePickerPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPopupView.swift; sourceTree = "<group>"; };
+		EBBE38502A91DECA007A1C2D /* AffiliationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffiliationCell.swift; sourceTree = "<group>"; };
+		EBBE38522A91DED9007A1C2D /* StartDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDateCell.swift; sourceTree = "<group>"; };
+		EBBE38542A91E01B007A1C2D /* EndDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndDateCell.swift; sourceTree = "<group>"; };
 		EBD169DA2A8BBC2A00B1120C /* MemberSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberSelectionViewController.swift; sourceTree = "<group>"; };
 		EBD169E02A8BBFC200B1120C /* UserSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectCell.swift; sourceTree = "<group>"; };
 		EBDAB23D2A8C6C4700D23321 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
-		EBDAB23F2A8C6C5400D23321 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB2412A8C6C8900D23321 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB2452A8C6E2600D23321 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB2472A8C72A100D23321 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
-		EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewCell.swift; sourceTree = "<group>"; };
 		EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressListTableViewCell.swift; sourceTree = "<group>"; };
 		EBEC6C8F2A90AE2600A45645 /* UserSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelect.swift; sourceTree = "<group>"; };
 		EBEC6C912A90AE6B00A45645 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -150,10 +152,11 @@
 			isa = PBXGroup;
 			children = (
 				EBDAB23D2A8C6C4700D23321 /* NameTableViewCell.swift */,
-				EBDAB23F2A8C6C5400D23321 /* DateTableViewCell.swift */,
+				EBBE38502A91DECA007A1C2D /* AffiliationCell.swift */,
+				EBBE38522A91DED9007A1C2D /* StartDateCell.swift */,
+				EBBE38542A91E01B007A1C2D /* EndDateCell.swift */,
 				EBDAB2412A8C6C8900D23321 /* DescriptionTableViewCell.swift */,
 				EBDAB2452A8C6E2600D23321 /* ProgressTableViewCell.swift */,
-				EBDAB24C2A8CABDC00D23321 /* MemberListTableViewCell.swift */,
 				EBDAB24E2A8CABEF00D23321 /* ProgressListTableViewCell.swift */,
 			);
 			path = DetailTableViewCell;
@@ -242,11 +245,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBEC6C942A90B02700A45645 /* DummyData.swift in Sources */,
+				EBBE38532A91DED9007A1C2D /* StartDateCell.swift in Sources */,
 				EBF84E592A8DEDFF00B56A1F /* EmptyStateView.swift in Sources */,
 				EB83A34C2A8A017600DFF86E /* ProjectAddViewController.swift in Sources */,
 				EBEC6C962A90B04400A45645 /* ProjectList.swift in Sources */,
 				EB83A3532A8A01F700DFF86E /* TabBarController.swift in Sources */,
 				EBDAB2462A8C6E2600D23321 /* ProgressTableViewCell.swift in Sources */,
+				EBBE38512A91DECA007A1C2D /* AffiliationCell.swift in Sources */,
 				EB83A3502A8A01A000DFF86E /* ProfileEditViewController.swift in Sources */,
 				EB83A34E2A8A018000DFF86E /* MyPageViewController.swift in Sources */,
 				EBDAB2422A8C6C8900D23321 /* DescriptionTableViewCell.swift in Sources */,
@@ -254,17 +259,16 @@
 				EBEC6C902A90AE2600A45645 /* UserSelect.swift in Sources */,
 				EB83A34A2A8A016500DFF86E /* DetailPageViewController.swift in Sources */,
 				EBDAB24F2A8CABEF00D23321 /* ProgressListTableViewCell.swift in Sources */,
+				EBBE38552A91E01B007A1C2D /* EndDateCell.swift in Sources */,
 				EBF84E572A8DA2F700B56A1F /* ProjectListCell.swift in Sources */,
 				EBD169DB2A8BBC2A00B1120C /* MemberSelectionViewController.swift in Sources */,
 				EB4DFCAE2A89EA1300F1B738 /* MainViewController.swift in Sources */,
 				EBD169E12A8BBFC200B1120C /* UserSelectCell.swift in Sources */,
 				EB4DFCAA2A89EA1300F1B738 /* AppDelegate.swift in Sources */,
-				EBDAB2402A8C6C5400D23321 /* DateTableViewCell.swift in Sources */,
 				EBB2C8532A8F53C500E6199B /* DatePickerPopupView.swift in Sources */,
 				EBEC6C922A90AE6B00A45645 /* UserDataManager.swift in Sources */,
 				EB4DFCAC2A89EA1300F1B738 /* SceneDelegate.swift in Sources */,
 				EBDAB2482A8C72A100D23321 /* CheckBox.swift in Sources */,
-				EBDAB24D2A8CABDC00D23321 /* MemberListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

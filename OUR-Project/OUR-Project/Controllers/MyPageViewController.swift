@@ -58,11 +58,14 @@ class MyPageViewController: UIViewController {
         return btn
     }()
 
-    private let segmentedControl: UISegmentedControl = {
-        let sc = UISegmentedControl(items: ["생성한 프로젝트", "참여중인 프로젝트"])
-        sc.selectedSegmentIndex = 0
-        sc.translatesAutoresizingMaskIntoConstraints = false
-        return sc
+    private let archivedProjectsLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "보관된 프로젝트"
+        lbl.font = UIFont.boldSystemFont(ofSize: 20)
+        lbl.textColor = .black
+        lbl.textAlignment = .left
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        return lbl
     }()
 
     private let tableView: UITableView = {
@@ -119,7 +122,7 @@ class MyPageViewController: UIViewController {
         view.addSubview(affiliationLabel)
         view.addSubview(introductionLabel)
         view.addSubview(editButton)
-        view.addSubview(segmentedControl)
+        view.addSubview(archivedProjectsLabel)
         view.addSubview(tableView)
         view.addSubview(emptyStateView)
         
@@ -146,11 +149,11 @@ class MyPageViewController: UIViewController {
             editButton.widthAnchor.constraint(equalToConstant: 60),
             editButton.heightAnchor.constraint(equalToConstant: 30),
 
-            segmentedControl.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 40),
-            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            archivedProjectsLabel.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 40),
+            archivedProjectsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            archivedProjectsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            tableView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 10),
+            tableView.topAnchor.constraint(equalTo: archivedProjectsLabel.bottomAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
