@@ -19,8 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let tabBarController = TabBarController()
-        window.rootViewController = tabBarController
+        let memberSelectionVC = MemberSelectionViewController()
+        memberSelectionVC.delegate = self
+        
+        let navigationController = UINavigationController(rootViewController: memberSelectionVC)
+        window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
     }
@@ -55,4 +58,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
+
+// MARK: - MemberSelectionDelegate
+
+extension SceneDelegate: MemberSelectionDelegate {
+    func didSelectMember(user: UserSelect) {
+        let tabBarController = TabBarController()
+        if let window = self.window {
+            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                window.rootViewController = tabBarController
+            }, completion: nil)
+        }
+    }
+}
+
+
+
 
