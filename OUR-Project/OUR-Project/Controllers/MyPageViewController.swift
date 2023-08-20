@@ -201,7 +201,4 @@ class MyPageViewController: UIViewController {
 
         self.navigationController?.pushViewController(profileEditVC, animated: true)
     }
-
-
-    
 }

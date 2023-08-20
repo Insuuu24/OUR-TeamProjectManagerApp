@@ -12,7 +12,8 @@ class MainViewController: UIViewController {
     // MARK: - Properties
     
     var selectedUser: UserSelect?
-    var projectList = dummyProjectList
+    var allProjects: [ProjectList] = []
+    var projectList: [ProjectList] = []
     
     private var ProjectListTableView: UITableView = {
         let tableView = UITableView()
@@ -37,11 +38,10 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-     
         setupNavigationBar()
         setupTableView()
+        loadProjectsFromUserDefaults()
     }
-    
     
     // MARK: - Helpers
 
@@ -112,7 +112,6 @@ class MainViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: filterImage, menu: menu)
     }
 
-
     private func setupTableView() {
         view.addSubview(ProjectListTableView)
         view.addSubview(segmentedControl)
@@ -138,30 +137,45 @@ class MainViewController: UIViewController {
             ProjectListTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
-
-
+    
+    func didAddProject(project: ProjectList) {
+        allProjects.append(project)
+        segmentedControlValueChanged(segmentedControl)
+    }
+    
+    func loadProjectsFromUserDefaults() {
+        if let savedProjects = UserDefaults.standard.object(forKey: "allProjects") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedProjects = try? decoder.decode([ProjectList].self, from: savedProjects) {
+                allProjects = loadedProjects
+            }
+        }
+    }
+    
     // MARK: - Action
+    
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         let currentDate = Calendar.current.startOfDay(for: Date())
 
         switch sender.selectedSegmentIndex {
         case 0:
-            projectList = dummyProjectList.filter { $0.endDate < currentDate }
+            projectList = allProjects.filter { $0.endDate < currentDate }
         case 1:
-            projectList = dummyProjectList.filter { $0.endDate >= currentDate }
+            projectList = allProjects.filter { $0.endDate >= currentDate }
         default:
             break
         }
 
         ProjectListTableView.reloadData()
     }
+
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return projectList.count
+        return projectList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -195,5 +209,18 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         deleteAction.image = UIImage(systemName: "trash")
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let archiveAction = UIContextualAction(style: .normal, title: nil) { (action, view, completion) in
+            self.allProjects[indexPath.row].isArchived = true
+            self.projectList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            completion(true)
+        }
+        archiveAction.image = UIImage(systemName: "archivebox")
+        archiveAction.backgroundColor = .systemBlue
+        return UISwipeActionsConfiguration(actions: [archiveAction])
+    }
+
 }
 

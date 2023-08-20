@@ -5,24 +5,19 @@
 //  Created by Insu on 2023/08/14.
 //
 
+protocol ProjectAddDelegate: AnyObject {
+    func didAddProject(project: ProjectList)
+}
+
 import UIKit
 
 class ProjectAddViewController: UIViewController {
     
     // MARK: - Properties
     
+    weak var delegate: ProjectAddDelegate?
+    
     private var progressList: [UITextField] = []
-    
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = false
-        return scrollView
-    }()
-    
-    private let containerView: UIView = {
-        let view = UIView()
-        return view
-    }()
     
     private let projectNamePickerHeaderLabel: UILabel = {
         let label = UILabel()
@@ -63,17 +58,18 @@ class ProjectAddViewController: UIViewController {
     private lazy var datePickerPopupView: DatePickerPopupView = {
         let datePicker = DatePickerPopupView()
         datePicker.onSelectDate = { [weak self] date in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let formattedDate = formatter.string(from: date)
+            
             switch datePicker.currentSelection {
             case .start:
-                self?.startDateSelectedDateLabel.text = "\(date)"
+                self?.startDateSelectedDateLabel.text = formattedDate
             case .end:
-                self?.endDateSelectedDateLabel.text = "\(date)"
+                self?.endDateSelectedDateLabel.text = formattedDate
             case .none:
                 break
             }
-            datePicker.currentSelection = .none
-        }
-        datePicker.onCancel = {
             datePicker.currentSelection = .none
         }
         return datePicker
@@ -157,24 +153,6 @@ class ProjectAddViewController: UIViewController {
         return textView
     }()
     
-    private let progressListHeaderLabel: UILabel = {
-        let label = UILabel()
-        label.text = "진행상황"
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
-        return label
-    }()
-    
-    private lazy var progressStepper: UIStepper = {
-        let stepper = UIStepper()
-        stepper.minimumValue = 0
-        stepper.maximumValue = 5
-        stepper.addTarget(self, action: #selector(handleStepperChange), for: .valueChanged)
-        return stepper
-    }()
-
-
-    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -185,16 +163,13 @@ class ProjectAddViewController: UIViewController {
         configureNavigationBar()
         configureUI()
         
-        // container view의 하단을 스크롤뷰의 하단에 연결
-        let bottomConstraint = containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
-        bottomConstraint.isActive = true
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-
     // MARK: - Helpers
     
     private func configureNavigationBar() {
@@ -213,52 +188,34 @@ class ProjectAddViewController: UIViewController {
     }
     
     private func configureUI() {
-        
-        [
-            scrollView,
+        let elements = [
             projectNamePickerHeaderLabel,
             projectNameTextField,
             affiliationPickerHeaderLabel,
             affiliationTextField,
             startDateHeaderLabel,
             startDateborderView,
+            startDateSelectedDateLabel,
+            startDateCalendarButton,
             endDateHeaderLabel,
             endDateborderView,
+            endDateSelectedDateLabel,
+            endDateCalendarButton,
             descriptionHeaderLabel,
-            descriptionTextView,
-            progressListHeaderLabel,
-            progressStepper
-        ].forEach {
+            descriptionTextView
+        ]
+
+        elements.forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        scrollView.addSubview(containerView)
         startDateborderView.addSubview(startDateSelectedDateLabel)
         startDateborderView.addSubview(startDateCalendarButton)
         endDateborderView.addSubview(endDateSelectedDateLabel)
         endDateborderView.addSubview(endDateCalendarButton)
         
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        startDateSelectedDateLabel.translatesAutoresizingMaskIntoConstraints = false
-        startDateCalendarButton.translatesAutoresizingMaskIntoConstraints = false
-        endDateSelectedDateLabel.translatesAutoresizingMaskIntoConstraints = false
-        endDateCalendarButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-
-            
-            containerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
             projectNamePickerHeaderLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             projectNamePickerHeaderLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             
@@ -310,13 +267,6 @@ class ProjectAddViewController: UIViewController {
             descriptionTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             descriptionTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             descriptionTextView.heightAnchor.constraint(equalToConstant: 150),
-            
-            progressListHeaderLabel.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 16),
-            progressListHeaderLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            
-            progressStepper.topAnchor.constraint(equalTo: progressListHeaderLabel.bottomAnchor, constant: 16),
-            progressStepper.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16),
-            progressStepper.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
         ])
         projectNameTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: projectNameTextField.frame.height))
         projectNameTextField.leftViewMode = .always
@@ -324,32 +274,41 @@ class ProjectAddViewController: UIViewController {
         affiliationTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: projectNameTextField.frame.height))
         affiliationTextField.leftViewMode = .always
     }
-
-    func updateScrollViewContentSize() {
-        if let lastElement = scrollView.subviews.last {
-            scrollView.contentSize = CGSize(width: scrollView.bounds.width, height: lastElement.frame.maxY + 20)
-        }
-    }
     
-    func adjustStepperPosition() {
-        if let lastTextField = progressList.last {
-            NSLayoutConstraint.activate([
-                progressStepper.topAnchor.constraint(equalTo: lastTextField.bottomAnchor, constant: 16)
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                progressStepper.topAnchor.constraint(equalTo: progressListHeaderLabel.bottomAnchor, constant: 16)
-            ])
-        }
+    func resetInputFields() {
+        projectNameTextField.text = ""
+        affiliationTextField.text = ""
+        startDateSelectedDateLabel.text = "선택한 날짜 없음"
+        endDateSelectedDateLabel.text = "선택한 날짜 없음"
+        descriptionTextView.text = ""
     }
     
     // MARK: - Action
     
     @objc func saveButtonTapped() {
+        guard let projectName = projectNameTextField.text, !projectName.isEmpty,
+              let affiliation = affiliationTextField.text, !affiliation.isEmpty,
+              let startDateStr = startDateSelectedDateLabel.text, startDateStr != "선택한 날짜 없음",
+              let endDateStr = endDateSelectedDateLabel.text, endDateStr != "선택한 날짜 없음" else {
+            return
+        }
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        guard let startDate = formatter.date(from: startDateStr),
+              let endDate = formatter.date(from: endDateStr) else {
+            return
+        }
+
+        let newProject = ProjectList(projectName: projectName, affiliation: affiliation, startDate: startDate, endDate: endDate)
+        if let mainVC = (tabBarController?.viewControllers?[1] as? UINavigationController)?.viewControllers.first as? MainViewController {
+            mainVC.didAddProject(project: newProject)
+        }
+        tabBarController?.selectedIndex = 1
         
-        
+        resetInputFields()
     }
-    
+
     @objc func startDateCalendarButtonTapped(_ sender: UIButton) {
         datePickerPopupView.currentSelection = .start
         view.addSubview(datePickerPopupView)
@@ -361,57 +320,31 @@ class ProjectAddViewController: UIViewController {
         view.addSubview(datePickerPopupView)
         datePickerPopupView.frame = view.bounds
     }
-
-    @objc func handleStepperChange() {
-        let diff = Int(progressStepper.value) - progressList.count
-        if diff > 0 {
-            for _ in 0..<diff {
-                addProgressListField()
-            }
-        } else if diff < 0 {
-            for _ in 0..<abs(diff) {
-                removeProgressListField()
-            }
-        }
-        adjustStepperPosition()
-        updateScrollViewContentSize()
-    }
-    
-    @objc func addProgressListField() {
-        let progressListField = UITextField()
-        progressListField.borderStyle = .none
-        progressListField.placeholder = "프로젝트 이름을 입력해주세요"
-        progressListField.font = UIFont.systemFont(ofSize: 14)
-        progressListField.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.96, alpha: 1.00)
-        progressListField.layer.cornerRadius = 10
-        progressListField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(progressListField)
-        
-        let lastProgressList = progressList.last
-        
-        NSLayoutConstraint.activate([
-            progressListField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            progressListField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            progressListField.heightAnchor.constraint(equalToConstant: 40),
-            progressListField.topAnchor.constraint(equalTo: lastProgressList?.bottomAnchor ?? progressListHeaderLabel.bottomAnchor, constant: 16)
-        ])
-        progressList.append(progressListField)
-        
-        progressListField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: projectNameTextField.frame.height))
-        progressListField.leftViewMode = .always
-    }
-    
-    @objc func removeProgressListField() {
-        guard let lastProgressField = progressList.last else { return }
-        lastProgressField.removeFromSuperview()
-        progressList.removeLast()
-    }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if descriptionTextView.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= keyboardSize.height / 2.5
+                }
+            }
+        }
+    }
 
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if descriptionTextView.isFirstResponder {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
 }
-
-

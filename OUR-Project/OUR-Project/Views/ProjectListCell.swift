@@ -103,6 +103,22 @@ class ProjectListCell: UITableViewCell {
     func setProjectDate(startDate: Date, endDate: Date) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        dateLabel.text = "시작: \(formatter.string(from: startDate)) / 종료: \(formatter.string(from: endDate))"
+        let startDateString = formatter.string(from: startDate)
+        let endDateString = formatter.string(from: endDate)
+        
+        dateLabel.text = "시작: \(startDateString) / 종료: \(endDateString)"
     }
+    
+    func configure(with project: ProjectList) {
+        projectNameLabel.text = project.projectName
+        projectAffiliationLabel.text = project.affiliation
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let startDateString = formatter.string(from: project.startDate)
+        let endDateString = formatter.string(from: project.endDate)
+        
+        dateLabel.text = "시작: \(startDateString) / 종료: \(endDateString)"
+    }
+
 }

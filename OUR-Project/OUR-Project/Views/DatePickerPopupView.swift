@@ -22,7 +22,7 @@ class DatePickerPopupView: UIView {
     private var datePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
-        picker.preferredDatePickerStyle = .inline
+        picker.preferredDatePickerStyle = .wheels
         picker.tintColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         return picker
     }()
