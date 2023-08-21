@@ -139,7 +139,7 @@ class MainViewController: UIViewController {
             ProjectListTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 60),
+            emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 70),
             emptyStateView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
             emptyStateView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
         ])

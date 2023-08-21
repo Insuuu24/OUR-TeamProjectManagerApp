@@ -49,4 +49,20 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         self.selectedIndex = 1
     }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        if let navController = selectedViewController as? UINavigationController,
+           let currentController = navController.viewControllers.first as? ProjectAddViewController,
+           currentController.isInputInProgress {
+            
+            let alert = UIAlertController(title: "주의!", message: "입력도중 다른 페이지로 이동할 수 없습니다.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okAction)
+            currentController.present(alert, animated: true, completion: nil)
+            
+            return false
+        }
+        return true
+    }
 }

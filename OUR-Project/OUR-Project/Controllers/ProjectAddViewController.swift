@@ -16,8 +16,8 @@ class ProjectAddViewController: UIViewController {
     // MARK: - Properties
     
     weak var delegate: ProjectAddDelegate?
-    
     private var progressList: [UITextField] = []
+    var isInputInProgress: Bool = false
     
     private let projectNamePickerHeaderLabel: UILabel = {
         let label = UILabel()
@@ -162,6 +162,11 @@ class ProjectAddViewController: UIViewController {
         
         configureNavigationBar()
         configureUI()
+        
+        isInputInProgress = false
+        projectNameTextField.delegate = self
+        affiliationTextField.delegate = self
+        descriptionTextView.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -347,4 +352,63 @@ class ProjectAddViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+}
+
+// MARK: - UITextFieldDelegate, UITextViewDelegate
+
+extension ProjectAddViewController: UITextFieldDelegate, UITextViewDelegate {
+    // UITextFieldDelegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        isInputInProgress = true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if projectNameTextField.text?.isEmpty == true, affiliationTextField.text?.isEmpty == true {
+            isInputInProgress = false
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let expectedText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        checkInputInProgress(currentTextField: textField, expectedText: expectedText)
+        return true
+    }
+    // UITextViewDelegate
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        isInputInProgress = true
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if descriptionTextView.text.isEmpty {
+            isInputInProgress = false
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        let expectedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        checkInputInProgress(currentTextView: textView, expectedText: expectedText)
+        return true
+    }
+    
+    private func checkInputInProgress(currentTextField: UITextField? = nil, currentTextView: UITextView? = nil, expectedText: String? = nil) {
+        let allTexts: [String?]
+        
+        if let expectedText = expectedText {
+            allTexts = [
+                currentTextField == projectNameTextField ? expectedText : projectNameTextField.text,
+                currentTextField == affiliationTextField ? expectedText : affiliationTextField.text,
+                currentTextView == descriptionTextView ? expectedText : descriptionTextView.text
+            ]
+        } else {
+            allTexts = [
+                projectNameTextField.text,
+                affiliationTextField.text,
+                descriptionTextView.text
+            ]
+        }
+        isInputInProgress = !allTexts.allSatisfy { $0?.isEmpty == true }
+    }
+
 }
