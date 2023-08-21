@@ -215,7 +215,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { (action, view, completion) in
+            let projectToRemove = self.projectList[indexPath.row]
             self.projectList.remove(at: indexPath.row)
+            if let indexInAllProjects = self.allProjects.firstIndex(where: { $0 == projectToRemove }) {
+                self.allProjects.remove(at: indexInAllProjects)
+            }
             tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
             self.updateEmptyStateViewVisibility()

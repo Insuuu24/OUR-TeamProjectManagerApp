@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ProjectList: Codable {
+struct ProjectList: Codable, Equatable {
     var projectName: String
     var affiliation: String
     var startDate: Date

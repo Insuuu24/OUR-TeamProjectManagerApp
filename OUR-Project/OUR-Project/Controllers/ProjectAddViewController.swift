@@ -78,7 +78,7 @@ class ProjectAddViewController: UIViewController {
     
     private let startDateHeaderLabel: UILabel = {
         let label = UILabel()
-        label.text = "시작"
+        label.text = "시작 날짜"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         return label
@@ -109,7 +109,7 @@ class ProjectAddViewController: UIViewController {
     
     private let endDateHeaderLabel: UILabel = {
         let label = UILabel()
-        label.text = "종료"
+        label.text = "종료 날짜"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor(red: 0.54, green: 0.49, blue: 0.22, alpha: 1.00)
         return label
