@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     var selectedUser: UserSelect?
     var allProjects: [ProjectList] = []
     var projectList: [ProjectList] = []
+    private var emptyStateView = EmptyStateView()
     
     private var ProjectListTableView: UITableView = {
         let tableView = UITableView()
@@ -115,6 +116,7 @@ class MainViewController: UIViewController {
     private func setupTableView() {
         view.addSubview(ProjectListTableView)
         view.addSubview(segmentedControl)
+        view.addSubview(emptyStateView)
 
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
@@ -135,12 +137,18 @@ class MainViewController: UIViewController {
             ProjectListTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             ProjectListTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             ProjectListTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 60),
+            emptyStateView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
+            emptyStateView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
         ])
     }
     
     func didAddProject(project: ProjectList) {
         allProjects.append(project)
         segmentedControlValueChanged(segmentedControl)
+        updateEmptyStateViewVisibility()
     }
     
     func loadProjectsFromUserDefaults() {
@@ -150,6 +158,10 @@ class MainViewController: UIViewController {
                 allProjects = loadedProjects
             }
         }
+    }
+    
+    private func updateEmptyStateViewVisibility() {
+        emptyStateView.isHidden = !projectList.isEmpty
     }
     
     // MARK: - Action
@@ -167,6 +179,7 @@ class MainViewController: UIViewController {
         }
 
         ProjectListTableView.reloadData()
+        updateEmptyStateViewVisibility()
     }
 
 }
@@ -205,8 +218,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             self.projectList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
+            self.updateEmptyStateViewVisibility()
         }
         deleteAction.image = UIImage(systemName: "trash")
+        updateEmptyStateViewVisibility()
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
     
@@ -216,9 +231,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             self.projectList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
+            self.updateEmptyStateViewVisibility()
         }
         archiveAction.image = UIImage(systemName: "archivebox")
         archiveAction.backgroundColor = .systemBlue
+        updateEmptyStateViewVisibility()
         return UISwipeActionsConfiguration(actions: [archiveAction])
     }
 

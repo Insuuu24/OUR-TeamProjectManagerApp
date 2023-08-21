@@ -120,5 +120,4 @@ class ProjectListCell: UITableViewCell {
         
         dateLabel.text = "시작: \(startDateString) / 종료: \(endDateString)"
     }
-
 }
